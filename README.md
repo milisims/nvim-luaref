@@ -1,4 +1,12 @@
-Script generated documentation for lua 5.1 in `en`, `de`, `es`, and `pt`.
+This 'plugin' simply adds a reference for builtin lua functions, extracting both text and formatting from [the Lua 5.1 Reference Manual](https://www.lua.org/manual/5.1/manual.html). There are still formatting issues (particularly around equals), please search through and then submit an issue if you find one that is unreported!
 
-After installing and regenerating `helptags`, check out `:h lua_reference_toc` for the table of contents.
-Generated from [the Lua 5.1 Reference Manual](https://www.lua.org/manual/5.1/manual.html)
+Text referring to implementing lua into a host C program has largely been removed.
+
+For example,
+``` vim
+    :help lua_reference_toc
+    :help math.pi
+    :help coroutine.yield
+```
+
+Script generated documentation for lua 5.1 in languages: `en`, `de`, `es`, and `pt`.
