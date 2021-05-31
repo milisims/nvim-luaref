@@ -1,0 +1,54 @@
+==============================================================================
+CONTENIDO                                                  *lua_reference_toc*
+
+1      - Introducción                      |lua_introduction|
+
+2      - El lenguaje                       |lua_language|
+2.1    - Convenciones léxicas              |lua_conventions|
+2.2    - Valores y tipos                   |lua_types|
+2.2.1  - Coerción                          |lua_type_coercion|
+2.3    - Variables                         |lua_variables|
+
+2.4    - Sentencias                        |lua_statements|
+2.4.1  - Chunks                            |lua_chunks|
+2.4.2  - Bloques                           |lua_blocks|
+2.4.3  - Asignaciones                      |lua_assignment|
+2.4.4  - Estructuras de control            |lua_control|
+2.4.5  - Sentencia for                     |lua_for|
+2.4.6  - Sentencias de llamadas a función  |lua_func_statement|
+2.4.7  - Declaraciones locales             |lua_local|
+
+2.5    - Expresiones                       |lua_expressions|
+2.5.1  - Operadores aritméticos            |lua_arithmetic_ops|
+2.5.2  - Operadores relacionales           |lua_relational_ops|
+2.5.3  - Operadores lógicos                |lua_logical_ops|
+2.5.4  - Concatenación                     |lua_concatenation|
+2.5.5  - El operator longitud              |lua_len|
+2.5.6  - Precedencia de los operadores     |lua_precedence|
+2.5.7  - Constructores de tabla            |lua_table_constructors|
+2.5.8  - Llamadas a función                |lua_function_calls|
+2.5.9  - Definición de funciones           |lua_function_defs|
+
+2.6    - Reglas de visibilidad             |lua_scope|
+2.7    - Manejo de errores                 |lua_errors|
+2.8    - Metatablas                        |lua_metatables|
+2.9    - Entornos                          |lua_environments|
+
+2.10   - Liberación de memoria no utilizada|lua_gc|
+2.10.2 - Tablas débiles                    |lua_weak|
+2.11   - Co-rutinas                        |lua_coroutines|
+
+5      - Bibliotecas estándar              |lua_stdlib|
+5.1    - Funciones básicas                 |lua_builtins|
+5.2    - Manejo de co-rutinas              |lua_module_coroutines|
+5.3    - Módulos                           |lua_modules|
+5.4    - Manejo de strings                 |lua_module_string|
+5.4.1  - Patrones                          |lua_patterns|
+5.5    - Manejo de tablas                  |lua_module_table|
+5.6    - Funciones matemáticas             |lua_module_math|
+5.7    - Utilidades de entrada/salida      |lua_module_io|
+5.8    - Utilidades del sistema operativo  |lua_module_os|
+5.9    - La biblioteca de depuración       |lua_debug|
+
+8      - La sintaxis completa de Lua       |lua_syntax|
+
