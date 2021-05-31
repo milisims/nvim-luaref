@@ -1214,7 +1214,7 @@ Por tanto, el acceso a un metamétodo no invoca otros metamétodos, y el
 acceso a los objetos sin metatablas no falla (simplemente devuelve
 `nil`).
 
-- *"add":* La operación `+`.
+- `add`: La operación `+`.
 
   La función `getbinhandler` que aparece más abajo define cómo escoge
   Lua un manejador de la operación binaria. Primero Lua prueba el primer
@@ -1242,23 +1242,23 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
        end
      end
 <
-- *"sub":* La operación `-`. El comportamiento es similar a la operación
+- `sub`: La operación `-`. El comportamiento es similar a la operación
   "add".
 
-- *"mul":* La operación `*`. El comportamiento es similar a la operación
+- `mul`: La operación `*`. El comportamiento es similar a la operación
   "add".
 
-- *"div":* La operación `/`. El comportamiento es similar a la operación
+- `div`: La operación `/`. El comportamiento es similar a la operación
   "add".
 
-- *"mod":* La operación `%`. El comportamiento es similar a la operación
+- `mod`: La operación `%`. El comportamiento es similar a la operación
   "add", usando `o1 - floor(o1/o2)*o2` como operación primitiva.
 
-- *"pow":* La operación `^` (exponenciación). El comportamiento es
+- `pow`: La operación `^` (exponenciación). El comportamiento es
   similar a la operación "add", con la función `pow` (de la biblioteca
   matemática de C) como operación primitiva.
 
-- *"unm":* La operación `-` unaria.
+- `unm`: La operación `-` unaria.
 >
      function unm_event (op)
        local o = tonumber(op)
@@ -1276,7 +1276,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
        end
      end
 <
-- *"concat":* La operación `..` (concatenación).
+- `concat`: La operación `..` (concatenación).
 >
      function concat_event (op1, op2)
        if (type(op1) == "string" or type(op1) == "number") and
@@ -1292,7 +1292,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
        end
      end
 <
-- *"len":* La operación `#`.
+- `len`: La operación `#`.
 >
      function len_event (op)
        if type(op) == "string" then
@@ -1313,7 +1313,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
   Véase |lua_len| para una descripción de la longitud de una
   tabla.
 
-- *"eq":* La operación ====. La función `getcomphandler` define cómo
+- `eq`: La operación ====. La función `getcomphandler` define cómo
   elige Lua un metamétodo para el operador de comparación. Se selecciona
   un metamétodo cuando ambos objetos que son comparados tienen el mismo
   tipo y el mismo metamétodo para la operación dada.
@@ -1345,7 +1345,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
 <
   `a ~` b= equivale a =not (a == b)=.
 
-- *"lt":* La operación `<`.
+- `lt`: La operación `<`.
 >
      function lt_event (op1, op2)
        if type(op1) == "number" and type(op2) == "number" then
@@ -1364,7 +1364,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
 <
   `a > b` equivale a `b < a`.
 
-- *"le":* La operación `<`=.
+- `le`: La operación `<`=.
 >
      function le_event (op1, op2)
        if type(op1) == "number" and type(op2) == "number" then
@@ -1390,7 +1390,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
   metamétodo "le" Lua intenta usar el de "lt", asumiendo que `a <` b=
   equivale a `not (b < a)`.
 
-- *"index":* El acceso indexado `tabla[clave]`.
+- `index`: El acceso indexado `tabla[clave]`.
 >
      function gettable_event (tabla, clave)
        local h
@@ -1411,7 +1411,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
        end
      end
 <
-- *"newindex":* La asignación indexada =tabla[clave] = valor=.
+- `newindex`: La asignación indexada =tabla[clave] = valor=.
 >
      function settable_event (tabla, clave, valor)
        local h
@@ -1432,7 +1432,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
        end
      end
 <
-- *"call":* invocada cuando Lua llama a un valor.
+- `call`: invocada cuando Lua llama a un valor.
 >
      function function_event (func, ...)
        if type(func) == "function" then
@@ -1700,18 +1700,18 @@ collectgarbage (opt [, arg])                                  *collectgarbage*
     Esta función es una interface genérica al liberador de memoria. Realiza
     diversas funciones de acuerdo a su primer argumento, `opt`:
 
-    - *"stop":* detiene el liberador de memoria.
-    - *"restart":* reinicia el liberador de memoria.
-    - *"collect":* realiza un ciclo completo de liberación de memoria.
-    - *"count":* devuelve la memoria total en uso por Lua (en Kbytes).
-    - *"step":* realiza un paso de liberación de memoria. El "tamaño" del
+    - `stop`: detiene el liberador de memoria.
+    - `restart`: reinicia el liberador de memoria.
+    - `collect`: realiza un ciclo completo de liberación de memoria.
+    - `count`: devuelve la memoria total en uso por Lua (en Kbytes).
+    - `step`: realiza un paso de liberación de memoria. El "tamaño" del
       paso se controla por `arg` (valores grandes significan más pasos) de
       una manera no especificada. Si se desea controlar el tamaño del paso
       se debe afinar experimentalmente el valor de `arg`. Devuelve `true` si
       el paso acaba un ciclo de liberación.
-    - *"steppause":* establece `arg`/100 como el nuevo valor para la `pausa`
+    - `steppause`: establece `arg`/100 como el nuevo valor para la `pausa`
       del liberador (véase |lua_gc|).
-    - *"setstepmul":* establece `arg`/100 como el nuevo valor para el
+    - `setstepmul`: establece `arg`/100 como el nuevo valor para el
       `multiplicador del paso` del liberador (véase |lua_gc|).
 
 dofile (nombre_de_fichero)                                            *dofile*
@@ -2363,7 +2363,7 @@ string.upper (s)                                                *string.upper*
 ==============================================================================
 PATRONES                                                        *lua_patterns*
 
-**** Clases de caracteres:
+Clases de caracteres~
 
 Se usan `clases de caracteres` para representar conjuntos de caracteres.
 Están permitidas las siguientes combinaciones para describir una clase
@@ -2726,13 +2726,13 @@ io.open (nombre_de_fichero [, modo])                                 *io.open*
 
     El `string` que indica `modo` puede ser uno de los siguientes:
 
-    - *"r":* modo lectura (por defecto);
-    - *"w":* modo escritura;
-    - *"a":* modo adición;
-    - *"r+":* modo actualización, todos los datos preexistentes se
+    - `r`: modo lectura (por defecto);
+    - `w`: modo escritura;
+    - `a`: modo adición;
+    - `r+`: modo actualización, todos los datos preexistentes se
       mantienen;
-    - *"w+":* modo actualización, todos los datos preexistentes se borran;
-    - *"a+":* modo adición con actualización, todos los datos preexistentes
+    - `w+`: modo actualización, todos los datos preexistentes se borran;
+    - `a+`: modo adición con actualización, todos los datos preexistentes
       se mantienen, y la escritura se permite sólo al final del fichero.
 
     El `string` que indica el `modo` puede contener también '`b`' al final,
@@ -2799,11 +2799,11 @@ file:read (···)                                                    *file:read
 
     Los formatos disponibles son
 
-    - *"*n":* lee un número; éste es el único formato que devuelve un número
+    - `*n`: lee un número; éste es el único formato que devuelve un número
       en lugar de un `string`.
-    - *"*a":* lee el resto del fichero completo, empezando en la posición
+    - `*a`: lee el resto del fichero completo, empezando en la posición
       actual. Al final del fichero devuelve un `string` vacío.
-    - *"*l":* lee la próxima línea (saltándose el final de línea),
+    - `*l`: lee la próxima línea (saltándose el final de línea),
       retornando `nil` al final del fichero. Éste es el formato por defecto.
     - */un número/:* lee un `string` con como máximo este número de
       caracteres, devolviendo `nil` si se llega al final del fichero. Si el
@@ -2817,9 +2817,9 @@ file:seek ([de_dónde] [, desplazamiento])                          *file:seek*
     base especificada por el `string` `dónde`, como se especifica a
     continuación:
 
-    - *"set":* sitúa la posición base en 0 (comienzo del fichero);
-    - *"cur":* sitúa la posición base en la actual;
-    - *"end":* sitúa la posición base al final del fichero.
+    - `set`: sitúa la posición base en 0 (comienzo del fichero);
+    - `cur`: sitúa la posición base en la actual;
+    - `end`: sitúa la posición base al final del fichero.
 
     En caso de éxito la función `seek` retorna la posición final (del
     puntero de lectura/escritura) en el fichero medida en bytes desde el
@@ -2838,12 +2838,12 @@ file:setvbuf (modo [, tamaño])                                  *file:setvbuf*
     Establece un modo `buffer` para un fichero de salida. El argumento
     `modo` puede ser uno de estos tres:
 
-    - *"no":* sin `buffer`; el resultado de cualquier operación de salida se
+    - `no`: sin `buffer`; el resultado de cualquier operación de salida se
       produce inmediatamente.
-    - *"full":* con `buffer` completo; la operación de salida se realiza
+    - `full`: con `buffer` completo; la operación de salida se realiza
       sólo cuando el `buffer` está lleno o cuando se invoca explícitamente
       la función |flush| en el descriptor del fichero.
-    - *"line":* con `buffer` de línea; la salida se demora hasta que se
+    - `line`: con `buffer` de línea; la salida se demora hasta que se
       produce una nueva línea en la salida o existe una entrada de algún
       fichero especial (como una terminal).
 

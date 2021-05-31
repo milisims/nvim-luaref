@@ -102,7 +102,7 @@ Kombinationen bedeuten.
 Die Sprachkonstrukte werden durch Verwendung der üblichen EBNF erklärt,
 in welcher {`a`} 0 oder mehrere `a` und [`a`] ein optionales `a`
 bedeutet. Nicht-Terminale werden als Nicht-Terminale dargestellt,
-Schlüsselworte als `Schlüsselwort` und andere Terminale wie `*=*´. Die
+Schlüsselworte als `Schlüsselwort` und andere Terminale wie ``=`´. Die
 komplette Syntax von Lua findet sich unter § 8 am Ende dieser
 Dokumentation.
 

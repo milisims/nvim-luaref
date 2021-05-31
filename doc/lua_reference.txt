@@ -99,7 +99,7 @@ can be combined, and what their combinations mean.
 The language constructs will be explained using the usual extended BNF
 notation, in which {`a`} means 0 or more `a`'s, and [`a`] means an
 optional `a`. Non-terminals are shown like non-terminal, keywords are
-shown like `kword`, and other terminal symbols are shown like `*=*´. The
+shown like `kword`, and other terminal symbols are shown like ``=`´. The
 complete syntax of Lua can be found in |lua_syntax| at the end of this
 manual.
 
@@ -1088,7 +1088,7 @@ That is, the access to a metamethod does not invoke other metamethods,
 and the access to objects with no metatables does not fail (it simply
 results in `nil`).
 
-- *"add":* the `+` operation.
+- `add`: the `+` operation.
 
   The function `getbinhandler` below defines how Lua chooses a handler
   for a binary operation. First, Lua tries the first operand. If its
@@ -1116,20 +1116,20 @@ results in `nil`).
            end
          end
 <
-- *"sub":* the `-` operation. Behavior similar to the "add" operation.
+- `sub`: the `-` operation. Behavior similar to the "add" operation.
 
-- *"mul":* the `*` operation. Behavior similar to the "add" operation.
+- `mul`: the `*` operation. Behavior similar to the "add" operation.
 
-- *"div":* the `/` operation. Behavior similar to the "add" operation.
+- `div`: the `/` operation. Behavior similar to the "add" operation.
 
-- *"mod":* the `%` operation. Behavior similar to the "add" operation,
+- `mod`: the `%` operation. Behavior similar to the "add" operation,
   with the operation `o1 - floor(o1/o2)*o2` as the primitive operation.
 
-- *"pow":* the `^` (exponentiation) operation. Behavior similar to the
+- `pow`: the `^` (exponentiation) operation. Behavior similar to the
   "add" operation, with the function `pow` (from the C math library) as
   the primitive operation.
 
-- *"unm":* the unary `-` operation.
+- `unm`: the unary `-` operation.
 >
          function unm_event (op)
            local o = tonumber(op)
@@ -1147,7 +1147,7 @@ results in `nil`).
            end
          end
 <
-- *"concat":* the `..` (concatenation) operation.
+- `concat`: the `..` (concatenation) operation.
 >
          function concat_event (op1, op2)
            if (type(op1) == "string" or type(op1) == "number") and
@@ -1163,7 +1163,7 @@ results in `nil`).
            end
          end
 <
-- *"len":* the `#` operation.
+- `len`: the `#` operation.
 >
          function len_event (op)
            if type(op) == "string" then
@@ -1183,7 +1183,7 @@ results in `nil`).
 <
   See |lua_len| for a description of the length of a table.
 
-- *"eq":* the ==== operation. The function `getcomphandler` defines how
+- `eq`: the ==== operation. The function `getcomphandler` defines how
   Lua chooses a metamethod for comparison operators. A metamethod only
   is selected when both objects being compared have the same type and
   the same metamethod for the selected operation.
@@ -1215,7 +1215,7 @@ results in `nil`).
 <
   `a ~` b= is equivalent to =not (a == b)=.
 
-- *"lt":* the `<` operation.
+- `lt`: the `<` operation.
 >
          function lt_event (op1, op2)
            if type(op1) == "number" and type(op2) == "number" then
@@ -1234,7 +1234,7 @@ results in `nil`).
 <
   `a > b` is equivalent to `b < a`.
 
-- *"le":* the `<`= operation.
+- `le`: the `<`= operation.
 >
          function le_event (op1, op2)
            if type(op1) == "number" and type(op2) == "number" then
@@ -1260,7 +1260,7 @@ results in `nil`).
   "le" metamethod, Lua tries the "lt", assuming that `a <` b= is
   equivalent to `not (b < a)`.
 
-- *"index":* The indexing access `table[key]`.
+- `index`: The indexing access `table[key]`.
 >
          function gettable_event (table, key)
            local h
@@ -1281,7 +1281,7 @@ results in `nil`).
            end
          end
 <
-- *"newindex":* The indexing assignment =table[key] = value=.
+- `newindex`: The indexing assignment =table[key] = value=.
 >
          function settable_event (table, key, value)
            local h
@@ -1302,7 +1302,7 @@ results in `nil`).
            end
          end
 <
-- *"call":* called when Lua calls a value.
+- `call`: called when Lua calls a value.
 >
          function function_event (func, ...)
            if type(func) == "function" then
@@ -1557,20 +1557,20 @@ collectgarbage ([opt [, arg]])                                *collectgarbage*
     This function is a generic interface to the garbage collector. It
     performs different functions according to its first argument, `opt`:
 
-    - *"collect":* performs a full garbage-collection cycle. This is the
+    - `collect`: performs a full garbage-collection cycle. This is the
       default option.
-    - *"stop":* stops the garbage collector.
-    - *"restart":* restarts the garbage collector.
-    - *"count":* returns the total memory in use by Lua (in Kbytes).
-    - *"step":* performs a garbage-collection step. The step "size" is
+    - `stop`: stops the garbage collector.
+    - `restart`: restarts the garbage collector.
+    - `count`: returns the total memory in use by Lua (in Kbytes).
+    - `step`: performs a garbage-collection step. The step "size" is
       controlled by `arg` (larger values mean more steps) in a non-specified
       way. If you want to control the step size you must experimentally tune
       the value of `arg`. Returns `true` if the step finished a collection
       cycle.
-    - *"setpause":* sets `arg` as the new value for the `pause` of the
+    - `setpause`: sets `arg` as the new value for the `pause` of the
       collector (see |lua_gc|). Returns the previous value for
       `pause`.
-    - *"setstepmul":* sets `arg` as the new value for the `step multiplier`
+    - `setstepmul`: sets `arg` as the new value for the `step multiplier`
       of the collector (see |lua_gc|). Returns the previous value
       for `step`.
 
@@ -2185,7 +2185,7 @@ string.upper (s)                                                *string.upper*
 ==============================================================================
 PATTERNS                                                        *lua_patterns*
 
-**** Character Class:
+Character Class~
 
 A `character class` is used to represent a set of characters. The
 following combinations are allowed in describing a character class:
@@ -2243,7 +2243,7 @@ The definitions of letter, space, and other character groups depend on
 the current locale. In particular, the class `[a-z]` may not be
 equivalent to `%l`.
 
-**** Pattern Item:
+Pattern Item~
 
 A `pattern item` can be
 
@@ -2269,7 +2269,7 @@ A `pattern item` can be
   `y` is the first `y` where the count reaches 0. For instance, the item
   `%b()` matches expressions with balanced parentheses.
 
-**** Pattern:
+Pattern~
 
 A `pattern` is a sequence of pattern items. A '`^`' at the beginning of
 a pattern anchors the match at the beginning of the subject string. A
@@ -2277,7 +2277,7 @@ a pattern anchors the match at the beginning of the subject string. A
 subject string. At other positions, '`^`' and '`$`' have no special
 meaning and represent themselves.
 
-**** Captures:
+Captures~
 
 A pattern can contain sub-patterns enclosed in parentheses; they
 describe `captures`. When a match succeeds, the substrings of the
@@ -2514,12 +2514,12 @@ io.open (filename [, mode])                                          *io.open*
 
     The `mode` string can be any of the following:
 
-    - *"r":* read mode (the default);
-    - *"w":* write mode;
-    - *"a":* append mode;
-    - *"r+":* update mode, all previous data is preserved;
-    - *"w+":* update mode, all previous data is erased;
-    - *"a+":* append update mode, previous data is preserved, writing is
+    - `r`: read mode (the default);
+    - `w`: write mode;
+    - `a`: append mode;
+    - `r+`: update mode, all previous data is preserved;
+    - `w+`: update mode, all previous data is erased;
+    - `a+`: append update mode, previous data is preserved, writing is
       only allowed at the end of file.
 
     The `mode` string can also have a '`b`' at the end, which is needed in
@@ -2579,11 +2579,11 @@ file:read (···)                                                    *file:read
 
     The available formats are
 
-    - *"*n":* reads a number; this is the only format that returns a number
+    - `*n`: reads a number; this is the only format that returns a number
       instead of a string.
-    - *"*a":* reads the whole file, starting at the current position. On end
+    - `*a`: reads the whole file, starting at the current position. On end
       of file, it returns the empty string.
-    - *"*l":* reads the next line (skipping the end of line), returning
+    - `*l`: reads the next line (skipping the end of line), returning
       `nil` on end of file. This is the default format.
     - `number`: reads a string with up to this number of characters,
       returning `nil` on end of file. If number is zero, it reads nothing
@@ -2594,9 +2594,9 @@ file:seek ([whence] [, offset])                                    *file:seek*
     file, to the position given by `offset` plus a base specified by the
     string `whence`, as follows:
 
-    - *"set":* base is position 0 (beginning of the file);
-    - *"cur":* base is current position;
-    - *"end":* base is end of file;
+    - `set`: base is position 0 (beginning of the file);
+    - `cur`: base is current position;
+    - `end`: base is end of file;
 
     In case of success, function `seek` returns the final file position,
     measured in bytes from the beginning of the file. If this function
@@ -2613,12 +2613,12 @@ file:setvbuf (mode [, size])                                    *file:setvbuf*
     Sets the buffering mode for an output file. There are three available
     modes:
 
-    - *"no":* no buffering; the result of any output operation appears
+    - `no`: no buffering; the result of any output operation appears
       immediately.
-    - *"full":* full buffering; output operation is performed only when the
+    - `full`: full buffering; output operation is performed only when the
       buffer is full (or when you explicitly `flush` the file (see
       |io.flush|)).
-    - *"line":* line buffering; output is buffered until a newline is output
+    - `line`: line buffering; output is buffered until a newline is output
       or there is any input from some special files (such as a terminal
       device).
 

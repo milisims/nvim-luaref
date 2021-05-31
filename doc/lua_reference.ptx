@@ -107,7 +107,7 @@ As construções da linguagem serão explicadas usando a notação BNF
 estendida usual, na qual {`a`} significa 0 ou mais `a`'s e
 [`a`] significa um `a` opcional. Não-terminais são mostrados como
 non-terminal, palavras-chave são mostradas como `kword` e outros
-símbolos terminais são mostrados como `*=*´. A sintaxe completa de Lua
+símbolos terminais são mostrados como ``=`´. A sintaxe completa de Lua
 pode ser encontrada em |lua_syntax| no fim deste manual.
 
 ==============================================================================
@@ -1160,7 +1160,7 @@ Isto é, o acesso a um metamétodo não invoca outros metamétodos e o
 acesso a objetos que não possuem metatabelas não falha (ele simplesmente
 resulta em `nil`).
 
-- *"add":* a operação `+`.
+- `add`: a operação `+`.
 
   A função `getbinhandler` abaixo define como Lua escolhe um tratador
   para uma operação binária. Primeiro, Lua tenta o primeiro operando. Se
@@ -1188,20 +1188,20 @@ resulta em `nil`).
            end
          end
 <
-- *"sub":* a operação `-`. Comportamento similar ao da operação "add".
+- `sub`: a operação `-`. Comportamento similar ao da operação "add".
 
-- *"mul":* a operação `*`. Comportamento similar ao da operação "add".
+- `mul`: a operação `*`. Comportamento similar ao da operação "add".
 
-- *"div":* a operação `/`. Comportamento similar ao da operação "add".
+- `div`: a operação `/`. Comportamento similar ao da operação "add".
 
-- *"mod":* a operação `%`. Comportamento similar ao da operação "add",
+- `mod`: a operação `%`. Comportamento similar ao da operação "add",
   tendo a operação `o1 - floor(o1/o2)*o2` como operação primitiva.
 
-- *"pow":* a operação `^` (exponenciação). Comportamento similar ao da
+- `pow`: a operação `^` (exponenciação). Comportamento similar ao da
   operação "add", com a função `pow` (da biblioteca matemática de C)
   como operação primitiva.
 
-- *"unm":* a operação `-` unária.
+- `unm`: a operação `-` unária.
 >
          function unm_event (op)
            local o = tonumber(op)
@@ -1219,7 +1219,7 @@ resulta em `nil`).
            end
          end
 <
-- *"concat":* a operação `..` (concatenação).
+- `concat`: a operação `..` (concatenação).
 >
          function concat_event (op1, op2)
            if (type(op1) == "string" or type(op1) == "number") and
@@ -1235,7 +1235,7 @@ resulta em `nil`).
            end
          end
 <
-- *"len":* a operação `#`.
+- `len`: a operação `#`.
 >
          function len_event (op)
            if type(op) == "string" then
@@ -1256,7 +1256,7 @@ resulta em `nil`).
   Veja |lua_len| para uma descrição do comprimento de um
   tabela.
 
-- *"eq":* a operação ====. A função `getcomphandler` define como Lua
+- `eq`: a operação ====. A função `getcomphandler` define como Lua
   escolhe um metamétodo para operadores de comparação. Um metamétodo
   somente é selecionado quando os dois objetos que estão sendo
   comparados possuem o mesmo tipo e o mesmo metamétodo para a operação
@@ -1289,7 +1289,7 @@ resulta em `nil`).
 <
   `a ~` b= é equivalente a =not (a == b)=.
 
-- *"lt":* a operação `<`.
+- `lt`: a operação `<`.
 >
          function lt_event (op1, op2)
            if type(op1) == "number" and type(op2) == "number" then
@@ -1308,7 +1308,7 @@ resulta em `nil`).
 <
   `a > b` é equivalente a `b < a`.
 
-- *"le":* a operação `<`=.
+- `le`: a operação `<`=.
 >
          function le_event (op1, op2)
            if type(op1) == "number" and type(op2) == "number" then
@@ -1334,7 +1334,7 @@ resulta em `nil`).
   metamétodo "le", Lua tenta o "lt", assumindo que `a <` b= é
   equivalente a `not (b < a)`.
 
-- *"index":* A indexação de leitura `table[key]`.
+- `index`: A indexação de leitura `table[key]`.
 >
          function gettable_event (table, key)
            local h
@@ -1355,7 +1355,7 @@ resulta em `nil`).
            end
          end
 <
-- *"newindex":* A indexação de atribuição =table[key] = value=.
+- `newindex`: A indexação de atribuição =table[key] = value=.
 >
          function settable_event (table, key, value)
            local h
@@ -1376,7 +1376,7 @@ resulta em `nil`).
            end
          end
 <
-- *"call":* chamada quando Lua chama um valor.
+- `call`: chamada quando Lua chama um valor.
 >
          function function_event (func, ...)
            if type(func) == "function" then
@@ -1647,20 +1647,20 @@ collectgarbage (opt [, arg])                                  *collectgarbage*
     Esta função é uma interface genérica para o coletor de lixo. Ela realiza
     diferentes funções de acordo com o seu primeiro argumento, `opt`:
 
-    - *"stop":* pára o coletor de lixo.
-    - *"restart":* reinicia o coletor de lixo.
-    - *"collect":* realiza um ciclo de coleta de lixo completo.
-    - *"count":* retorna a memória total que está sendo usada por Lua (em
+    - `stop`: pára o coletor de lixo.
+    - `restart`: reinicia o coletor de lixo.
+    - `collect`: realiza um ciclo de coleta de lixo completo.
+    - `count`: retorna a memória total que está sendo usada por Lua (em
       Kbytes).
-    - *"step":* realiza um passo de coleta de lixo. O "tamanho" do passo é
+    - `step`: realiza um passo de coleta de lixo. O "tamanho" do passo é
       controlado por `arg` (valores maiores significam mais passos) de
       maneira não especificada. Se você quer controlar o tamanho do passo
       você deve ajustar de maneira experimental o valor de `arg`. Retorna
       `true` se o passo terminou um ciclo de coleta de lixo.
-    - *"setpause":* estabelece `arg` como o novo valor para a `pausa` do
+    - `setpause`: estabelece `arg` como o novo valor para a `pausa` do
       coletor (ver |lua_gc|). Retorna o valor anterior para a
       `pausa`.
-    - *"setstepmul":* estabelece `arg` como o novo valor para o
+    - `setstepmul`: estabelece `arg` como o novo valor para o
       `multiplicador de passo` do coletor (ver |lua_gc|). Retorna o
       valor anterior para a `pausa`.
 
@@ -2301,7 +2301,7 @@ string.upper (s)                                                *string.upper*
 ==============================================================================
 PADRÕES                                                         *lua_patterns*
 
-**** Classes de Caracteres:
+Classes de Caracteres~
 
 Uma `classe de caracteres` é usada para representar um conjunto de
 caracteres. As seguintes combinações são permitidas em descrições de uma
@@ -2363,7 +2363,7 @@ As definições de letra, espaço e outros grupos de caracteres dependem do
 idioma (/locale/) corrente. Em particular, a classe `[a-z]` pode não ser
 equivalente a `%l`.
 
-**** Item de Padrão:
+Item de Padrão~
 
 Um `item de padrão` pode ser
 
@@ -2389,7 +2389,7 @@ Um `item de padrão` pode ser
   `y`, o `y` final é o primeiro `y` onde o contador alcança 0. Por
   exemplo, o item `%b()` casa expressões com parênteses balanceados.
 
-**** Padrão:
+Padrão~
 
 Um `padrão` é uma seqüência de itens de padrão. Um '`^`' no início de um
 padrão ancora o casamento no início da cadeia sendo usada. Um '`$`' no
@@ -2397,7 +2397,7 @@ fim de um padrão ancora o casamento no fim da cadeia sendo usada. Em
 outras posições, '`^`' e '`$`' não possuem significado especial e
 representam a si mesmos.
 
-**** Capturas:
+Capturas~
 
 Um padrão pode conter subpadrões delimitados por parênteses; eles
 descrevem `capturas`. Quando um casamento ocorre, as subcadeias da
@@ -2644,13 +2644,13 @@ io.open (filename [, mode])                                          *io.open*
 
     A cadeia de caracteres `mode` pode ser qualquer uma das seguintes:
 
-    - *"r":* modo de leitura (o padrão);
-    - *"w":* modo de escrita;
-    - *"a":* modo de adição;
-    - *"r+":* modo de atualização, todos os dados anteriores são
+    - `r`: modo de leitura (o padrão);
+    - `w`: modo de escrita;
+    - `a`: modo de adição;
+    - `r+`: modo de atualização, todos os dados anteriores são
       preservados;
-    - *"w+":* modo de atualização, todos os dados anteriores sao apagados;
-    - *"a+":* modo de atualização de adição, dados anteriores são
+    - `w+`: modo de atualização, todos os dados anteriores sao apagados;
+    - `a+`: modo de atualização de adição, dados anteriores são
       preservados, a escrita somente é permitida no fim do arquivo.
 
     A cadeia `mode` também pode ter um '`b`' no fim, que é necessário em
@@ -2714,11 +2714,11 @@ file:read (···)                                                    *file:read
 
     Os formatos disponíveis são
 
-    - *"*n":* lê um número; este é o único formato que retorna um número ao
+    - `*n`: lê um número; este é o único formato que retorna um número ao
       invés de uma cadeia.
-    - *"*a":* lê o arquivo inteiro, iniciando na posição corrente. Quando
+    - `*a`: lê o arquivo inteiro, iniciando na posição corrente. Quando
       está no final do arquivo, retorna a cadeia vazia.
-    - *"*l":* lê a próxima linha (pulando o fim de linha), retornando `nil`
+    - `*l`: lê a próxima linha (pulando o fim de linha), retornando `nil`
       ao final do arquivo. Este é o formato padrão.
     - `number`: lê uma cadeia até este número de caracteres, retornando
       `nil` ao final do arquivo. Se o número fornecido é zero, a função não
@@ -2730,9 +2730,9 @@ file:seek ([whence] [, offset])                                    *file:seek*
     arquivo, até a posição dada por `offset` mais uma base especificada pela
     cadeia `whence`, como a seguir:
 
-    - *"set":* base é a posição 0 (o início do arquivo);
-    - *"cur":* base é a posição corrente;
-    - *"end":* base é o fim do arquivo;
+    - `set`: base é a posição 0 (o início do arquivo);
+    - `cur`: base é a posição corrente;
+    - `end`: base é o fim do arquivo;
 
     Em caso de sucesso, a função `seek` retorna a posição final do arquivo,
     medida em bytes a partir do início do arquivo. Se esta função falha, ela
@@ -2748,12 +2748,12 @@ file:setvbuf (mode [, size])                                    *file:setvbuf*
     Define o modo de bufferização para um arquivo de saída. Há três modos
     disponíveis:
 
-    - *"no":* nenhuma bufferização; o resultado de qualquer operação de
+    - `no`: nenhuma bufferização; o resultado de qualquer operação de
       saída aparece imediatamente.
-    - *"full":* bufferização completa; a operação de saída é realizada
+    - `full`: bufferização completa; a operação de saída é realizada
       somente quando o buffer está cheio (ou quando você explicitamente
       `descarrega` o arquivo (ver |io.flush|)).
-    - *"line":* bufferização de linha; a saída é bufferizada até que uma
+    - `line`: bufferização de linha; a saída é bufferizada até que uma
       nova linha é produzida ou há qualquer entrada a partir de alguns
       arquivos especiais (como um dispositivo de terminal).
 
