@@ -52,3 +52,18 @@ TABLE OF CONTENTS                                          *lua_reference_toc*
 
 8      - The Complete Syntax of Lua        |lua_syntax|
 
+==============================================================================
+TRANSLATIONS                                      *lua_reference_translations*
+
+In order to use a translated doc, move the appropriate language from the
+`translations/` directory to the `doc/` directory. Assuming you are in this
+help file in a vim buffer: >
+    !mv %:h:h/translations/lua_reference.XXx tags-XX %:h
+<
+Where `XX` the two letter language code for the language you want to use.
+Currently available are: `es`, `de`, and `pt`, (spanish, german, and portuguese
+respectively).
+
+If you do not want the english version, replace the english files with the
+version you prefer.
+

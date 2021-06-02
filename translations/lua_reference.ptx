@@ -1,3 +1,4 @@
+
 por Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes
 
 (traduzido por Sérgio Queiroz de Medeiros com apoio da Fábrica Digital e
@@ -63,6 +64,7 @@ CONTEÚDO                                                   *lua_reference_toc*
 ==============================================================================
 INTRODUÇÃO                                                  *lua_introduction*
 
+
 Lua é uma linguagem de programação de extensão projetada para dar
 suporte à programação procedimental em geral e que oferece facilidades
 para a descrição de dados. A linguagem também oferece um bom suporte
@@ -98,6 +100,7 @@ Roberto Ierusalimschy, `Programming in Lua (Segunda Edição)`.
 ==============================================================================
 A LINGUAGEM                                                     *lua_language*
 
+
 Esta seção descreve os aspectos léxicos, sintáticos e semânticos de Lua.
 Em outras palavras, esta seção descreve quais `itens léxicos` são
 válidos, como eles são combinados, e qual o significado da sua
@@ -113,6 +116,7 @@ pode ser encontrada em |lua_syntax| no fim deste manual.
 ==============================================================================
 CONVENÇÕES LÉXICAS                                           *lua_conventions*
 
+
 Em Lua, `Nomes` (também chamados de `identificadores`) podem ser
 qualquer cadeia de letras, dígitos, e sublinhados que não começam com um
 dígito. Esta definição está de acordo com a definição de nomes na
@@ -124,10 +128,10 @@ usados para nomear variáveis e campos de tabelas.
 As seguintes `palavras-chave` são reservadas e não podem ser utilizadas
 como nomes:
 >
-       and       break     do        else      elseif
-       end       false     for       function  if
-       in        local     nil       not       or
-       repeat    return    then      true      until     while
+         and       break     do        else      elseif
+         end       false     for       function  if
+         in        local     nil       not       or
+         repeat    return    then      true      until     while
 <
 Lua é uma linguagem que diferencia minúsculas de maiúsculas: `and` é uma
 palavra reservada, mas `And` e `AND` são dois nomes válidos diferentes.
@@ -137,10 +141,10 @@ variáveis globais internas usadas por Lua.
 
 As seguintes cadeias denotam outros itens léxicos:
 >
-       +     -     *     /     %     ^     #
-       ==    ~=    <=    >=    <     >     =
-       (     )     {     }     [     ]
-       ;     :     ,     .     ..    ...
+         +     -     *     /     %     ^     #
+         ==    ~=    <=    >=    <     >     =
+         (     )     {     }     [     ]
+         ;     :     ,     .     ..    ...
 <
 `Cadeias de caracteres literais` podem ser delimitadas através do uso de
 aspas simples ou aspas duplas, e podem conter as seguintes seqüências de
@@ -182,21 +186,21 @@ cadeia de caracteres. Como exemplo, em um sistema usando ASCII (no qual
 é codificado como 49), as cinco cadeias literais abaixo denotam a mesma
 cadeia:
 >
-       a = 'alo\n123"'
-       a = "alo\n123\""
-       a = '\97lo\10\04923"'
-       a = [[alo
-       123"]]
-       a = [==[
-       alo
-       123"]==]
+         a = 'alo\n123"'
+         a = "alo\n123\""
+         a = '\97lo\10\04923"'
+         a = [[alo
+         123"]]
+         a = [==[
+         alo
+         123"]==]
 <
 Uma `constante numérica` pode ser escrita com uma parte decimal opcional
 e com um expoente decimal opcional. Lua também aceita constantes
 hexadecimais inteiras, através do uso do prefixo `0x`. Exemplos de
 constantes numéricas válidas são:
 >
-       3   3.0   3.1416   314.16e-2   0.31416E1   0xff   0x56
+         3   3.0   3.1416   314.16e-2   0.31416E1   0xff   0x56
 <
 Um `comentário` começa com um hífen duplo (`--`) em qualquer lugar,
 desde que fora de uma cadeia de caracteres. Se o texto imediatamente
@@ -208,6 +212,7 @@ usados para desabilitar código temporariamente.
 
 ==============================================================================
 VALORES E TIPOS                                                    *lua_types*
+
 
 Lua é uma `linguagem dinamicamente tipada`. Isto significa que variáveis
 não possuem tipos; somente valores possuem tipos. Não existe definição
@@ -279,6 +284,7 @@ descrevendo o tipo de um dado valor.
 ==============================================================================
 COERÇÃO                                                    *lua_type_coercion*
 
+
 Lua provê conversão automática entre valores do tipo string e do tipo
 number em tempo de execução. Qualquer operação aritmética aplicada a uma
 cadeia de caracteres tenta converter esta cadeia para um número,
@@ -292,6 +298,7 @@ completo sobre como números são convertidos para cadeias, use a função
 ==============================================================================
 VARIÁVEIS                                                      *lua_variables*
 
+
 Variáveis são lugares usados para armazenar valores.
 
 Existem três tipos de variáveis em Lua: variáveis globais, variáveis
@@ -301,7 +308,7 @@ Um nome simples pode denotar uma variável global ou uma variávei local
 (ou um parâmetro formal de uma função, que é um caso particular de
 variável local):
 >
-      var ::= Nome
+        var ::= Nome
 <
 Nome denota identificadores, como definido em |lua_conventions|.
 
@@ -316,7 +323,7 @@ Antes da variável receber a sua primeira atribuição, o seu valor é
 
 Colchetes são usados para indexar uma tabela:
 >
-      var ::= expprefixo `[´ exp `]´
+        var ::= expprefixo `[´ exp `]´
 <
 A semântica de acessos a variáveis globais e a campos de tabelas pode
 ser mudada através do uso de metatabelas. Um acesso a uma variável
@@ -327,7 +334,7 @@ somente para fins didáticos.)
 
 A sintaxe `var.Nome` é apenas um açúcar sintático para `var["Nome"]`:
 >
-      var ::= expprefixo `.´ Nome
+        var ::= expprefixo `.´ Nome
 <
 Todas as variáveis globais são mantidas como campos em tabelas Lua
 comuns, chamadas de `tabelas de ambiente` ou simplesmente de `ambientes`
@@ -344,7 +351,7 @@ ambiente de funções C é através da a biblioteca de depuração; (ver
 Um acesso a uma variável global `x` é equivalente a `_env.x`, que por
 sua vez é equivalente a
 >
-       gettable_event(_env, "x")
+         gettable_event(_env, "x")
 <
 onde `_env` é o ambiente da função corrente. (Veja |lua_metatables| para
 uma descrição completa da função `gettable_event`. Esta função não é
@@ -355,6 +362,7 @@ didáticos.)
 ==============================================================================
 COMANDOS                                                      *lua_statements*
 
+
 Lua oferece um conjunto quase convencional de comandos, similar ao
 conjunto de comandos disponíveis em Pascal ou C. Este conjunto inclui
 atribuições, estruturas de controle, chamadas de funções e declarações
@@ -363,12 +371,13 @@ de variáveis.
 ==============================================================================
 TRECHOS                                                           *lua_chunks*
 
+
 A unidade de execução de Lua é denominada de `trecho`. Um trecho é
 simplesmente uma seqüência de comandos, os quais são executados
 sequencialmente. Cada comando pode opcionalmente ser seguido por um
 ponto-e-vírgula:
 >
-      trecho ::= {comando [`;´]}
+        trecho ::= {comando [`;´]}
 <
 Não existem comandos vazios e portanto a construção '`;;`' não é válida.
 
@@ -391,15 +400,16 @@ com ele.
 ==============================================================================
 BLOCOS                                                            *lua_blocks*
 
+
 Um bloco é uma lista de comandos; sintaticamente, um bloco é a mesma
 coisa que um trecho:
 >
-      bloco ::= trecho
+        bloco ::= trecho
 <
 Um bloco pode ser explicitamente delimitado para produzir um único
 comando:
 >
-      comando ::= do bloco end
+        comando ::= do bloco end
 <
 Blocos explícitos são úteis para controlar o escopo de declarações de
 variáveis. Blocos explícitos são também usados às vezes para adicionar
@@ -409,14 +419,15 @@ um comando `return` ou `break` no meio de outro bloco (ver
 ==============================================================================
 ATRIBUIÇÃO                                                    *lua_assignment*
 
+
 Lua permite atribuições múltiplas. Em virtude disto, a sintaxe para
 atribuição define uma lista de variáveis no lado esquerdo e uma lista de
 expressões no lado direito. Os elementos em ambos os lados são separados
 por vírgulas:
 >
-      comando ::= listavar `=´ listaexp
-      listavar ::= var {`,´ var}
-      listaexp ::= exp {`,´ exp}
+        comando ::= listavar `=´ listaexp
+        listavar ::= var {`,´ var}
+        listaexp ::= exp {`,´ exp}
 <
 Expressões são discutidas em |lua_expressions|.
 
@@ -432,17 +443,17 @@ lista de valores, antes do ajuste ser realizado (exceto quando a chamada
 Um comando de atribuição primeiro avalia todas as suas expressões e
 somente depois é que a atribuição é realizada. Desta forma, o código
 >
-       i = 3
-       i, a[i] = i+1, 20
+         i = 3
+         i, a[i] = i+1, 20
 <
 atribui 20 a `a[3]`, sem afetar `a[4]` porque o `i` em `a[i]` é avaliado
 (para 3) antes de receber o valor 4. De modo similar, a linha
 >
-       x, y = y, x
+         x, y = y, x
 <
 troca os valores de `x` e `y` e
 >
-       x, y, z = y, z, x
+         x, y, z = y, z, x
 <
 permuta de maneira cíclica os valores de `x`, `y` e `z`.
 
@@ -456,7 +467,7 @@ ser chamada em Lua. Ela foi usada aqui somente para fins didáticos.)
 Uma atribuição a uma variável global =x = val= é equivalente à
 atribuição =_env.x = val=, que por sua vez é equivalente a
 >
-       settable_event(_env, "x", val)
+         settable_event(_env, "x", val)
 <
 onde `_env` é o ambiente da função sendo executada. (A variável `_env`
 não é definida em Lua. Ela foi usada aqui somente para fins didáticos.)
@@ -464,12 +475,13 @@ não é definida em Lua. Ela foi usada aqui somente para fins didáticos.)
 ==============================================================================
 ESTRUTURAS DE CONTROLE                                           *lua_control*
 
+
 As estruturas de controle `if`, `while` e `repeat` possuem o significado
 usual e a sintaxe familiar:
 >
-      comando ::= while exp do bloco end
-      comando ::= repeat bloco until exp
-      comando ::= if exp then bloco {elseif exp then bloco} [else bloco] end
+        comando ::= while exp do bloco end
+        comando ::= repeat bloco until exp
+        comando ::= if exp then bloco {elseif exp then bloco} [else bloco] end
 <
 Lua também possui um comando `for`, o qual possui duas variações (ver
 |lua_for|).
@@ -490,12 +502,12 @@ trecho (que nada mais é do que uma função). Funções e trechos podem
 retornar mais de um valor, de modo que a sintaxe para o comando `return`
 é
 >
-      comando ::= return [listaexp]
+        comando ::= return [listaexp]
 <
 O comando `break` é usado para terminar a execução de um laço `while`,
 `repeat` ou `for`, pulando para o próximo comando depois do laço:
 >
-      comando ::= break
+        comando ::= break
 <
 Um `break` termina a execução do laço mais interno.
 
@@ -509,32 +521,33 @@ ser usado, como nas expressões idiomáticas `do return end` e
 ==============================================================================
 COMANDO FOR                                                          *lua_for*
 
+
 O comando `for` possui duas variações: uma numérica e outra genérica.
 
 O laço `for` numérico repete um bloco de código enquanto uma variável de
 controle varia de acordo com uma progressão aritmética. Ele possui a
 seguinte sintaxe:
 >
-      comando ::= for nome `=´ exp `,´ exp [`,´ exp] do bloco end
+        comando ::= for nome `=´ exp `,´ exp [`,´ exp] do bloco end
 <
 O `bloco` é repetido para `nome` começando com o valor da primeira
 `exp`, até que ele passe o valor da segunda `exp` através de seguidos
 passos, sendo que a cada passo o valor da terceira `exp` é somado a
 `nome`. De forma mais precisa, um comando `for` como
 >
-       for v = e1, e2, e3 do bloco end
+         for v = e1, e2, e3 do bloco end
 <
 é equivalente ao código:
 >
-       do
-         local var, limite, passo = tonumber(e1), tonumber(e2), tonumber(e3)
-         if not (var and limite and passo) then error() end
-         while (passo > 0 and var <= limite) or (passo <= 0 and var >= limite) do
-           local v = var
-           bloco
-           var = var + passo
+         do
+           local var, limite, passo = tonumber(e1), tonumber(e2), tonumber(e3)
+           if not (var and limite and passo) then error() end
+           while (passo > 0 and var <= limite) or (passo <= 0 and var >= limite) do
+             local v = var
+             bloco
+             var = var + passo
+           end
          end
-       end
 <
 Note o seguinte:
 
@@ -556,24 +569,24 @@ O comando `for` genérico funciona utilizando funções, chamadas de
 produzir um novo valor, parando quando este novo valor é `nil`. O laço
 `for` genérico possui a seguinte sintaxe:
 >
-      comando ::= for listadenomes in listaexp do bloco end
-      listadenomes ::= Nome {`,´ Nome}
+        comando ::= for listadenomes in listaexp do bloco end
+        listadenomes ::= Nome {`,´ Nome}
 <
 Um comando `for` como
 >
-       for var_1, ···, var_n in explist do block end
+         for var_1, ···, var_n in explist do block end
 <
 é equivalente ao código:
 >
-       do
-         local f, s, var = explist
-         while true do
-           local var_1, ···, var_n = f(s, var)
-           var = var_1
-           if var == nil then break end
-           block
+         do
+           local f, s, var = explist
+           while true do
+             local var_1, ···, var_n = f(s, var)
+             var = var_1
+             if var == nil then break end
+             block
+           end
          end
-       end
 <
 Note o seguinte:
 
@@ -591,10 +604,11 @@ Note o seguinte:
 ==============================================================================
 CHAMADAS DE FUNÇÃO COMO COMANDOS                          *lua_func_statement*
 
+
 Para permitir possíveis efeitos colaterais, funções podem ser executadas
 como comandos:
 >
-      comando ::= chamadadefuncao
+        comando ::= chamadadefuncao
 <
 Neste caso, todos os valores retornados pela função são descartados.
 Chamadas de função são explicadas em |lua_function_calls|.
@@ -602,10 +616,11 @@ Chamadas de função são explicadas em |lua_function_calls|.
 ==============================================================================
 DECLARAÇÕES LOCAIS                                                 *lua_local*
 
+
 Variáveis locais podem ser declaradas em qualquer lugar dentro de um
 bloco. A declaração pode incluir uma atribuição inicial:
 >
-      comando ::= local listadenomes [`=´ listaexp]
+        comando ::= local listadenomes [`=´ listaexp]
 <
 Caso ocorra uma atribuição inicial, a sua semântica é a mesma de uma
 atribuição múltipla (ver |lua_assignment|). Caso contrário, todas as
@@ -622,18 +637,19 @@ As regras de visibilidade para variáveis locais são explicadas em
 ==============================================================================
 EXPRESSÕES                                                   *lua_expressions*
 
+
 As expressões básicas em Lua são as seguintes:
 >
-      exp ::= expprefixo
-      exp ::= nil | false | true
-      exp ::= Numero
-      exp ::= Cadeia
-      exp ::= funcao
-      exp ::= construtortabela
-      exp ::= `...´
-      exp ::= exp opbin exp
-      exp ::= opunaria exp
-      expprefixo ::= var | chamadadefuncao | `(´ exp `)´
+        exp ::= expprefixo
+        exp ::= nil | false | true
+        exp ::= Numero
+        exp ::= Cadeia
+        exp ::= funcao
+        exp ::= construtortabela
+        exp ::= `...´
+        exp ::= exp opbin exp
+        exp ::= opunaria exp
+        expprefixo ::= var | chamadadefuncao | `(´ exp `)´
 <
 Números e cadeias literais são explicados em |lua_conventions|; variáveis
 são explicadas em |lua_variables|; definições de funções são explicadas
@@ -663,22 +679,22 @@ elemento, descartando todos os valores exceto o primeiro.
 
 Aqui estão alguns exemplos:
 >
-       f()                -- ajusta para 0 resultados
-       g(f(), x)          -- f() é ajustado para 1 resultado
-       g(x, f())          -- g recebe x mais todos os resultados de f()
-       a,b,c = f(), x     -- f() é ajustado para 1 resultado (c recebe nil)
-       a,b = ...          -- a recebe o primeiro parâmetro da lista vararg,
-                          -- b recebe o segundo (tanto a como b podem receber nil caso não
-                          -- exista um parâmetro correspondente na lista)
+         f()                -- ajusta para 0 resultados
+         g(f(), x)          -- f() é ajustado para 1 resultado
+         g(x, f())          -- g recebe x mais todos os resultados de f()
+         a,b,c = f(), x     -- f() é ajustado para 1 resultado (c recebe nil)
+         a,b = ...          -- a recebe o primeiro parâmetro da lista vararg,
+                            -- b recebe o segundo (tanto a como b podem receber nil caso não
+                            -- exista um parâmetro correspondente na lista)
 
-       a,b,c = x, f()     -- f() é ajustado para 2 resultados
-       a,b,c = f()        -- f() é ajustado para 3 resultados
-       return f()         -- retorna todos os resultados de f()
-       return ...         -- retorna todos os resultados recebidos da lista vararg
-       return x,y,f()     -- retorna x, y e todos os resultados de f()
-       {f()}              -- cria uma lista com todos os resultados de f()
-       {...}              -- cria uma lista com todos os parâmetros da lista vararg
-       {f(), nil}         -- f() é ajustado para 1 resultado
+         a,b,c = x, f()     -- f() é ajustado para 2 resultados
+         a,b,c = f()        -- f() é ajustado para 3 resultados
+         return f()         -- retorna todos os resultados de f()
+         return ...         -- retorna todos os resultados recebidos da lista vararg
+         return x,y,f()     -- retorna x, y e todos os resultados de f()
+         {f()}              -- cria uma lista com todos os resultados de f()
+         {...}              -- cria uma lista com todos os parâmetros da lista vararg
+         {f(), nil}         -- f() é ajustado para 1 resultado
 <
 Qualquer expressão delimitada por parênteses sempre resulta em um único
 valor. Dessa forma, `(f(x,y,z))` é sempre um único valor, mesmo que `f`
@@ -687,6 +703,7 @@ retornado por `f`, ou `nil` se `f` não retorna nenhum valor.)
 
 ==============================================================================
 OPERADORES ARITMÉTICOS                                    *lua_arithmetic_ops*
+
 
 Lua provê os operadores aritméticos usuais: os operadores binários `+`
 (adição), `-` (subtração), `*` (multiplicação), `/` (divisão), `%`
@@ -697,7 +714,7 @@ o seu significado usual. A exponenciação funciona para qualquer
 expoente. Por exemplo, `x^(-0.5)` calcula o inverso da raiz quadrada de
 `x`. Módulo é definido como
 >
-       a % b == a - math.floor(a/b)*b
+         a % b == a - math.floor(a/b)*b
 <
 Ou seja, é o resto de uma divisão arredondada em direção a menos
 infinito.
@@ -705,9 +722,10 @@ infinito.
 ==============================================================================
 OPERADORES RELACIONAIS                                    *lua_relational_ops*
 
+
 Os operadores relacionais em Lua são
 >
-       ==    ~=    <     >     <=    >=
+         ==    ~=    <     >     <=    >=
 <
 Estes operadores sempre possuem como resultado `false` ou `true`.
 
@@ -741,6 +759,7 @@ passo que `a >` b= é traduzida para `b <` a=.
 ==============================================================================
 OPERADORES LÓGICOS                                           *lua_logical_ops*
 
+
 Os operadores lógicos em Lua são `and`, `or` e `not`. Assim como as
 estruturas de controle (ver |lua_control|), todos os operadores
 lógicos consideram `false` e `nil` como falso e qualquer coisa diferente
@@ -755,19 +774,20 @@ seu segundo argumento. Tanto `and` como `or` usam avaliação de
 curto-circuito; isto é, o segundo operando é avaliado somente quando é
 necessário. Aqui estão alguns exemplos:
 >
-       10 or 20            --> 10
-       10 or error()       --> 10
-       nil or "a"          --> "a"
-       nil and 10          --> nil
-       false and error()   --> false
-       false and nil       --> false
-       false or nil        --> nil
-       10 and 20           --> 20
+         10 or 20            --> 10
+         10 or error()       --> 10
+         nil or "a"          --> "a"
+         nil and 10          --> nil
+         false and error()   --> false
+         false and nil       --> false
+         false or nil        --> nil
+         10 and 20           --> 20
 <
 (Neste manual, `-->` indica o resultado da expressão precedente.)
 
 ==============================================================================
 CONCATENAÇÃO                                               *lua_concatenation*
+
 
 O operador de concatenação de cadeias de caracteres em Lua é denotado
 por dois pontos ('`..`'). Se ambos os operandos são cadeias de
@@ -777,6 +797,7 @@ Caso contrário, o metamétodo "concat" é chamado (ver |lua_metatables|).
 
 ==============================================================================
 O Operador de Comprimento
+
 
 O operador de comprimento é denotado pelo operador unário `#`. O
 comprimento de uma cadeia de caracteres é o seu número de bytes (isto é,
@@ -796,17 +817,18 @@ precedem um valor `nil` (isto é, ele pode considerar qualquer valor
 ==============================================================================
 PRECEDÊNCIA                                                   *lua_precedence*
 
+
 A precedência de operadores em Lua segue a tabela abaixo, da menor
 prioridade para a maior:
 >
-       or
-       and
-       <     >     <=    >=    ~=    ==
-       ..
-       +     -
-       *     /     %
-       not   #     - (unary)
-       ^
+         or
+         and
+         <     >     <=    >=    ~=    ==
+         ..
+         +     -
+         *     /     %
+         not   #     - (unary)
+         ^
 <
 Como é de costume, você pode usar parênteses para mudar as precedências
 de uma expressão. Os operadores de concatenação ('`..`') e de
@@ -816,15 +838,16 @@ operadores binários são associativos à esquerda.
 ==============================================================================
 CONSTRUTORES DE TABELAS                               *lua_table_constructors*
 
+
 Construtores de tabelas são expressões que criam tabelas. Toda vez que
 um construtor é avaliado, uma nova tabela é criada. Um construtor pode
 ser usado para criar uma tabelas vazia ou para criar uma tabela e
 inicializar alguns dos seus campos. A sintaxe geral de construtores é
 >
-      construtortabela ::= `{´ [listadecampos] `}´
-      listadecampos ::= campo {separadordecampos campo} [separadordecampos]
-      campo ::= `[´ exp `]´ `=´ exp | Nome `=´ exp | exp
-      separadordecampos ::= `,´ | `;´
+        construtortabela ::= `{´ [listadecampos] `}´
+        listadecampos ::= campo {separadordecampos campo} [separadordecampos]
+        campo ::= `[´ exp `]´ `=´ exp | Nome `=´ exp | exp
+        separadordecampos ::= `,´ | `;´
 <
 Cada campo da forma =[exp1] = exp2= adiciona à nova tabela uma entrada
 cuja chave é `exp1` e cujo valor é `exp2`. Um campo da forma
@@ -833,21 +856,21 @@ forma `exp` são equivalentes a =[i] = exp=, onde `i` representa números
 inteiros consecutivos, iniciando com 1. Campos nos outros formatos não
 afetam esta contagem. Por exemplo,
 >
-       a = { [f(1)] = g; "x", "y"; x = 1, f(x), [30] = 23; 45 }
+         a = { [f(1)] = g; "x", "y"; x = 1, f(x), [30] = 23; 45 }
 <
 é equivalente a
 >
-       do
-         local t = {}
-         t[f(1)] = g
-         t[1] = "x"         -- primeira exp
-         t[2] = "y"         -- segunda exp
-         t.x = 1            -- t["x"] = 1
-         t[3] = f(x)        -- terceira exp
-         t[30] = 23
-         t[4] = 45          -- quarta exp
-         a = t
-       end
+         do
+           local t = {}
+           t[f(1)] = g
+           t[1] = "x"         -- primeira exp
+           t[2] = "y"         -- segunda exp
+           t.x = 1            -- t["x"] = 1
+           t[3] = f(x)        -- terceira exp
+           t[30] = 23
+           t[4] = 45          -- quarta exp
+           a = t
+         end
 <
 Se o último campo na lista possui a forma `exp` e a expressão é uma
 chamada de função ou uma expressão com um número variável de argumentos,
@@ -862,9 +885,10 @@ conveniência para código gerado automaticamente.
 ==============================================================================
 CHAMADAS DE FUNÇÃO                                        *lua_func_statement*
 
+
 Uma chamada de função em Lua tem a seguinte sintaxe:
 >
-      chamadadefuncao ::= expprefixo args
+        chamadadefuncao ::= expprefixo args
 <
 Em uma chamada de função, primeiro expprefixo e args são avaliados. Se o
 valor de expprefixo possui tipo `function`, então esta função é chamada
@@ -875,7 +899,7 @@ expprefixo, seguido pelos argumentos originais da chamada (ver
 
 A forma
 >
-      chamadadefuncao ::= expprefixo `:´ Nome args
+        chamadadefuncao ::= expprefixo `:´ Nome args
 <
 pode ser usada para chamar "métodos". Uma chamada `v:nome(args)` é um
 açúcar sintático para `v.nome(v,args)`, com a diferença de que `v` é
@@ -883,9 +907,9 @@ avaliado somente uma vez.
 
 Argumentos possuem a seguinte sintaxe:
 >
-      args ::= `(´ [listaexp] `)´
-      args ::= construtordetabela
-      args ::= Cadeia
+        args ::= `(´ [listaexp] `)´
+        args ::= construtordetabela
+        args ::= Cadeia
 <
 Todas as expressões fornecidas como argumento são avaliadas antes da
 chamada. Uma chamada da forma `f{campos}` é uma açúcar sintático para
@@ -900,8 +924,8 @@ possível colocar uma quebra de linha antes do '`(`' em uma chamada de
 função. Esta restrição evita algumas ambigüidades na linguagem. Se você
 escrevesse
 >
-       a = f
-       (g).x(a)
+         a = f
+         (g).x(a)
 <
 Lua poderia ver isto como um comando único, =a = f(g).x(a)=. Portanto,
 se você deseja dois comandos, você deve obrigatoriamente colocar um
@@ -920,53 +944,54 @@ argumento; esta sintaxe faz com que a chamada de função retorne
 exatamente os valores de retorno da função chamada. Dessa forma, nenhum
 dos exemplos a seguir são chamadas finais:
 >
-       return (f(x))        -- o número de resultados é ajustado para 1
-       return 2 * f(x)
-       return x, f(x)       -- resultados adicionais
-       f(x); return         -- resultados descartados
-       return x or f(x)     -- o número de resultados é ajustado para 1
+         return (f(x))        -- o número de resultados é ajustado para 1
+         return 2 * f(x)
+         return x, f(x)       -- resultados adicionais
+         f(x); return         -- resultados descartados
+         return x or f(x)     -- o número de resultados é ajustado para 1
 <
 ==============================================================================
 DEFINIÇÕES DE FUNÇÕES                                      *lua_function_defs*
 
+
 A sintaxe para a definição de uma função é
 >
-      funcao ::= function corpodafuncao
-      funcao ::= `(´ [listapar] `)´ bloco end
+        funcao ::= function corpodafuncao
+        funcao ::= `(´ [listapar] `)´ bloco end
 <
 O seguinte açúcar sintático simplifica definições de funções:
 >
-      comando ::= function nomedafuncao corpodafuncao
-      comando ::= local function Nome corpodafuncao
-      nomedafuncao ::= Nome {`.´ Nome} [`:´ Nome]
+        comando ::= function nomedafuncao corpodafuncao
+        comando ::= local function Nome corpodafuncao
+        nomedafuncao ::= Nome {`.´ Nome} [`:´ Nome]
 <
 O comando
 >
-       function f () corpo end
+         function f () corpo end
 <
 é traduzido para
 >
-       f = function () corpo end
+         f = function () corpo end
 <
 O comando
 >
-       function t.a.b.c.f () corpo end
+         function t.a.b.c.f () corpo end
 <
 é traduzido para
 >
-       t.a.b.c.f = function () corpo end
+         t.a.b.c.f = function () corpo end
 <
 O comando
 >
-       local function f () corpo end
+         local function f () corpo end
 <
 é traduzido para
 >
-       local f; f = function () corpo end
+         local f; f = function () corpo end
 <
 e `não` para
 >
-       local f = function () corpo end
+         local f = function () corpo end
 <
 (Isto somente faz diferença quando o corpo da função contém uma
 referência para `f`.)
@@ -983,7 +1008,7 @@ ambiente.
 Parâmetros comportam-se como variáveis locais que são inicializadas com
 os valores dos argumentos:
 >
-      listapar ::= listadenomes [`,´ `...´] | `...´
+        listapar ::= listadenomes [`,´ `...´] | `...´
 <
 Quando uma função é chamada, a lista de argumentos é ajustada para o
 comprimento da lista de parâmetros, a não ser que a função seja de
@@ -1002,25 +1027,25 @@ parênteses).
 
 Como um exemplo, considere as seguintes definições:
 >
-       function f(a, b) end
-       function g(a, b, ...) end
-       function r() return 1,2,3 end
+         function f(a, b) end
+         function g(a, b, ...) end
+         function r() return 1,2,3 end
 <
 Neste caso, nós temos o seguinte mapeamento de argumentos para
 parâmetros e para as expressões vararg:
 >
-       CHAMADA          PARÂMETROS
+         CHAMADA          PARÂMETROS
 
-       f(3)             a=3, b=nil
-       f(3, 4)          a=3, b=4
-       f(3, 4, 5)       a=3, b=4
-       f(r(), 10)       a=1, b=10
-       f(r())           a=1, b=2
+         f(3)             a=3, b=nil
+         f(3, 4)          a=3, b=4
+         f(3, 4, 5)       a=3, b=4
+         f(r(), 10)       a=1, b=10
+         f(r())           a=1, b=2
 
-       g(3)             a=3, b=nil, ... -->  (nada)
-       g(3, 4)          a=3, b=4,   ... -->  (nada)
-       g(3, 4, 5, 8)    a=3, b=4,   ... -->  5  8
-       g(5, r())        a=5, b=1,   ... -->  2  3
+         g(3)             a=3, b=nil, ... -->  (nada)
+         g(3, 4)          a=3, b=4,   ... -->  (nada)
+         g(3, 4, 5, 8)    a=3, b=4,   ... -->  5  8
+         g(5, r())        a=5, b=1,   ... -->  2  3
 <
 Resultados são retornados usando o comando `return` (ver
 |lua_control|). Se o controle alcança o fim de uma função sem
@@ -1031,31 +1056,32 @@ A sintaxe de `dois pontos` é usada para definir `métodos`, isto é,
 funções que possuem um parâmetro extra implícito `self`. Desta forma, o
 comando
 >
-       function t.a.b.c:f (params) corpo end
+         function t.a.b.c:f (params) corpo end
 <
 é uma açúcar sintático para
 >
-       t.a.b.c.f = function (self, params) corpo end
+         t.a.b.c.f = function (self, params) corpo end
 <
 ==============================================================================
 REGRAS DE VISIBILIDADE                                             *lua_scope*
+
 
 Lua é uma linguagem com escopo léxico. O escopo das variáveis começa no
 primeiro comando `depois` da sua declaração e vai até o fim do bloco
 mais interno que inclui a declaração. Considere o seguinte exemplo:
 >
-       x = 10                -- variável global
-       do                    -- bloco novo
-         local x = x         -- novo 'x', com valor 10
-         print(x)            --> 10
-         x = x+1
-         do                  -- outro bloco
-           local x = x+1     -- outro 'x'
-           print(x)          --> 12
+         x = 10                -- variável global
+         do                    -- bloco novo
+           local x = x         -- novo 'x', com valor 10
+           print(x)            --> 10
+           x = x+1
+           do                  -- outro bloco
+             local x = x+1     -- outro 'x'
+             print(x)          --> 12
+           end
+           print(x)            --> 11
          end
-         print(x)            --> 11
-       end
-       print(x)              --> 10  (o x global)
+         print(x)              --> 10  (o x global)
 <
 Note que, em uma declaração como =local x = x=, o novo `x` sendo
 declarado não está no escopo ainda e portanto o segundo `x` se refere a
@@ -1069,12 +1095,12 @@ ou `variável local externa`, dentro da função mais interna.
 Note que cada execução de um comando `local` define novas variáveis
 locais. Considere o exemplo a seguir:
 >
-       a = {}
-       local x = 20
-       for i=1,10 do
-         local y = 0
-         a[i] = function () y=y+1; return x+y end
-       end
+         a = {}
+         local x = 20
+         for i=1,10 do
+           local y = 0
+           a[i] = function () y=y+1; return x+y end
+         end
 <
 O laço cria dez fechos (isto é, dez instâncias da função anônima). Cada
 um destes fechos usa uma variável `y` diferente, enquanto todos eles
@@ -1082,6 +1108,7 @@ compartilham a mesma variável `x`.
 
 ==============================================================================
 TRATAMENTO DE ERROS                                               *lua_errors*
+
 
 Dado que Lua é uma linguagem embarcada de extensão, todas as ações de
 Lua começam a partir de código C no programa hospedeiro que chama uma
@@ -1096,6 +1123,7 @@ você pode usar a função |pcall|.
 
 ==============================================================================
 Metatabelas
+
 
 Todo valor em Lua pode ter uma `metatabela`. Esta `metatabela` é uma
 tabela Lua comum que define o comportamento do valor original com
@@ -1150,11 +1178,11 @@ simulação. Todas as funções usadas nestes descrições
 descritas em |lua_builtins|. Em particular, para recuperar o metamétodo
 de um dado objeto, usamos a expressão
 >
-       metatable(obj)[event]
+         metatable(obj)[event]
 <
 Isto deve ser lido como
 >
-       rawget(getmetatable(obj) or {}, event)
+         rawget(getmetatable(obj) or {}, event)
 <
 Isto é, o acesso a um metamétodo não invoca outros metamétodos e o
 acesso a objetos que não possuem metatabelas não falha (ele simplesmente
@@ -1167,91 +1195,86 @@ resulta em `nil`).
   o seu tipo não definie um tratador para a operação, então Lua tenta o
   segundo operando.
 >
-         function getbinhandler (op1, op2, event)
-           return metatable(op1)[event] or metatable(op2)[event]
-         end
+           function getbinhandler (op1, op2, event)
+             return metatable(op1)[event] or metatable(op2)[event]
+           end
 <
   Usando esta função, o comportamento da expressão `op1 + op2` é
 >
-         function add_event (op1, op2)
-           local o1, o2 = tonumber(op1), tonumber(op2)
-           if o1 and o2 then  -- os dois operandos são numéricos?
-             return o1 + o2   -- '+' aqui é a 'add' primitiva
-           else  -- pelo menos um dos operandos nao é numérico
-             local h = getbinhandler(op1, op2, "__add")
-             if h then
-               -- chama o tratador com ambos os operandos
-               return (h(op1, op2))
-             else  -- nenhum tratador disponível: comportamento padrão
-               error(···)
+           function add_event (op1, op2)
+             local o1, o2 = tonumber(op1), tonumber(op2)
+             if o1 and o2 then  -- os dois operandos são numéricos?
+               return o1 + o2   -- '+' aqui é a 'add' primitiva
+             else  -- pelo menos um dos operandos nao é numérico
+               local h = getbinhandler(op1, op2, "__add")
+               if h then
+                 -- chama o tratador com ambos os operandos
+                 return (h(op1, op2))
+               else  -- nenhum tratador disponível: comportamento padrão
+                 error(···)
+               end
              end
            end
-         end
 <
 - `sub`: a operação `-`. Comportamento similar ao da operação "add".
-
 - `mul`: a operação `*`. Comportamento similar ao da operação "add".
-
 - `div`: a operação `/`. Comportamento similar ao da operação "add".
-
 - `mod`: a operação `%`. Comportamento similar ao da operação "add",
   tendo a operação `o1 - floor(o1/o2)*o2` como operação primitiva.
-
 - `pow`: a operação `^` (exponenciação). Comportamento similar ao da
   operação "add", com a função `pow` (da biblioteca matemática de C)
   como operação primitiva.
-
 - `unm`: a operação `-` unária.
 >
-         function unm_event (op)
-           local o = tonumber(op)
-           if o then  -- operando é numérico?
-             return -o  -- '-' aqui é a 'unm' primitiva
-           else  -- o operando não é numérico.
-             -- Tenta obter um tratador do operando
-             local h = metatable(op).__unm
-             if h then
-               -- chama o tratador com o operando
-               return (h(op))
-             else  -- nenhum tratador disponível: comportamento padrão
-               error(···)
+           function unm_event (op)
+             local o = tonumber(op)
+             if o then  -- operando é numérico?
+               return -o  -- '-' aqui é a 'unm' primitiva
+             else  -- o operando não é numérico.
+               -- Tenta obter um tratador do operando
+               local h = metatable(op).__unm
+               if h then
+                 -- chama o tratador com o operando
+                 return (h(op))
+               else  -- nenhum tratador disponível: comportamento padrão
+                 error(···)
+               end
              end
            end
-         end
 <
 - `concat`: a operação `..` (concatenação).
 >
-         function concat_event (op1, op2)
-           if (type(op1) == "string" or type(op1) == "number") and
-              (type(op2) == "string" or type(op2) == "number") then
-             return op1 .. op2  -- concatenação de cadeias primitiva
-           else
-             local h = getbinhandler(op1, op2, "__concat")
-             if h then
-               return (h(op1, op2))
+           function concat_event (op1, op2)
+             if (type(op1) == "string" or type(op1) == "number") and
+                (type(op2) == "string" or type(op2) == "number") then
+               return op1 .. op2  -- concatenação de cadeias primitiva
              else
-               error(···)
+               local h = getbinhandler(op1, op2, "__concat")
+               if h then
+                 return (h(op1, op2))
+               else
+                 error(···)
+               end
              end
            end
-         end
 <
 - `len`: a operação `#`.
 >
-         function len_event (op)
-           if type(op) == "string" then
-             return strlen(op)         -- comprimento de string primitiva
-           elseif type(op) == "table" then
-             return #op                -- comprimento de tabela primitiva
-           else
-             local h = metatable(op).__len
-             if h then
-               -- chama o tratador com o operando
-               return (h(op))
-             else  -- nenhum tratador disponível: comportamento padrão
-               error(···)
+           function len_event (op)
+             if type(op) == "string" then
+               return strlen(op)         -- comprimento de string primitiva
+             elseif type(op) == "table" then
+               return #op                -- comprimento de tabela primitiva
+             else
+               local h = metatable(op).__len
+               if h then
+                 -- chama o tratador com o operando
+                 return (h(op))
+               else  -- nenhum tratador disponível: comportamento padrão
+                 error(···)
+               end
              end
            end
-         end
 <
   Veja |lua_len| para uma descrição do comprimento de um
   tabela.
@@ -1262,73 +1285,73 @@ resulta em `nil`).
   comparados possuem o mesmo tipo e o mesmo metamétodo para a operação
   selecionada.
 >
-         function getcomphandler (op1, op2, event)
-           if type(op1) ~= type(op2) then return nil end
-           local mm1 = metatable(op1)[event]
-           local mm2 = metatable(op2)[event]
-           if mm1 == mm2 then return mm1 else return nil end
-         end
+           function getcomphandler (op1, op2, event)
+             if type(op1) ~= type(op2) then return nil end
+             local mm1 = metatable(op1)[event]
+             local mm2 = metatable(op2)[event]
+             if mm1 == mm2 then return mm1 else return nil end
+           end
 <
   O evento "eq" é definido da seguinte forma:
 >
-         function eq_event (op1, op2)
-           if type(op1) ~= type(op2) then  -- tipos diferentes?
-             return false   -- objetos diferentes
+           function eq_event (op1, op2)
+             if type(op1) ~= type(op2) then  -- tipos diferentes?
+               return false   -- objetos diferentes
+             end
+             if op1 == op2 then   -- igual primitivo?
+               return true   -- objetos são iguais
+             end
+             -- tenta metamétodo
+             local h = getcomphandler(op1, op2, "__eq")
+             if h then
+               return (h(op1, op2))
+             else
+               return false
+             end
            end
-           if op1 == op2 then   -- igual primitivo?
-             return true   -- objetos são iguais
-           end
-           -- tenta metamétodo
-           local h = getcomphandler(op1, op2, "__eq")
-           if h then
-             return (h(op1, op2))
-           else
-             return false
-           end
-         end
 <
   `a ~` b= é equivalente a =not (a == b)=.
 
 - `lt`: a operação `<`.
 >
-         function lt_event (op1, op2)
-           if type(op1) == "number" and type(op2) == "number" then
-             return op1 < op2   -- comparação numérica
-           elseif type(op1) == "string" and type(op2) == "string" then
-             return op1 < op2   -- comparação lexicográfica
-           else
-             local h = getcomphandler(op1, op2, "__lt")
-             if h then
-               return (h(op1, op2))
+           function lt_event (op1, op2)
+             if type(op1) == "number" and type(op2) == "number" then
+               return op1 < op2   -- comparação numérica
+             elseif type(op1) == "string" and type(op2) == "string" then
+               return op1 < op2   -- comparação lexicográfica
              else
-               error(···)
-             end
-           end
-         end
-<
-  `a > b` é equivalente a `b < a`.
-
-- `le`: a operação `<`=.
->
-         function le_event (op1, op2)
-           if type(op1) == "number" and type(op2) == "number" then
-             return op1 <= op2   -- comparação numérica
-           elseif type(op1) == "string" and type(op2) == "string" then
-             return op1 <= op2   -- comparação lexicográfica
-           else
-             local h = getcomphandler(op1, op2, "__le")
-             if h then
-               return (h(op1, op2))
-             else
-               h = getcomphandler(op1, op2, "__lt")
+               local h = getcomphandler(op1, op2, "__lt")
                if h then
-                 return not h(op2, op1)
+                 return (h(op1, op2))
                else
                  error(···)
                end
              end
            end
-         end
+<
+  `a > b` é equivalente a `b < a`.
+
+- `le`: a operação `<`=.
+>
+           function le_event (op1, op2)
+             if type(op1) == "number" and type(op2) == "number" then
+               return op1 <= op2   -- comparação numérica
+             elseif type(op1) == "string" and type(op2) == "string" then
+               return op1 <= op2   -- comparação lexicográfica
+             else
+               local h = getcomphandler(op1, op2, "__le")
+               if h then
+                 return (h(op1, op2))
+               else
+                 h = getcomphandler(op1, op2, "__lt")
+                 if h then
+                   return not h(op2, op1)
+                 else
+                   error(···)
+                 end
+               end
+             end
+           end
 <
   `a >` b= é equivalente a `b <` a=. Note que, na ausência de um
   metamétodo "le", Lua tenta o "lt", assumindo que `a <` b= é
@@ -1336,63 +1359,64 @@ resulta em `nil`).
 
 - `index`: A indexação de leitura `table[key]`.
 >
-         function gettable_event (table, key)
-           local h
-           if type(table) == "table" then
-             local v = rawget(table, key)
-             if v ~= nil then return v end
-             h = metatable(table).__index
-             if h == nil then return nil end
-           else
-             h = metatable(table).__index
-             if h == nil then
-               error(···)
+           function gettable_event (table, key)
+             local h
+             if type(table) == "table" then
+               local v = rawget(table, key)
+               if v ~= nil then return v end
+               h = metatable(table).__index
+               if h == nil then return nil end
+             else
+               h = metatable(table).__index
+               if h == nil then
+                 error(···)
+               end
+             end
+             if type(h) == "function" then
+               return (h(table, key))    -- chama o tratador
+             else return h[key]          -- ou repete a operação sobre ele
              end
            end
-           if type(h) == "function" then
-             return (h(table, key))    -- chama o tratador
-           else return h[key]          -- ou repete a operação sobre ele
-           end
-         end
 <
 - `newindex`: A indexação de atribuição =table[key] = value=.
 >
-         function settable_event (table, key, value)
-           local h
-           if type(table) == "table" then
-             local v = rawget(table, key)
-             if v ~= nil then rawset(table, key, value); return end
-             h = metatable(table).__newindex
-             if h == nil then rawset(table, key, value); return end
-           else
-             h = metatable(table).__newindex
-             if h == nil then
-               error(···)
+           function settable_event (table, key, value)
+             local h
+             if type(table) == "table" then
+               local v = rawget(table, key)
+               if v ~= nil then rawset(table, key, value); return end
+               h = metatable(table).__newindex
+               if h == nil then rawset(table, key, value); return end
+             else
+               h = metatable(table).__newindex
+               if h == nil then
+                 error(···)
+               end
+             end
+             if type(h) == "function" then
+               h(table, key, value)       -- chama o tratador
+             else h[key] = value          -- ou repete a operação sobre
              end
            end
-           if type(h) == "function" then
-             h(table, key, value)       -- chama o tratador
-           else h[key] = value          -- ou repete a operação sobre
-           end
-         end
 <
 - `call`: chamada quando Lua chama um valor.
 >
-         function function_event (func, ...)
-           if type(func) == "function" then
-             return func(...)   -- call primitiva
-           else
-             local h = metatable(func).__call
-             if h then
-               return h(func, ...)
+           function function_event (func, ...)
+             if type(func) == "function" then
+               return func(...)   -- call primitiva
              else
-               error(···)
+               local h = metatable(func).__call
+               if h then
+                 return h(func, ...)
+               else
+                 error(···)
+               end
              end
            end
-         end
 <
 ==============================================================================
 AMBIENTES                                                   *lua_environments*
+
 
 Além de metatabelas, objetos do tipo thread, function e userdata possuem
 outra tabela associada com eles, chamada de seu `ambiente`. Assim como
@@ -1436,6 +1460,7 @@ obrigatoriamente usar a API C.
 ==============================================================================
 COLETA DE LIXO                                                        *lua_gc*
 
+
 Lua realiza gerenciamento automático da memória. Isto significa que você
 não precisa se preocupar com a alocação de memória para novos objetos
 nem com a liberação de memória quando os objetos não são mais
@@ -1475,6 +1500,7 @@ diretamente (e.g., pará-lo e reiniciá-lo).
 ==============================================================================
 TABELAS FRACAS                                                      *lua_weak*
 
+
 Uma `tabela fraca` é uma tabela cujos elementos são /referências
 fracas/. Uma referência fraca é ignorada pelo coletor de lixo. Em outras
 palavras, se as únicas referências para um objeto são referências
@@ -1496,6 +1522,7 @@ controladas por esta metatabela é indefinido.
 
 ==============================================================================
 CO-ROTINAS                                                    *lua_coroutines*
+
 
 Lua oferece suporte a co-rotinas, também conhecidas como /fluxos de
 execução (threads) colaborativos/. Uma co-rotina em Lua representa um
@@ -1556,39 +1583,40 @@ erro é propagado para o chamador.
 
 Como um exemplo, considere o seguinde código:
 >
-       function foo (a)
-         print("foo", a)
-         return coroutine.yield(2*a)
-       end
+         function foo (a)
+           print("foo", a)
+           return coroutine.yield(2*a)
+         end
 
-       co = coroutine.create(function (a,b)
-             print("co-body", a, b)
-             local r = foo(a+1)
-             print("co-body", r)
-             local r, s = coroutine.yield(a+b, a-b)
-             print("co-body", r, s)
-             return b, "end"
-       end)
+         co = coroutine.create(function (a,b)
+               print("co-body", a, b)
+               local r = foo(a+1)
+               print("co-body", r)
+               local r, s = coroutine.yield(a+b, a-b)
+               print("co-body", r, s)
+               return b, "end"
+         end)
 
-       print("main", coroutine.resume(co, 1, 10))
-       print("main", coroutine.resume(co, "r"))
-       print("main", coroutine.resume(co, "x", "y"))
-       print("main", coroutine.resume(co, "x", "y"))
+         print("main", coroutine.resume(co, 1, 10))
+         print("main", coroutine.resume(co, "r"))
+         print("main", coroutine.resume(co, "x", "y"))
+         print("main", coroutine.resume(co, "x", "y"))
 <
 Quando você executá-lo, ele produzirá a seguinte saída:
 >
-       co-body 1       10
-       foo     2
+         co-body 1       10
+         foo     2
 
-       main    true    4
-       co-body r
-       main    true    11      -9
-       co-body x       y
-       main    true    10      end
-       main    false   cannot resume dead coroutine
+         main    true    4
+         co-body r
+         main    true    11      -9
+         co-body x       y
+         main    true    10      end
+         main    false   cannot resume dead coroutine
 <
 ==============================================================================
 BIBLIOTECAS PADRÃO                                                *lua_stdlib*
+
 
 As bibliotecas padrão de Lua oferecem funções úteis que são
 implementadas diretamente através da API C. Algumas dessas funções
@@ -1632,18 +1660,21 @@ de Lua, e.g., usando |lua_call|.
 ==============================================================================
 FUNÇÕES BÁSICAS                                                 *lua_builtins*
 
+
 A biblioteca de funções básicas oferece algumas funções essenciais a
 Lua. Se você não incluir esta biblioteca em sua aplicação, você deve
 verificar cuidadosamente se necessita fornecer implementações para
 algumas de suas facilidades.
 
 assert (v [, message])                                                *assert*
+
     Produz um erro quando o valor de seu argumento `v` é falso (i.e., `nil`
     ou `false`); caso contrário, retorna todos os seus argumentos. `message`
     é uma mensagem de erro; quando ausente, a mensagem padrão é "assertion
     failed!"
 
 collectgarbage (opt [, arg])                                  *collectgarbage*
+
     Esta função é uma interface genérica para o coletor de lixo. Ela realiza
     diferentes funções de acordo com o seu primeiro argumento, `opt`:
 
@@ -1665,6 +1696,7 @@ collectgarbage (opt [, arg])                                  *collectgarbage*
       valor anterior para a `pausa`.
 
 dofile (filename)                                                     *dofile*
+
     Abre o arquivo indicado e executa o seu conteúdo como um trecho de
     código Lua. Quando chamada sem argumentos, `dofile` executa o conteúdo
     da entrada padrão (`stdin`). Retorna todos os valores retornados pelo
@@ -1672,6 +1704,7 @@ dofile (filename)                                                     *dofile*
     (isto é, `dofile` não executa em modo protegido).
 
 error (message [, level])                                              *error*
+
     Termina a última função protegida chamada e retorna `message` como a
     mensagem de erro. A função `error` nunca retorna.
 
@@ -1684,12 +1717,14 @@ error (message [, level])                                              *error*
     do erro à mensagem.
 
 _G                                                                        *_G*
+
     Uma variável global (não uma função) que armazena o ambiente global
     (isto é, =_G._G = _G=). Lua por si só não usa esta variável; uma
     modificação do seu valor não afeta qualquer ambiente e vice-versa. (Use
     |setfenv| para mudar ambientes.)
 
 getfenv ([f])                                                        *getfenv*
+
     Retorna o ambiente que está sendo usado correntemente pela função. `f`
     pode ser uma função Lua ou um número que especifica a função naquele
     nível de pilha: a função que chamou `getfenv` possui nível 1. Se a
@@ -1697,20 +1732,23 @@ getfenv ([f])                                                        *getfenv*
     ambiente global. O valor padrão para `f` é 1.
 
 getmetatable (object)                                           *getmetatable*
+
     Se `object` não possui uma metatabela, retorna `nil`. Caso contrário, se
     a metatabela do objeto possui um campo `"__metatable"`, retorna o valor
     associado. Caso contrário, retorna a metatabela do objeto fornecido.
 
 ipairs (t)                                                            *ipairs*
+
     Retorna três valores: uma função iteradora, a tabela `t` e 0, de modo
     que a construção
     >
-	   for i,v in ipairs(t) do corpo end
+	     for i,v in ipairs(t) do corpo end
     <
     irá iterar sobre os pares (`1,t[1]`), (`2,t[2]`), ···, até a primeira
     chave inteira ausente da tabela.
 
 load (func [, chunkname])                                               *load*
+
     Carrega um trecho usando a função `func` para obter seus pedaços. Cada
     chamada a `func` deve retornar uma cadeia de caracteres que concatena
     com resultados anteriores. Quando `func` retorna uma cadeia vazia, `nil`
@@ -1724,19 +1762,22 @@ load (func [, chunkname])                                               *load*
     informação de depuração. Quando ausente, o valor padrão é "==(load)=".
 
 loadfile ([filename])                                               *loadfile*
+
     Similar a |load|, mas obtém o trecho do arquivo
     `filename` ou da entrada padrão, se nenhum nome de arquivo é fornecido.
 
 loadstring (string [, chunkname])                                 *loadstring*
+
     Similar a |load|, mas obtém o trecho da cadeia fornecida.
 
     Para carregar e rodar uma dada cadeia, use a expressão idiomática
     >
-	   assert(loadstring(s))()
+	     assert(loadstring(s))()
     <
     Quando ausente, o valor padrão para `chunkname` é a cadeia fornecida.
 
 next (table [, index])                                                  *next*
+
     Permite a um programa pecorrer todos os campos de uma tabela. Seu
     primeiro argumento é uma tabela e seu segundo argumento é um índice
     nesta tabela. `next` retorna o próximo índice da tabela e seu valor
@@ -1757,10 +1798,11 @@ next (table [, index])                                                  *next*
     limpar campos existentes.
 
 pairs (t)                                                              *pairs*
+
     Retorna três valores: a função |next|, a tabela `t` e
     `nil`, de modo que a construção
     >
-	   for k,v in pairs(t) do corpo end
+	     for k,v in pairs(t) do corpo end
     <
     irá iterar sobre todos os pares chave--valor da tabela `t`.
 
@@ -1768,6 +1810,7 @@ pairs (t)                                                              *pairs*
     modificar a tabela durante o seu percorrimento.
 
 pcall (f, arg1, ···)                                                   *pcall*
+
     Chama a função `f` com os argumentos fornecidos em `modo protegido`.
     Isto significa que qualquer erro dentro de `f` não é propagado; ao invés
     disso, `pcall` captura o erro e retorna um código indicando o status.
@@ -1778,6 +1821,7 @@ pcall (f, arg1, ···)                                                   *pcall
     erro.
 
 print (···)                                                            *print*
+
     Recebe qualquer número de argumentos e imprime os seus valores para
     `stdout`, usando a função |tostring| para
     convertê-los para cadeias de caracteres. `print` não é projetada para
@@ -1786,14 +1830,17 @@ print (···)                                                            *print
     |string.format|.
 
 rawequal (v1, v2)                                                   *rawequal*
+
     Verifica se `v1` é igual a `v2`, sem invocar nenhum metamétodo. Retorna
     um booleano.
 
 rawget (table, index)                                                 *rawget*
+
     Obtém o valor real de `table[index]`, sem invocar nenhum metamétodo.
     `table` deve ser uma tabela; `index` pode ser qualquer valor.
 
 rawset (table, index, value)                                          *rawset*
+
     Atribui `value` como o valor real de `table[index]`, sem invocar nenhum
     metamétodo. `table` deve ser uma tabela, `index` pode ser qualquer valor
     diferente de `nil` e `value` pode ser qualquer valor Lua.
@@ -1801,11 +1848,13 @@ rawset (table, index, value)                                          *rawset*
     Essa função retorna `table`.
 
 select (index, ···)                                                   *select*
+
     Se `index` é um número, retorna todos os argumentos após o argumento
     número `index`. Caso contrário, `index` deve ser a cadeia `"#"` e
     `select` retorna o número total de argumentos extras recebidos.
 
 setfenv (f, table)                                                   *setfenv*
+
     Estabelece o ambiente a ser usado pela função fornecida. `f` pode ser
     uma função Lua ou um número que especifica a função naquele nível de
     pilha: a função chamando `setfenv` possui nível 1. `setfenv` retorna a
@@ -1815,6 +1864,7 @@ setfenv (f, table)                                                   *setfenv*
     de execução corrente. Neste caso, `setfenv` não retorna nenhum valor.
 
 setmetatable (table, metatable)                                 *setmetatable*
+
     Estabelece a metatabela para a tabela fornecida. (Você não pode mudar a
     metatabela de outros tipos a partir de Lua, somente a partir de C.) Se
     `metatable` é `nil`, remove a metatabela da tabela fornecida. Se a
@@ -1823,6 +1873,7 @@ setmetatable (table, metatable)                                 *setmetatable*
     Essa função retorna `table`.
 
 tonumber (e [, base])                                               *tonumber*
+
     Tenta converter seu argumento para um número. Se o argumento já é um
     número ou uma cadeia de caracteres que pode ser convertida para um
     número, então `tonumber` retorna este número; caso contrário, retorna
@@ -1837,6 +1888,7 @@ tonumber (e [, base])                                               *tonumber*
     inteiros sem sinal são aceitos.
 
 tostring (e)                                                        *tostring*
+
     Recebe um argumento de qualquer tipo e o converte para uma cadeia de
     caracteres em um formato razoável. Para um controle completo de como
     números são convertidos, use |string.format|.
@@ -1846,26 +1898,30 @@ tostring (e)                                                        *tostring*
     chamada como o seu resultado.
 
 type (v)                                                                *type*
+
     Retorna o tipo de seu único argumento, codificado como uma cadeia de
     caracteres. Os resultados possíveis desta função são "`nil`" (uma cadeia
     de caracteres, não o valor `nil`), "`number`", "`string`", "`boolean`",
     "`table`", "`function`", "`thread`" e "`userdata`".
 
 unpack (list [, i [, j]])                                             *unpack*
+
     Retorna os elementos da tabela fornecida. Esta função é equivalente a
     >
-	   return list[i], list[i+1], ···, list[j]
+	     return list[i], list[i+1], ···, list[j]
     <
     exceto que o código acima pode ser escrito somente para um número fixo
     de elementos. Por padrão, `i` é 1 e `j` é o comprimento da lista, como
     definido pelo operador de comprimento (ver |lua_len|).
 
 _VERSION                                                            *_VERSION*
+
     Uma variável global (não uma função) que armazena uma cadeia contendo a
     versão corrente do interpretador. O conteúdo corrente desta variável é
     "`Lua 5.1`".
 
 xpcall (f, err)                                                       *xpcall*
+
     Esta função é similar a |pcall|, exceto que você pode
     estabelecer um novo tratador de erros.
 
@@ -1881,15 +1937,18 @@ xpcall (f, err)                                                       *xpcall*
 ==============================================================================
 MANIPULAÇÃO DE CO-ROTINAS                              *lua_module_coroutines*
 
+
 As operações relacionadas a co-rotinas constituem uma sub-biblioteca da
 biblioteca básica e estão dentro da tabela `coroutine`. Veja
 |lua_coroutines| para uma descrição geral de co-rotinas.
 
 coroutine.create (f)                                        *coroutine.create*
+
     Cria uma nova co-rotina, com corpo `f`. `f` deve ser uma função Lua.
     Retorna esta nova co-rotina, um objeto com tipo `"thread"`.
 
 coroutine.resume (co [, val1, ···])                         *coroutine.resume*
+
     Inicia ou continua a execução da co-rotina `co`. Na primeira vez que
     você "continua" uma co-rotina, ela começa executando o seu corpo. Os
     valores `val1`, ··· são passados como os argumentos para o corpo da
@@ -1903,10 +1962,12 @@ coroutine.resume (co [, val1, ···])                         *coroutine.resume
     de erro.
 
 coroutine.running ()                                       *coroutine.running*
+
     Retorna a co-rotina sendo executada ou `nil` quando chamada pelo fluxo
     de execução principal.
 
 coroutine.status (co)                                       *coroutine.status*
+
     Retorna o status da co-rotina `co`, como uma cadeia de caracteres:
     `"running"`, se a co-rotina está executando (isto é, ela chamou
     `status`); `"suspended"`, se a co-rotina está suspensa em uma chamada a
@@ -1916,6 +1977,7 @@ coroutine.status (co)                                       *coroutine.status*
     principal ou se ela parou com um erro.
 
 coroutine.wrap (f)                                            *coroutine.wrap*
+
     Cria uma nova co-rotina, com corpo `f`. `f` deve ser uma função Lua.
     Retorna uma função que recomeça a co-rotina cada vez que é chamada.
     Quaisquer argumentos passados para a função comportam-se como os
@@ -1924,6 +1986,7 @@ coroutine.wrap (f)                                            *coroutine.wrap*
     erro.
 
 coroutine.yield (···)                                        *coroutine.yield*
+
     Suspende a execução da co-rotina chamadora. A co-rotina não pode estar
     executando uma função C, um metamétodo ou um iterador. Quaisquer
     argumentos para `yield` são passados como resultados extras para
@@ -1932,6 +1995,7 @@ coroutine.yield (···)                                        *coroutine.yield
 ==============================================================================
 MÓDULOS                                                          *lua_modules*
 
+
 A biblioteca de pacotes provê facilidades básicas para carregar e
 construir módulos em Lua. Ela exporta duas de suas funções diretamente
 no ambiente global: |require| e
@@ -1939,6 +2003,7 @@ no ambiente global: |require| e
 tabela `package`.
 
 module (name [, ···])                                                 *module*
+
     Cria um módulo. Se há uma tabela em `package.loaded[name]`, esta tabela
     é o módulo. Caso contrário, se existe uma tabela global `t` com o nome
     fornecido, esta tabela é o módulo. Caso contrário cria uma nova tabela
@@ -1959,6 +2024,7 @@ module (name [, ···])                                                 *module
     cada opção é uma função a ser aplicada sobre o módulo.
 
 require (modname)                                                    *require*
+
     Carrega o módulo fornecido. Esta função começa procurando na tabela
     |package.loaded| para determinar se `modname`
     já foi carregado. Em caso afirmativo, `require` retorna o valor
@@ -1993,6 +2059,7 @@ require (modname)                                                    *require*
     sinaliza um erro.
 
 package.cpath                                                  *package.cpath*
+
     O caminho usado por |require| para procurar por um
     carregador C.
 
@@ -2002,12 +2069,14 @@ package.cpath                                                  *package.cpath*
     `LUA_CPATH` ou um caminho padrão definido em `luaconf.h`.
 
 package.loaded                                                *package.loaded*
+
     Uma tabela usada por |require| para controlar quais
     módulos já foram carregados. Quando você requisita um módulo `modname` e
     `package.loaded[modname]` não é falso, |require|
     simplesmente retorna o valor armazenado lá.
 
 package.loaders                                              *package.loaders*
+
     Uma tabela usada por |require| para controlar como
     carregar módulos.
 
@@ -2033,7 +2102,7 @@ package.loaders                                              *package.loaders*
     nome do arquivo resultante. Por exemplo, se o caminho é a cadeia de
     caracteres
     >
-	   "./?.lua;./?.lc;/usr/local/?/init.lua"
+	     "./?.lua;./?.lc;/usr/local/?/init.lua"
     <
     a busca por um arquivo Lua para o módulo `foo` tentará abrir os arquivos
     `./foo.lua`, `./foo.lc` e `/usr/local/foo/init.lua`, nessa ordem.
@@ -2043,7 +2112,7 @@ package.loaders                                              *package.loaders*
     |package.cpath|. Por exemplo, se o caminho C é a
     cadeia
     >
-	   "./?.so;./?.dll;/usr/local/?/init.so"
+	     "./?.so;./?.dll;/usr/local/?/init.so"
     <
     a função buscadora para o módulo `foo` tentará abrir os arquivos
     `./foo.so`, `./foo.dll` e `/usr/local/foo/init.so`, nessa ordem. Uma vez
@@ -2067,6 +2136,7 @@ package.loaders                                              *package.loaders*
     abertura original.
 
 package.loadlib (libname, funcname)                          *package.loadlib*
+
     Liga dinamicamente o programa hospedeiro com a biblioteca C `libname`.
     Dentro desta biblioteca, procura por uma função `funcname` e retorna
     essa função como uma função C. (Desse modo, `funcname` deve seguir o
@@ -2085,6 +2155,7 @@ package.loadlib (libname, funcname)                          *package.loadlib*
     mais outros sistemas Unix que dão suporte ao padrão `dlfcn`).
 
 package.path                                                    *package.path*
+
     O caminho usado por |require| para buscar um
     carregador Lua.
 
@@ -2094,10 +2165,12 @@ package.path                                                    *package.path*
     variável de ambiente será substituído pelo caminho padrão.
 
 package.preload                                              *package.preload*
+
     Uma tabela para armazenar carregadores para módulos específicos (ver
     |require|).
 
 package.seeall (module)                                       *package.seeall*
+
     Estabelece uma metatabela para `module` com seu campo `__index` se
     referindo ao ambiente global, de modo que esse módulo herda valores do
     ambiente global. Para ser usada como uma opção à função
@@ -2105,6 +2178,7 @@ package.seeall (module)                                       *package.seeall*
 
 ==============================================================================
 Manipulação de Cadeias de Caracteres
+
 
 Esta biblioteca provê funções genéricas para a manipulação de cadeias de
 caracteres, tais como encontrar e extrair subcadeias e casamento de
@@ -2124,6 +2198,7 @@ A biblioteca de manipulação de cadeias assume que cada caracter é
 codificado usando um byte.
 
 string.byte (s [, i [, j]])                                      *string.byte*
+
     Retorna o código numérico interno dos caracteres `s[i]`, `s[i+1]`, ···,
     `s[j]`. O valor padrão para `i` é 1; o valor padrão para `j` é `i`.
 
@@ -2131,6 +2206,7 @@ string.byte (s [, i [, j]])                                      *string.byte*
     plataformas.
 
 string.char (···)                                                *string.char*
+
     Recebe zero ou mais inteiros. Retorna uma cadeia com comprimento igual
     ao número de argumentos, na qual cada caractere possui um código
     numérico interno igual ao seu argumento correspondente.
@@ -2139,12 +2215,14 @@ string.char (···)                                                *string.char
     plataformas.
 
 string.dump (function)                                           *string.dump*
+
     Retorna uma cadeia contendo a representação binária da função fornecida,
     de modo que um |loadstring| posterior nesta cadeia
     retorna uma cópia da função. `function` deve ser uma função Lua sem
     upvalues.
 
 string.find (s, pattern [, init [, plain]])                      *string.find*
+
     Procura o primeiro casamento do padrão `pattern` na cadeia `s`. Se a
     função acha um casamento, então `find` retorna os índices de `s` onde
     esta ocorrência começou e terminou; caso contrário, retorna `nil`. O
@@ -2160,6 +2238,7 @@ string.find (s, pattern [, init [, plain]])                      *string.find*
     valores capturados são também retornados, após os dois índices.
 
 string.format (formatstring, ···)                              *string.format*
+
     Retorna a versão formatada de seu número variável de argumentos seguindo
     a descrição dada no seu primeiro argumento (que deve ser uma cadeia). O
     formato da cadeia segue as mesmas regras da família `printf` de
@@ -2171,12 +2250,12 @@ string.format (formatstring, ···)                              *string.format
     barras invertidas e zeros dentro da cadeia são corretamente escapados
     quando escritos. Por exemplo, a chamada
     >
-	   string.format('%q', 'a string with "quotes" and \n new line')
+	     string.format('%q', 'a string with "quotes" and \n new line')
     <
     produzirá a cadeia:
     >
-	   "a string with \"quotes\" and \
-	    new line"
+	     "a string with \"quotes\" and \
+	      new line"
     <
     As opções `c`, `d`, `E`, `e`, `f`, `g`, `G`, `i`, `o`, `u`, `X` e `x`
     esperam um número como argumento, enquanto que `q` e `s` esperam uma
@@ -2186,30 +2265,32 @@ string.format (formatstring, ···)                              *string.format
     exceto quando esses valores são argumentos para a opção `q`.
 
 string.gmatch (s, pattern)                                     *string.gmatch*
+
     Retorna uma função iteradora que, cada vez que é chamada, retorna a
     próxima captura de `pattern` na cadeia `s`. Se `pattern` não especifica
     nenhuma captura, então o casamento inteiro é produzido a cada chamada.
     Como um exemplo, o seguinte laço
     >
-	   s = "hello world from Lua"
-	   for w in string.gmatch(s, "%a+") do
-	     print(w)
-	   end
+	     s = "hello world from Lua"
+	     for w in string.gmatch(s, "%a+") do
+	       print(w)
+	     end
     <
     irá iterar sobre todas as palavras da cadeia `s`, imprimindo uma por
     linha. O próximo exemplo coleta todos os pares `key`value= da cadeia
     fornecida e os coloca em uma tabela:
     >
-	   t = {}
-	   s = "from=world, to=Lua"
-	   for k, v in string.gmatch(s, "(%w+)=(%w+)") do
-	     t[k] = v
-	   end
+	     t = {}
+	     s = "from=world, to=Lua"
+	     for k, v in string.gmatch(s, "(%w+)=(%w+)") do
+	       t[k] = v
+	     end
     <
     Para essa função, um '`^`' no início de um padrão não funciona como uma
     âncora, visto que isso iria impedir a iteração.
 
 string.gsub (s, pattern, repl [, n])                             *string.gsub*
+
     Retorna uma cópia de `s` na qual todas as (ou as primeiras `n`, se
     fornecido) ocorrências de `pattern` são substituídas por uma cadeia de
     substituição especificada por `repl`, que pode ser uma cadeia, uma
@@ -2239,39 +2320,42 @@ string.gsub (s, pattern, repl [, n])                             *string.gsub*
 
     Aqui estão alguns exemplos:
     >
-	   x = string.gsub("hello world", "(%w+)", "%1 %1")
-	   --> x="hello hello world world"
+	     x = string.gsub("hello world", "(%w+)", "%1 %1")
+	     --> x="hello hello world world"
 
-	   x = string.gsub("hello world", "%w+", "%0 %0", 1)
-	   --> x="hello hello world"
+	     x = string.gsub("hello world", "%w+", "%0 %0", 1)
+	     --> x="hello hello world"
 
-	   x = string.gsub("hello world from Lua", "(%w+)%s*(%w+)", "%2 %1")
-	   --> x="world hello Lua from"
+	     x = string.gsub("hello world from Lua", "(%w+)%s*(%w+)", "%2 %1")
+	     --> x="world hello Lua from"
 
-	   x = string.gsub("home = $HOME, user = $USER", "%$(%w+)", os.getenv)
-	   --> x="home = `home`roberto, user = roberto"
+	     x = string.gsub("home = $HOME, user = $USER", "%$(%w+)", os.getenv)
+	     --> x="home = `home`roberto, user = roberto"
 
-	   x = string.gsub("4+5 = $return 4+5$", "%$(.-)%$", function (s)
-		 return loadstring(s)()
-	       end)
-	   --> x="4+5 = 9"
+	     x = string.gsub("4+5 = $return 4+5$", "%$(.-)%$", function (s)
+		   return loadstring(s)()
+		 end)
+	     --> x="4+5 = 9"
 
-	   local t = {name="lua", version="5.1"}
-	   x = string.gsub("$name-$version.tar.gz", "%$(%w+)", t)
-	   --> x="lua-5.1.tar.gz"
+	     local t = {name="lua", version="5.1"}
+	     x = string.gsub("$name-$version.tar.gz", "%$(%w+)", t)
+	     --> x="lua-5.1.tar.gz"
     <
 string.len (s)                                                    *string.len*
+
     Recebe uma cadeia e retorna seu comprimento. A cadeia vazia `""` tem
     comprimento 0. Zeros dentro da cadeia são contados, então
     `"a\000bc\000"` possui comprimento 5.
 
 string.lower (s)                                                *string.lower*
+
     Recebe uma cadeia e retorna uma cópia desta cadeia com todas as letras
     maiúsculas convertidas para minúsculas. Todos os demais caracteres
     permanecem iguais. A definição de o que é uma letra maiúscula depende do
     idioma (/locale/) corrente.
 
 string.match (s, pattern [, init])                              *string.match*
+
     Procura o primeiro `casamento` de `pattern` na cadeia `s`. Se encontra
     um, então `match` retorna as capturas do padrão; caso contrário retorna
     `nil`. Se `pattern` não especifica nenhuma captura, então o casamento
@@ -2280,12 +2364,15 @@ string.match (s, pattern [, init])                              *string.match*
     negativo.
 
 string.rep (s, n)                                                 *string.rep*
+
     Retorna uma cadeia que é a concatenação de `n` cópias da cadeia `s`.
 
 string.reverse (s)                                            *string.reverse*
+
     Retorna uma cadeia que é a cadeia `s` invertida.
 
 string.sub (s, i [, j])                                           *string.sub*
+
     Retorna uma subcadeia de `s` que inicia em `i` e continua até `j`; `i` e
     `j` podem ser negativos. Se `j` está ausente, então assume-se que ele é
     igual a -1 (que é o mesmo que o comprimento da cadeia). Em particular, a
@@ -2293,6 +2380,7 @@ string.sub (s, i [, j])                                           *string.sub*
     `j` e `string.sub(s, -i)` retorna um sufixo de `s` com comprimento `i`.
 
 string.upper (s)                                                *string.upper*
+
     Recebe uma cadeia e retorna uma cópia desta cadeia com todas as letras
     minúsculas convertidas para maiúsculas. Todos os demais caracteres
     permanecem iguais. A definição de o que é uma letra minúscula depende do
@@ -2301,7 +2389,9 @@ string.upper (s)                                                *string.upper*
 ==============================================================================
 PADRÕES                                                         *lua_patterns*
 
+
 Classes de Caracteres~
+
 
 Uma `classe de caracteres` é usada para representar um conjunto de
 caracteres. As seguintes combinações são permitidas em descrições de uma
@@ -2309,35 +2399,22 @@ classe de caracteres:
 
 - `x`: (onde `x` não é um dos `caracteres mágicos` `^$()%.[]*+-?`)
   representa o próprio caractere `x`.
-
 - `.`: (um ponto) representa todos os caracteres.
-
 - `%a`: representa todas as letras.
-
 - `%c`: representa todos os caracteres de controle.
-
 - `%d`: representa todos os dígitos.
-
 - `%l`: representa todas as letras minúsculas.
-
 - `%p`: representa todos os caracteres de pontuação.
-
 - `%s`: representa todos os caracteres de espaço.
-
 - `%u`: representa todas as letras maiúsculas.
-
 - `%w`: representa todos os caracteres alfanuméricos.
-
 - `%x`: representa todos os dígitos hexadecimais.
-
 - `%z`: representa o caractere com representação 0.
-
 - `%x`: (onde `x` é qualquer caractere não-alfanumérico) representa o
   caractere `x`. Esta é a maneira padrão de escapar os caracteres
   mágicos. Qualquer caractere de pontuação (até mesmo os não mágicos)
   pode ser precedido por um '`%`' quando usado para representar a si
   mesmo em um padrão.
-
 - `[set]`: representa a classe que é a união de todos os caracteres em
   `set`. Uma faixa de caracteres pode ser especificada separando os
   caracteres finais da faixa com um '`-`'. Todas as classes `%x`
@@ -2365,6 +2442,7 @@ equivalente a `%l`.
 
 Item de Padrão~
 
+
 Um `item de padrão` pode ser
 
 - uma classe de um único caractere, que casa qualquer caractere simples
@@ -2391,6 +2469,7 @@ Um `item de padrão` pode ser
 
 Padrão~
 
+
 Um `padrão` é uma seqüência de itens de padrão. Um '`^`' no início de um
 padrão ancora o casamento no início da cadeia sendo usada. Um '`$`' no
 fim de um padrão ancora o casamento no fim da cadeia sendo usada. Em
@@ -2398,6 +2477,7 @@ outras posições, '`^`' e '`$`' não possuem significado especial e
 representam a si mesmos.
 
 Capturas~
+
 
 Um padrão pode conter subpadrões delimitados por parênteses; eles
 descrevem `capturas`. Quando um casamento ocorre, as subcadeias da
@@ -2417,6 +2497,7 @@ Um padrão não pode conter zeros dentro dele. Use `%z` como alternativa.
 ==============================================================================
 MANIPULAÇÃO DE TABELAS                                      *lua_module_table*
 
+
 Esta biblioteca provê funções genéricas para manipulação de tabelas. Ela
 provê todas as suas funções na tabela `table`.
 
@@ -2426,6 +2507,7 @@ sobre o "comprimento" de uma tabela estamos falando sobre o resultado do
 operador de comprimento.
 
 table.concat (table [, sep [, i [, j]]])                        *table.concat*
+
     Dado um array onde todos os elementos são cadeias ou números, retorna
     `table[i]..sep..table[i+1] ··· sep..table[j]`. O valor padrão para `sep`
     é a cadeia vazia, o padrão para `i` é 1 e o padrão para `j` é o
@@ -2433,6 +2515,7 @@ table.concat (table [, sep [, i [, j]]])                        *table.concat*
     vazia.
 
 table.insert (table, [pos,] value)                              *table.insert*
+
     Insere o elemento `value` na posição `pos` de `table`, deslocando os
     outros elementos para abrir espaço, se necessário. O valor padrão para
     `pos` é `n+1`, onde `n` é o comprimento da tabela (ver
@@ -2440,11 +2523,13 @@ table.insert (table, [pos,] value)                              *table.insert*
     `x` no fim da tabela `t`.
 
 table.maxn (table)                                                *table.maxn*
+
     Retorna o maior índice numérico positivo da tabela fornecida ou zero se
     a tabela não possui índices numéricos positivos. (Para realizar seu
     trabalho esta função faz um percorrimento linear da tabela inteira.)
 
 table.remove (table [, pos])                                    *table.remove*
+
     Remove de `table` o elemento na posição `pos`, deslocando os outros
     elementos para preencher o espaço, se necessário. Retorna o valor do
     elemento removido. O valor padrão para `pos` é `n`, onde `n` é o
@@ -2452,6 +2537,7 @@ table.remove (table [, pos])                                    *table.remove*
     o último elemento da tabela `t`.
 
 table.sort (table [, comp])                                       *table.sort*
+
     Ordena os elementos da tabela em uma dada ordem, `in-place`, de
     `table[1]` até `table[n]`, onde `n` é o comprimento da tabela. Se `comp`
     é fornecido, então ele deve ser uma função que recebe dois elementos da
@@ -2467,87 +2553,112 @@ table.sort (table [, comp])                                       *table.sort*
 ==============================================================================
 FUNÇÕES MATEMÁTICAS                                          *lua_module_math*
 
+
 Esta biblioteca é uma interface para a biblioteca matemática de C
 padrão. Ela provê todas as suas funções na tabela `math`.
 
 math.abs (x)                                                        *math.abs*
+
     Retorna o valor absoluto de `x`.
 
 math.acos (x)                                                      *math.acos*
+
     Retorna o arco co-seno de `x` (em radianos).
 
 math.asin (x)                                                      *math.asin*
+
     Retorna o arco seno de `x` (em radianos).
 
 math.atan (x)                                                      *math.atan*
+
     Retorna o arco tangente de `x` (em radianos).
 
 math.atan2 (y, x)                                                 *math.atan2*
+
     Retorna o arco tangente de `y/x` (em radianos), mas usa o sinal dos dois
     parâmetros para achar o quadrante do resultado. (Também trata
     corretamente o caso de `x` ser zero.)
 
 math.ceil (x)                                                      *math.ceil*
+
     Retorna o menor inteiro maior ou igual a `x`.
 
 math.cos (x)                                                        *math.cos*
+
     Retorna o co-seno de `x` (assume que `x` está em radianos).
 
 math.cosh (x)                                                      *math.cosh*
+
     Retorna o co-seno hiperbólico de `x`.
 
 math.deg (x)                                                        *math.deg*
+
     Retorna o ângulo `x` (dado em radianos) em graus.
 
 math.exp (x)                                                        *math.exp*
+
     Retorna o valor de `e^{x}`.
 
 math.floor (x)                                                    *math.floor*
+
     Retorna o maior inteiro menor ou igual a `x`.
 
 math.fmod (x, y)                                                   *math.fmod*
+
     Retorna o resto da divisão de `x` por `y` que arredonda o quociente em
     direção a zero.
 
 math.frexp (x)                                                    *math.frexp*
+
     Retorna `m` e `e` tais que `x = m2^{e}`, `e` é um inteiro e o valor
     absoluto de `m` está no intervalo /[0.5, 1)/ (ou zero quando `x` é
     zero).
 
 math.huge                                                          *math.huge*
+
     O valor de `HUGE_VAL`, um valor maior ou igual a qualquer outro valor
     numérico.
 
 math.ldexp (m, e)                                                 *math.ldexp*
+
     Retorna `m2^{e}` (`e` deve ser um inteiro).
 
 math.log (x)                                                        *math.log*
+
     Retorna o logaritmo natural de `x`.
 
 math.log10 (x)                                                    *math.log10*
+
     Retorna o logaritmo base-10 de `x`.
 
 math.max (x, ···)                                                   *math.max*
+
     Retorna o valor máximo entre os seus argumentos.
 
 math.min (x, ···)                                                   *math.min*
+
     Retorna o valor mínimo entre os seus argumentos.
 
 math.modf (x)                                                      *math.modf*
+
     Retorna dois números, a parte integral de `x` e a parte fracionária de
     `x`.
 
 math.pi                                                              *math.pi*
+
     O valor de `pi`.
 
 math.pow (x, y)                                                     *math.pow*
+
     Retorna `x^{y}`. (Você também pode usar a expressão `x^y` para computar
     este valor.)
 
 math.rad (x)                                                        *math.rad*
+
     Retorna o ângulo `x` (dado em graus) em radianos.
 
 math.random ([m [, n]])                                          *math.random*
+
     Esta função é uma interface para a função geradora pseudo-randômica
     simples `rand` fornecida por ANSI C. (Nenhuma garantia pode ser dada
     para suas propriedades estatísticas.)
@@ -2560,27 +2671,34 @@ math.random ([m [, n]])                                          *math.random*
     /[m, n]/.
 
 math.randomseed (x)                                          *math.randomseed*
+
     Estabelece `x` como a "semente" para o gerador pseudo-randômico:
     sementes iguais produzem seqüências iguais de números.
 
 math.sin (x)                                                        *math.sin*
+
     Retorna o seno de `x` (assume que `x` está em radianos).
 
 math.sinh (x)                                                      *math.sinh*
+
     Retorna o seno hiperbólico de `x`.
 
 math.sqrt (x)                                                      *math.sqrt*
+
     Retorna a raiz quadrada de `x`. (Você também pode usar a expressão
     `x^0.5` para computar este valor.)
 
 math.tan (x)                                                        *math.tan*
+
     Retorna a tangente de `x` (assume que `x` está em radianos).
 
 math.tanh (x)                                                      *math.tanh*
+
     Retorna a tangente hiperbólica de `x`.
 
 ==============================================================================
 FACILIDADES DE ENTRADA E SAÍDA                                 *lua_module_io*
+
 
 A biblioteca de E/S provê dois estilos diferentes para manipulação de
 arquivos. O primeiro usa descritores de arquivo implícitos; isto é, há
@@ -2604,13 +2722,16 @@ e um código de erro dependente do sistema como um terceiro resultado),
 ou algum valor diferente de `nil` em caso de sucesso.
 
 io.close ([file])                                                   *io.close*
+
     Equivalente a `file:close()`. Quando não recebe `file`, fecha o arquivo
     de saída padrão.
 
 io.flush ()                                                         *io.flush*
+
     Equivalente a `file:flush` no arquivo de saída padrão.
 
 io.input ([file])                                                   *io.input*
+
     Quando chamada com um nome de arquivo, abre o arquivo com aquele nome
     (em modo texto) e estabelece seu manipulador como o arquivo de entrada
     padrão. Quando chamada com um manipulador de arquivo, simplesmente
@@ -2622,11 +2743,12 @@ io.input ([file])                                                   *io.input*
     código de erro.
 
 io.lines ([filename])                                               *io.lines*
+
     Abre o nome de arquivo fornecido em modo de leitura e retorna uma função
     iteradora que, cada vez que é chamada, retorna uma nova linha do
     arquivo. Portanto, a construção
     >
-	   for line in io.lines(filename) do corpo end
+	     for line in io.lines(filename) do corpo end
     <
     irá iterar sobre todas as linhas do arquivo. Quando a função iteradora
     detecta o fim do arquivo, ela retorna `nil` (para finalizar o laço) e
@@ -2638,6 +2760,7 @@ io.lines ([filename])                                               *io.lines*
     termina.
 
 io.open (filename [, mode])                                          *io.open*
+
     Esta função abre um arquivo, no modo especificado na cadeia `mode`. Ela
     retorna um novo manipulador de arquivo ou, em caso de erros, `nil` mais
     uma mensagem de erro.
@@ -2658,10 +2781,12 @@ io.open (filename [, mode])                                          *io.open*
     exatamente o que é usado na função padrão de C `fopen`.
 
 io.output ([file])                                                 *io.output*
+
     Similar a |io.input|, mas opera sobre o arquivo de
     saída padrão.
 
 io.popen (prog [, mode])                                            *io.popen*
+
     Inicia o programa `prog` em um processo separado e retorna um
     manipulador de arquivo que pode ser usado para ler dados deste programa
     (se `mode` é `"r"`, o padrão) ou escrever dados para este programa (se
@@ -2671,41 +2796,49 @@ io.popen (prog [, mode])                                            *io.popen*
     plataformas.
 
 io.read (···)                                                        *io.read*
+
     Equivalente a `io.input():read`.
 
 io.tmpfile ()                                                     *io.tmpfile*
+
     Retorna um manipulador para um arquivo temporário. Este arquivo é aberto
     em modo de atualização e é automaticamente removido quando o programa
     termina.
 
 io.type (obj)                                                        *io.type*
+
     Verifica se `obj` é um manipulador de arquivo válido. Retorna a cadeia
     `"file"` se `obj` é um manipulador de arquivo aberto, `"close file"` se
     `obj` é um manipulador de arquivo fechado ou `nil` se `obj` não é um
     manipulador de arquivo.
 
 io.write (···)                                                      *io.write*
+
     Equivalente a `io.output():write`.
 
 file:close ()                                                     *file:close*
+
     Fecha `file`. Note que arquivos são automaticamente fechados quando seus
     manipuladores são coletados pelo coletor de lixo, mas leva uma
     quantidade indeterminada de tempo para isso acontecer.
 
 file:flush ()                                                     *file:flush*
+
     Salva qualquer dado escrito para `file`.
 
 file:lines ()                                                     *file:lines*
+
     Retorna uma função iteradora que, cada vez que é chamada, retorna uma
     nova linha do arquivo. Portanto, a construção
     >
-	   for line in file:lines() do corpo end
+	     for line in file:lines() do corpo end
     <
     irá iterar sobre todas as linhas do arquivo. (Ao contrário de
     |io.lines|, essa função não fecha o arquivo quando o
     laço termina.)
 
 file:read (···)                                                    *file:read*
+
     Lê o arquivo `file`, de acordo com os formatos fornecidos, os quais
     especificam o que deve ser lido. Para cada formato, a função retorna uma
     cadeia (ou um número) com os caracteres lidos ou `nil` se ela não pode
@@ -2726,6 +2859,7 @@ file:read (···)                                                    *file:read
       arquivo.
 
 file:seek ([whence] [, offset])                                    *file:seek*
+
     Estabelece e obtém a posição do arquivo, medida a partir do início do
     arquivo, até a posição dada por `offset` mais uma base especificada pela
     cadeia `whence`, como a seguir:
@@ -2745,6 +2879,7 @@ file:seek ([whence] [, offset])                                    *file:seek*
     estabelece a posição para o fim do arquivo e retorna seu tamanho.
 
 file:setvbuf (mode [, size])                                    *file:setvbuf*
+
     Define o modo de bufferização para um arquivo de saída. Há três modos
     disponíveis:
 
@@ -2761,6 +2896,7 @@ file:setvbuf (mode [, size])                                    *file:setvbuf*
     bytes. O padrão é um tamanho apropriado.
 
 file:write (···)                                                  *file:write*
+
     Escreve o valor de cada um de seus argumentos para `file`. Os argumentos
     devem ser cadeias de caracteres ou números. Para escrever outros
     valores, use |tostring| ou
@@ -2769,13 +2905,16 @@ file:write (···)                                                  *file:write
 ==============================================================================
 FACILIDADES DO SISTEMA OPERACIONAL                             *lua_module_os*
 
+
 Esta biblioteca é implementada através da tabela `os`.
 
 os.clock ()                                                         *os.clock*
+
     Retorna uma aproximação da quantidade de tempo de CPU, em segundos,
     usada pelo programa.
 
 os.date ([format [, time]])                                          *os.date*
+
     Retorna uma cadeia ou uma tabela contendo data e hora, formatada de
     acordo com a cadeia `format` fornecida.
 
@@ -2801,11 +2940,13 @@ os.date ([format [, time]])                                          *os.date*
     `os.date("%c")`).
 
 os.difftime (t2, t1)                                             *os.difftime*
+
     Retorna o número de segundos a partir do tempo `t1` até o tempo `t2`. Em
     POSIX, Windows e alguns outros sistemas, este valor é exatamente
     `t2`/-/=t1=.
 
 os.execute ([command])                                            *os.execute*
+
     Esta função é equivalente à função C `system`. Ela passa `command` para
     ser executado por um interpretador de comandos do sistema operacional.
     Ela retorna um código de status, que é dependente do sistema. Se
@@ -2814,24 +2955,29 @@ os.execute ([command])                                            *os.execute*
     contrário.
 
 os.exit ([code])                                                     *os.exit*
+
     Chama a função C `exit`, com um código `code` opcional, para terminar o
     programa hospedeiro. O valor padrão para `code` é o código de sucesso.
 
 os.getenv (varname)                                                *os.getenv*
+
     Retorna o valor da variável de ambiente do processo `varname` ou `nil`
     se a variável não está definida.
 
 os.remove (filename)                                               *os.remove*
+
     Remove um arquivo ou diretório com o nome fornecido. Diretórios devem
     estar vazios para serem removidos. Se esta função falha, ela retorna
     `nil`, mais uma cadeia descrevendo o erro.
 
 os.rename (oldname, newname)                                       *os.rename*
+
     Renomeia um arquivo ou diretório chamado `oldname` para `newname`. Se
     esta função falha, ela retorna `nil`, mais uma cadeia descrevendo o
     erro.
 
 os.setlocale (locale [, category])                              *os.setlocale*
+
     Estabelece o idioma (/locale/) corrente do programa. `locale` é uma
     cadeia de caracteres especificando um idioma; `category` é uma cadeia
     opcional descrevendo para qual categoria deve-se mudar: `"all"`,
@@ -2847,6 +2993,7 @@ os.setlocale (locale [, category])                              *os.setlocale*
     somente o nome do idioma corrente para a categoria fornecida.
 
 os.time ([table])                                                    *os.time*
+
     Retorna o tempo corrente quando chamada sem argumentos ou um tempo
     representando a data e a hora especificados pela tabela fornecida. Esta
     tabela deve ter campos `year`, `month` e `day` e pode ter campos `hour`,
@@ -2861,6 +3008,7 @@ os.time ([table])                                                    *os.time*
     `difftime`.
 
 os.tmpname ()                                                     *os.tmpname*
+
     Retorna uma cadeia de caracteres com o nome de um arquivo que pode ser
     usado para um arquivo temporário. O arquivo deve ser explicitamente
     aberto antes de ser usado e explicitamente removido quando não for mais
@@ -2879,6 +3027,7 @@ os.tmpname ()                                                     *os.tmpname*
 ==============================================================================
 A BIBLIOTECA DE DEPURAÇÃO                                          *lua_debug*
 
+
 Esta biblioteca provê as funcionalidades da interface de depuração para
 programas Lua. Você deve ter cuidado ao usar esta biblioteca. As funções
 fornecidas aqui devem ser usadas exclusivamente para depuração e tarefas
@@ -2896,6 +3045,7 @@ primeiro argumento opcional que é o objeto thread sobre o qual a função
 deve operar. O padrão é sempre o fluxo de execução corrente.
 
 debug.debug ()                                                   *debug.debug*
+
     Entra em um modo interativo com o usuário, executando cada cadeia de
     caracteres que o usuário entra. Usando comandos simples e outros
     mecanismos de depuração, o usuário pode inspecionar variáveis globais e
@@ -2908,15 +3058,18 @@ debug.debug ()                                                   *debug.debug*
     variáveis locais.
 
 debug.getfenv (o)                                              *debug.getfenv*
+
     Retorna o ambiente do objeto `o`.
 
 debug.gethook ([thread])                                       *debug.gethook*
+
     Retorna as configurações de gancho correntes do fluxo de execução como
     três valores: a função de gancho corrente, a máscara de ganho corrente e
     a contagem de ganho corrente (como estabelecido pela função
     |debug.sethook|).
 
 debug.getinfo ([thread,] function [, what])                    *debug.getinfo*
+
     Retorna uma tabela com informação sobre uma função. Você pode fornecer a
     função diretamente ou você pode fornecer um número como o valor de
     `function`, que significa a função executando no nível `function` da
@@ -2939,6 +3092,7 @@ debug.getinfo ([thread,] function [, what])                    *debug.getinfo*
     todas as informações disponíveis sobre a função |print|.
 
 debug.getlocal ([thread,] level, local)                       *debug.getlocal*
+
     Esta função retorna o nome e o valor da variável local com índice
     `local` da função no nível `level` da pilha. (O primeiro parâmetro ou
     variável local possui índice 1 e assim por diante, até a última variável
@@ -2953,22 +3107,27 @@ debug.getlocal ([thread,] level, local)                       *debug.getlocal*
     de funções C).
 
 debug.getmetatable (object)                               *debug.getmetatable*
+
     Retorna a metatabela do `object` fornecido ou `nil` se ele não possui
     uma metatabela.
 
 debug.getregistry ()                                       *debug.getregistry*
+
     Retorna a tabela de registro (ver https://www.lua.org/manual/5.1/pt/manual.html#3.5).
 
 debug.getupvalue (func, up)                                 *debug.getupvalue*
+
     Esta função retorna o nome e o valor do upvalue com índice `up` da
     função `func`. A função retorna `nil` se não há um upvalue com o índice
     fornecido.
 
 debug.setfenv (object, table)                                  *debug.setfenv*
+
     Estabelece a tabela `table` como o ambiente do `object` fornecido.
     Retorna `object`.
 
 debug.sethook ([thread,] hook, mask [, count])                 *debug.sethook*
+
     Estabelece a função fornecida como um gancho. A cadeia `mask` e o número
     `count` descrevem quando o gancho será chamado. A cadeia `mask` pode ter
     os seguintes caracteres, com o respectivo significado:
@@ -2996,6 +3155,7 @@ debug.sethook ([thread,] hook, mask [, count])                 *debug.sethook*
     chamada a `getinfo` retornará dados inválidos.
 
 debug.setlocal ([thread,] level, local, value)                *debug.setlocal*
+
     Esta função atribui o valor `value` à variável local com índice `local`
     da função no nível `level` da pilha. A função retorna `nil` se não há
     uma variável local com o índice fornecido e dispara um erro quando
@@ -3004,15 +3164,18 @@ debug.setlocal ([thread,] level, local, value)                *debug.setlocal*
     função retorna o nome da variável local.
 
 debug.setmetatable (object, table)                        *debug.setmetatable*
+
     Estabelece `table` como a metatabela do `object` fornecido (`table` pode
     ser `nil`).
 
 debug.setupvalue (func, up, value)                          *debug.setupvalue*
+
     Esta função atribui o valor `value` ao upvalue com índice `up` da função
     `func`. A função retorna `nil` se não há um upvalue com o índice
     fornecido. Caso contrário, a função retorna o nome do upvalue.
 
 debug.traceback ([thread,] [message] [, level])              *debug.traceback*
+
     Retorna uma cadeia de caracteres com um traço da pilha de chamadas. Uma
     cadeia opcional `message` é adicionada ao início do traço. Um número
     opcional `level` diz em qual nível iniciar o traço (o padrão é 1, a
@@ -3021,65 +3184,66 @@ debug.traceback ([thread,] [message] [, level])              *debug.traceback*
 ==============================================================================
 A SINTAXE COMPLETA DE LUA                                         *lua_syntax*
 
+
 Aqui está a sintaxe completa de Lua na notação BNF estendida. (Ela não
 descreve as precedências dos operadores.)
 >
 
-      trecho ::= {comando [`;´]} [ultimocomando [`;´]]
+        trecho ::= {comando [`;´]} [ultimocomando [`;´]]
 
-      bloco ::= trecho
+        bloco ::= trecho
 
-      comando ::=  listavar `=´ listaexp | 
-           chamadadefuncao | 
-           do bloco end | 
-           while exp do bloco end | 
-           repeat bloco until exp | 
-           if exp then bloco {elseif exp then bloco} [else bloco] end | 
-           for Nome `=´ exp `,´ exp [`,´ exp] do bloco end | 
-           for listadenomes in listaexp do bloco end | 
-           function nomedafuncao corpodafuncao | 
-           local function Nome corpodafuncao | 
-           local listadenomes [`=´ listaexp] 
+        comando ::=  listavar `=´ listaexp | 
+             chamadadefuncao | 
+             do bloco end | 
+             while exp do bloco end | 
+             repeat bloco until exp | 
+             if exp then bloco {elseif exp then bloco} [else bloco] end | 
+             for Nome `=´ exp `,´ exp [`,´ exp] do bloco end | 
+             for listadenomes in listaexp do bloco end | 
+             function nomedafuncao corpodafuncao | 
+             local function Nome corpodafuncao | 
+             local listadenomes [`=´ listaexp] 
 
-      ultimocomando ::= return [listaexp] | break
+        ultimocomando ::= return [listaexp] | break
 
-      nomedafuncao ::= Nome {`.´ Nome} [`:´ Nome]
+        nomedafuncao ::= Nome {`.´ Nome} [`:´ Nome]
 
-      listavar ::= var {`,´ var}
+        listavar ::= var {`,´ var}
 
-      var ::=  Nome | expprefixo `[´ exp `]´ | expprefixo `.´ Nome 
+        var ::=  Nome | expprefixo `[´ exp `]´ | expprefixo `.´ Nome 
 
-      listadenomes ::= Nome {`,´ Nome}
+        listadenomes ::= Nome {`,´ Nome}
 
-      listaexp ::= {exp `,´} exp
+        listaexp ::= {exp `,´} exp
 
-      exp ::=  nil | false | true | Numero | Cadeia | `...´ | funcao | 
-           expprefixo | construtortabela | exp opbin exp | opunaria exp 
+        exp ::=  nil | false | true | Numero | Cadeia | `...´ | funcao | 
+             expprefixo | construtortabela | exp opbin exp | opunaria exp 
 
-      expprefixo ::= var | chamadadefuncao | `(´ exp `)´
+        expprefixo ::= var | chamadadefuncao | `(´ exp `)´
 
-      chamadadefuncao ::=  expprefixo args | expprefixo `:´ Nome args 
+        chamadadefuncao ::=  expprefixo args | expprefixo `:´ Nome args 
 
-      args ::=  `(´ [listaexp] `)´ | construtortabela | Cadeia 
+        args ::=  `(´ [listaexp] `)´ | construtortabela | Cadeia 
 
-      funcao ::= function corpodafuncao
+        funcao ::= function corpodafuncao
 
-      corpodafuncao ::= `(´ [listapar] `)´ bloco end
+        corpodafuncao ::= `(´ [listapar] `)´ bloco end
 
-      listapar ::= listadenomes [`,´ `...´] | `...´
+        listapar ::= listadenomes [`,´ `...´] | `...´
 
-      construtortabela ::= `{´ [listadecampos] `}´
+        construtortabela ::= `{´ [listadecampos] `}´
 
-      listadecampos ::= campo {separadordecampos campo} [separadordecampos]
+        listadecampos ::= campo {separadordecampos campo} [separadordecampos]
 
-      campo ::= `[´ exp `]´ `=´ exp | Nome `=´ exp | exp
+        campo ::= `[´ exp `]´ `=´ exp | Nome `=´ exp | exp
 
-      separadordecampos ::= `,´ | `;´
+        separadordecampos ::= `,´ | `;´
 
-      opbin ::= `+´ | `-´ | `*´ | `/´ | `^´ | `%´ | `..´ | 
-           `<´ | `<=´ | `>´ | `>=´ | `==´ | `~=´ | 
-           and | or
+        opbin ::= `+´ | `-´ | `*´ | `/´ | `^´ | `%´ | `..´ | 
+             `<´ | `<=´ | `>´ | `>=´ | `==´ | `~=´ | 
+             and | or
 
-      opunaria ::= `-´ | not | `#´
+        opunaria ::= `-´ | not | `#´
 <
 Last update: Thu Sep 5 03:37:32 UTC 2019

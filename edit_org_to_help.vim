@@ -1,4 +1,5 @@
 " ======== Do some easy edits
+set ignorecase
 normal! ggd4j
 %s/\[\[[^]]\+\/license.html\]\[\([^]]*\)\]\]/\1: https:\/\/www.lua.org\/license.html/
 normal! 2jdap
@@ -9,8 +10,7 @@ normal! 2jdap
 %s/\n\s*#+begin_example/>/
 %s/^\s*#+end_example\n/</
 %s/^\ze\*\+ \d/\=repeat('=', 78)."\n"/
-g/^\s*:PROPERTIES:$/,+2d|normal! O
-" TODO Not sure if this works for all langs:
+g/^\s*:PROPERTIES:$/,+2d
 %s/^\s\+$//g
 
 " ======== Handle markup first
@@ -34,7 +34,7 @@ g/^\s*:PROPERTIES:$/,+2d|normal! O
 " insert table of contents
 execute '0/1 --/-2read toc/' . expand('%:t:r') . '.txt'
 " Change section headers to proper format and insert link targets
-g/^\*\+ \d/execute "normal! d2f-xms\"aYgg/\<C-r>a\<Cr>f|\"byf|'sA\<C-r>=repeat(' ', 79-strwidth(@a.@b))\<Cr>\<C-r>b\<Esc>0gUt|$r*F|r*"
+g/^\*\+ \d/execute "normal! d2f-xms\"aYgg/\<C-r>a   \<Cr>f|\"byf|'sA\<C-r>=repeat(' ', 79-strwidth(@a.@b))\<Cr>\<C-r>b\<Esc>0gUt|$r*F|r*"
 
 " ======== Set up columns/sections
 
@@ -46,6 +46,7 @@ else
 endif
 " Set up function links
 %s/\[\[[^]]\+\]\[=\([^=]\+\)=\]\]/|\1|/g
+
 " Note: type duplicates helptag.
 " Set up section links, some have no links, so `silent!`:
 silent! %s/\[\[#1\]\[[^]]*\]\]/|lua_introduction|/g
@@ -99,5 +100,5 @@ g/--------------\n\n\*\{3}/,+2s/--------------\n\n\*\{3} =\([^(]\+\)\( (.*)\)\?=
 " Finish verbatim
 %s/\%([\t ("']\|^\)\zs=\([^= \t]\%([^=]*[^= \t]\)\?\)=/`\1`/g
 
-write doc/%:r.txt
+write translations/lua_reference.%:rx
 quit!

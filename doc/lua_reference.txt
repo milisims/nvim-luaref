@@ -1,3 +1,4 @@
+
 by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, Waldemar Celes
 
 Copyright © 2006--2012 Lua.org, PUC-Rio. Freely available under the
@@ -58,6 +59,21 @@ TABLE OF CONTENTS                                          *lua_reference_toc*
 8      - The Complete Syntax of Lua        |lua_syntax|
 
 ==============================================================================
+TRANSLATIONS                                      *lua_reference_translations*
+
+In order to use a translated doc, move the appropriate language from the
+`translations/` directory to the `doc/` directory. Assuming you are in this
+help file in a vim buffer: >
+    !mv %:h:h/translations/lua_reference.XXx tags-XX %:h
+<
+Where `XX` the two letter language code for the language you want to use.
+Currently available are: `es`, `de`, and `pt`, (spanish, german, and portuguese
+respectively).
+
+If you do not want the english version, replace the english files with the
+version you prefer.
+
+==============================================================================
 INTRODUCTION                                                *lua_introduction*
 
 Lua is an extension programming language designed to support general
@@ -115,10 +131,10 @@ to name variables and table fields.
 
 The following `keywords` are reserved and cannot be used as names:
 >
-       and       break     do        else      elseif
-       end       false     for       function  if
-       in        local     nil       not       or
-       repeat    return    then      true      until     while
+         and       break     do        else      elseif
+         end       false     for       function  if
+         in        local     nil       not       or
+         repeat    return    then      true      until     while
 <
 Lua is a case-sensitive language: `and` is a reserved word, but `And`
 and `AND` are two different, valid names. As a convention, names
@@ -128,10 +144,10 @@ variables used by Lua.
 
 The following strings denote other tokens:
 >
-       +     -     *     /     %     ^     #
-       ==    ~=    <=    >=    <     >     =
-       (     )     {     }     [     ]
-       ;     :     ,     .     ..    ...
+         +     -     *     /     %     ^     #
+         ==    ~=    <=    >=    <     >     =
+         (     )     {     }     [     ]
+         ;     :     ,     .     ..    ...
 <
 `Literal strings` can be delimited by matching single or double quotes,
 and can contain the following C-like escape sequences: '`\a`' (bell),
@@ -165,21 +181,21 @@ in a system using ASCII (in which '`a`' is coded as 97, newline is coded
 as 10, and '`1`' is coded as 49), the five literal strings below denote
 the same string:
 >
-       a = 'alo\n123"'
-       a = "alo\n123\""
-       a = '\97lo\10\04923"'
-       a = [[alo
-       123"]]
-       a = [==[
-       alo
-       123"]==]
+         a = 'alo\n123"'
+         a = "alo\n123\""
+         a = '\97lo\10\04923"'
+         a = [[alo
+         123"]]
+         a = [==[
+         alo
+         123"]==]
 <
 A `numerical constant` can be written with an optional decimal part and
 an optional decimal exponent. Lua also accepts integer hexadecimal
 constants, by prefixing them with `0x`. Examples of valid numerical
 constants are
 >
-       3   3.0   3.1416   314.16e-2   0.31416E1   0xff   0x56
+         3   3.0   3.1416   314.16e-2   0.31416E1   0xff   0x56
 <
 A `comment` starts with a double hyphen (`--`) anywhere outside a
 string. If the text immediately after `--` is not an opening long
@@ -274,7 +290,7 @@ A single name can denote a global variable or a local variable (or a
 function's formal parameter, which is a particular kind of local
 variable):
 >
-      var ::= Name
+        var ::= Name
 <
 Name denotes identifiers, as defined in |lua_conventions|.
 
@@ -287,7 +303,7 @@ Before the first assignment to a variable, its value is `nil`.
 
 Square brackets are used to index a table:
 >
-      var ::= prefixexp `[´ exp `]´
+        var ::= prefixexp `[´ exp `]´
 <
 The meaning of accesses to global variables and table fields can be
 changed via metatables. An access to an indexed variable `t[i]` is
@@ -298,7 +314,7 @@ purposes.)
 
 The syntax `var.Name` is just syntactic sugar for `var["Name"]`:
 >
-      var ::= prefixexp `.´ Name
+        var ::= prefixexp `.´ Name
 <
 All global variables live as fields in ordinary Lua tables, called
 `environment tables` or simply `environments` (see |lua_environments|). Each
@@ -313,7 +329,7 @@ C functions through the debug library; (see |lua_debug|).)
 An access to a global variable `x` is equivalent to `_env.x`, which in
 turn is equivalent to
 >
-       gettable_event(_env, "x")
+         gettable_event(_env, "x")
 <
 where `_env` is the environment of the running function. (See
 |lua_metatables| for a complete description of the `gettable_event`
@@ -335,7 +351,7 @@ The unit of execution of Lua is called a `chunk`. A chunk is simply a
 sequence of statements, which are executed sequentially. Each statement
 can be optionally followed by a semicolon:
 >
-      chunk ::= {stat [`;´]}
+        chunk ::= {stat [`;´]}
 <
 There are no empty statements and thus '`;;`' is not legal.
 
@@ -358,11 +374,11 @@ BLOCKS                                                            *lua_blocks*
 A block is a list of statements; syntactically, a block is the same as a
 chunk:
 >
-      block ::= chunk
+        block ::= chunk
 <
 A block can be explicitly delimited to produce a single statement:
 >
-      stat ::= do block end
+        stat ::= do block end
 <
 Explicit blocks are useful to control the scope of variable
 declarations. Explicit blocks are also sometimes used to add a `return`
@@ -376,9 +392,9 @@ Lua allows multiple assignments. Therefore, the syntax for assignment
 defines a list of variables on the left side and a list of expressions
 on the right side. The elements in both lists are separated by commas:
 >
-      stat ::= varlist `=´ explist
-      varlist ::= var {`,´ var}
-      explist ::= exp {`,´ exp}
+        stat ::= varlist `=´ explist
+        varlist ::= var {`,´ var}
+        explist ::= exp {`,´ exp}
 <
 Expressions are discussed in |lua_expressions|.
 
@@ -393,17 +409,17 @@ enclosed in parentheses; see |lua_expressions|).
 The assignment statement first evaluates all its expressions and only
 then are the assignments performed. Thus the code
 >
-       i = 3
-       i, a[i] = i+1, 20
+         i = 3
+         i, a[i] = i+1, 20
 <
 sets `a[3]` to 20, without affecting `a[4]` because the `i` in `a[i]` is
 evaluated (to 3) before it is assigned 4. Similarly, the line
 >
-       x, y = y, x
+         x, y = y, x
 <
 exchanges the values of `x` and `y`, and
 >
-       x, y, z = y, z, x
+         x, y, z = y, z, x
 <
 cyclically permutes the values of `x`, `y`, and `z`.
 
@@ -417,7 +433,7 @@ here only for explanatory purposes.)
 An assignment to a global variable =x = val= is equivalent to the
 assignment =_env.x = val=, which in turn is equivalent to
 >
-       settable_event(_env, "x", val)
+         settable_event(_env, "x", val)
 <
 where `_env` is the environment of the running function. (The `_env`
 variable is not defined in Lua. We use it here only for explanatory
@@ -429,9 +445,9 @@ CONTROL STRUCTURES                                               *lua_control*
 The control structures `if`, `while`, and `repeat` have the usual
 meaning and familiar syntax:
 >
-      stat ::= while exp do block end
-      stat ::= repeat block until exp
-      stat ::= if exp then block {elseif exp then block} [else block] end
+        stat ::= while exp do block end
+        stat ::= repeat block until exp
+        stat ::= if exp then block {elseif exp then block} [else block] end
 <
 Lua also has a `for` statement, in two flavors (see |lua_for|).
 
@@ -448,12 +464,12 @@ The `return` statement is used to return values from a function or a
 chunk (which is just a function). Functions and chunks can return more
 than one value, and so the syntax for the `return` statement is
 >
-      stat ::= return [explist]
+        stat ::= return [explist]
 <
 The `break` statement is used to terminate the execution of a `while`,
 `repeat`, or `for` loop, skipping to the next statement after the loop:
 >
-      stat ::= break
+        stat ::= break
 <
 A `break` ends the innermost enclosing loop.
 
@@ -471,25 +487,25 @@ The `for` statement has two forms: one numeric and one generic.
 The numeric `for` loop repeats a block of code while a control variable
 runs through an arithmetic progression. It has the following syntax:
 >
-      stat ::= for Name `=´ exp `,´ exp [`,´ exp] do block end
+        stat ::= for Name `=´ exp `,´ exp [`,´ exp] do block end
 <
 The `block` is repeated for `name` starting at the value of the first
 `exp`, until it passes the second `exp` by steps of the third `exp`.
 More precisely, a `for` statement like
 >
-       for v = e1, e2, e3 do block end
+         for v = e1, e2, e3 do block end
 <
 is equivalent to the code:
 >
-       do
-         local var, limit, step = tonumber(e1), tonumber(e2), tonumber(e3)
-         if not (var and limit and step) then error() end
-         while (step > 0 and var <= limit) or (step <= 0 and var >= limit) do
-           local v = var
-           block
-           var = var + step
+         do
+           local var, limit, step = tonumber(e1), tonumber(e2), tonumber(e3)
+           if not (var and limit and step) then error() end
+           while (step > 0 and var <= limit) or (step <= 0 and var >= limit) do
+             local v = var
+             block
+             var = var + step
+           end
          end
-       end
 <
 Note the following:
 
@@ -509,24 +525,24 @@ each iteration, the iterator function is called to produce a new value,
 stopping when this new value is `nil`. The generic `for` loop has the
 following syntax:
 >
-      stat ::= for namelist in explist do block end
-      namelist ::= Name {`,´ Name}
+        stat ::= for namelist in explist do block end
+        namelist ::= Name {`,´ Name}
 <
 A `for` statement like
 >
-       for var_1, ···, var_n in explist do block end
+         for var_1, ···, var_n in explist do block end
 <
 is equivalent to the code:
 >
-       do
-         local f, s, var = explist
-         while true do
-           local var_1, ···, var_n = f(s, var)
-           var = var_1
-           if var == nil then break end
-           block
+         do
+           local f, s, var = explist
+           while true do
+             local var_1, ···, var_n = f(s, var)
+             var = var_1
+             if var == nil then break end
+             block
+           end
          end
-       end
 <
 Note the following:
 
@@ -546,7 +562,7 @@ FUNCTION CALLS AS STATEMENTS                              *lua_func_statement*
 To allow possible side-effects, function calls can be executed as
 statements:
 >
-      stat ::= functioncall
+        stat ::= functioncall
 <
 In this case, all returned values are thrown away. Function calls are
 explained in |lua_function_calls|.
@@ -557,7 +573,7 @@ LOCAL DECLARATIONS                                                 *lua_local*
 Local variables can be declared anywhere inside a block. The declaration
 can include an initial assignment:
 >
-      stat ::= local namelist [`=´ explist]
+        stat ::= local namelist [`=´ explist]
 <
 If present, an initial assignment has the same semantics of a multiple
 assignment (see |lua_assignment|). Otherwise, all variables are
@@ -575,16 +591,16 @@ EXPRESSIONS                                                  *lua_expressions*
 
 The basic expressions in Lua are the following:
 >
-      exp ::= prefixexp
-      exp ::= nil | false | true
-      exp ::= Number
-      exp ::= String
-      exp ::= function
-      exp ::= tableconstructor
-      exp ::= `...´
-      exp ::= exp binop exp
-      exp ::= unop exp
-      prefixexp ::= var | functioncall | `(´ exp `)´
+        exp ::= prefixexp
+        exp ::= nil | false | true
+        exp ::= Number
+        exp ::= String
+        exp ::= function
+        exp ::= tableconstructor
+        exp ::= `...´
+        exp ::= exp binop exp
+        exp ::= unop exp
+        prefixexp ::= var | functioncall | `(´ exp `)´
 <
 Numbers and literal strings are explained in |lua_conventions|; variables
 are explained in |lua_variables|; function definitions are explained in
@@ -612,22 +628,22 @@ element, discarding all values except the first one.
 
 Here are some examples:
 >
-       f()                -- adjusted to 0 results
-       g(f(), x)          -- f() is adjusted to 1 result
-       g(x, f())          -- g gets x plus all results from f()
-       a,b,c = f(), x     -- f() is adjusted to 1 result (c gets nil)
-       a,b = ...          -- a gets the first vararg parameter, b gets
-                          -- the second (both a and b can get nil if there
-                          -- is no corresponding vararg parameter)
+         f()                -- adjusted to 0 results
+         g(f(), x)          -- f() is adjusted to 1 result
+         g(x, f())          -- g gets x plus all results from f()
+         a,b,c = f(), x     -- f() is adjusted to 1 result (c gets nil)
+         a,b = ...          -- a gets the first vararg parameter, b gets
+                            -- the second (both a and b can get nil if there
+                            -- is no corresponding vararg parameter)
 
-       a,b,c = x, f()     -- f() is adjusted to 2 results
-       a,b,c = f()        -- f() is adjusted to 3 results
-       return f()         -- returns all results from f()
-       return ...         -- returns all received vararg parameters
-       return x,y,f()     -- returns x, y, and all results from f()
-       {f()}              -- creates a list with all results from f()
-       {...}              -- creates a list with all vararg parameters
-       {f(), nil}         -- f() is adjusted to 1 result
+         a,b,c = x, f()     -- f() is adjusted to 2 results
+         a,b,c = f()        -- f() is adjusted to 3 results
+         return f()         -- returns all results from f()
+         return ...         -- returns all received vararg parameters
+         return x,y,f()     -- returns x, y, and all results from f()
+         {f()}              -- creates a list with all results from f()
+         {...}              -- creates a list with all vararg parameters
+         {f(), nil}         -- f() is adjusted to 1 result
 <
 Any expression enclosed in parentheses always results in only one value.
 Thus, `(f(x,y,z))` is always a single value, even if `f` returns several
@@ -645,7 +661,7 @@ numbers, or strings that can be converted to numbers (see
 Exponentiation works for any exponent. For instance, `x^(-0.5)` computes
 the inverse of the square root of `x`. Modulo is defined as
 >
-       a % b == a - math.floor(a/b)*b
+         a % b == a - math.floor(a/b)*b
 <
 That is, it is the remainder of a division that rounds the quotient
 towards minus infinity.
@@ -655,7 +671,7 @@ RELATIONAL OPERATORS                                      *lua_relational_ops*
 
 The relational operators in Lua are
 >
-       ==    ~=    <     >     <=    >=
+         ==    ~=    <     >     <=    >=
 <
 These operators always result in `false` or `true`.
 
@@ -699,14 +715,14 @@ different from `nil` and `false`; otherwise, `or` returns its second
 argument. Both `and` and `or` use short-cut evaluation; that is, the
 second operand is evaluated only if necessary. Here are some examples:
 >
-       10 or 20            --> 10
-       10 or error()       --> 10
-       nil or "a"          --> "a"
-       nil and 10          --> nil
-       false and error()   --> false
-       false and nil       --> false
-       false or nil        --> nil
-       10 and 20           --> 20
+         10 or 20            --> 10
+         10 or error()       --> 10
+         nil or "a"          --> "a"
+         nil and 10          --> nil
+         false and error()   --> false
+         false and nil       --> false
+         false or nil        --> nil
+         10 and 20           --> 20
 <
 (In this manual, `-->` indicates the result of the preceding
 expression.)
@@ -742,14 +758,14 @@ PRECEDENCE                                                    *lua_precedence*
 Operator precedence in Lua follows the table below, from lower to higher
 priority:
 >
-       or
-       and
-       <     >     <=    >=    ~=    ==
-       ..
-       +     -
-       *     /     %
-       not   #     - (unary)
-       ^
+         or
+         and
+         <     >     <=    >=    ~=    ==
+         ..
+         +     -
+         *     /     %
+         not   #     - (unary)
+         ^
 <
 As usual, you can use parentheses to change the precedences of an
 expression. The concatenation ('`..`') and exponentiation ('`^`')
@@ -764,10 +780,10 @@ constructor is evaluated, a new table is created. A constructor can be
 used to create an empty table or to create a table and initialize some
 of its fields. The general syntax for constructors is
 >
-      tableconstructor ::= `{´ [fieldlist] `}´
-      fieldlist ::= field {fieldsep field} [fieldsep]
-      field ::= `[´ exp `]´ `=´ exp | Name `=´ exp | exp
-      fieldsep ::= `,´ | `;´
+        tableconstructor ::= `{´ [fieldlist] `}´
+        fieldlist ::= field {fieldsep field} [fieldsep]
+        field ::= `[´ exp `]´ `=´ exp | Name `=´ exp | exp
+        fieldsep ::= `,´ | `;´
 <
 Each field of the form =[exp1] = exp2= adds to the new table an entry
 with key `exp1` and value `exp2`. A field of the form =name = exp= is
@@ -776,21 +792,21 @@ equivalent to =[i] = exp=, where `i` are consecutive numerical integers,
 starting with 1. Fields in the other formats do not affect this
 counting. For example,
 >
-       a = { [f(1)] = g; "x", "y"; x = 1, f(x), [30] = 23; 45 }
+         a = { [f(1)] = g; "x", "y"; x = 1, f(x), [30] = 23; 45 }
 <
 is equivalent to
 >
-       do
-         local t = {}
-         t[f(1)] = g
-         t[1] = "x"         -- 1st exp
-         t[2] = "y"         -- 2nd exp
-         t.x = 1            -- t["x"] = 1
-         t[3] = f(x)        -- 3rd exp
-         t[30] = 23
-         t[4] = 45          -- 4th exp
-         a = t
-       end
+         do
+           local t = {}
+           t[f(1)] = g
+           t[1] = "x"         -- 1st exp
+           t[2] = "y"         -- 2nd exp
+           t.x = 1            -- t["x"] = 1
+           t[3] = f(x)        -- 3rd exp
+           t[30] = 23
+           t[4] = 45          -- 4th exp
+           a = t
+         end
 <
 If the last field in the list has the form `exp` and the expression is a
 function call or a vararg expression, then all values returned by this
@@ -802,11 +818,11 @@ The field list can have an optional trailing separator, as a convenience
 for machine-generated code.
 
 ==============================================================================
-FUNCTION CALLS                                            *lua_func_statement*
+FUNCTION CALLS                                            *lua_function_calls*
 
 A function call in Lua has the following syntax:
 >
-      functioncall ::= prefixexp args
+        functioncall ::= prefixexp args
 <
 In a function call, first prefixexp and args are evaluated. If the value
 of prefixexp has type `function`, then this function is called with the
@@ -816,16 +832,16 @@ original call arguments (see |lua_metatables|).
 
 The form
 >
-      functioncall ::= prefixexp `:´ Name args
+        functioncall ::= prefixexp `:´ Name args
 <
 can be used to call "methods". A call `v:name(args)` is syntactic sugar
 for `v.name(v,args)`, except that `v` is evaluated only once.
 
 Arguments have the following syntax:
 >
-      args ::= `(´ [explist] `)´
-      args ::= tableconstructor
-      args ::= String
+        args ::= `(´ [explist] `)´
+        args ::= tableconstructor
+        args ::= String
 <
 All argument expressions are evaluated before the call. A call of the
 form `f{fields}` is syntactic sugar for `f({fields})`; that is, the
@@ -837,8 +853,8 @@ As an exception to the free-format syntax of Lua, you cannot put a line
 break before the '`(`' in a function call. This restriction avoids some
 ambiguities in the language. If you write
 >
-       a = f
-       (g).x(a)
+         a = f
+         (g).x(a)
 <
 Lua would see that as a single statement, =a = f(g).x(a)=. So, if you
 want two statements, you must add a semi-colon between them. If you
@@ -855,53 +871,53 @@ function call as argument; this syntax makes the calling function return
 exactly the returns of the called function. So, none of the following
 examples are tail calls:
 >
-       return (f(x))        -- results adjusted to 1
-       return 2 * f(x)
-       return x, f(x)       -- additional results
-       f(x); return         -- results discarded
-       return x or f(x)     -- results adjusted to 1
+         return (f(x))        -- results adjusted to 1
+         return 2 * f(x)
+         return x, f(x)       -- additional results
+         f(x); return         -- results discarded
+         return x or f(x)     -- results adjusted to 1
 <
 ==============================================================================
 FUNCTION DEFINITIONS                                       *lua_function_defs*
 
 The syntax for function definition is
 >
-      function ::= function funcbody
-      funcbody ::= `(´ [parlist] `)´ block end
+        function ::= function funcbody
+        funcbody ::= `(´ [parlist] `)´ block end
 <
 The following syntactic sugar simplifies function definitions:
 >
-      stat ::= function funcname funcbody
-      stat ::= local function Name funcbody
-      funcname ::= Name {`.´ Name} [`:´ Name]
+        stat ::= function funcname funcbody
+        stat ::= local function Name funcbody
+        funcname ::= Name {`.´ Name} [`:´ Name]
 <
 The statement
 >
-       function f () body end
+         function f () body end
 <
 translates to
 >
-       f = function () body end
+         f = function () body end
 <
 The statement
 >
-       function t.a.b.c.f () body end
+         function t.a.b.c.f () body end
 <
 translates to
 >
-       t.a.b.c.f = function () body end
+         t.a.b.c.f = function () body end
 <
 The statement
 >
-       local function f () body end
+         local function f () body end
 <
 translates to
 >
-       local f; f = function () body end
+         local f; f = function () body end
 <
 `not` to
 >
-       local f = function () body end
+         local f = function () body end
 <
 (This only makes a difference when the body of the function contains
 references to `f`.)
@@ -917,7 +933,7 @@ can have different environment tables.
 Parameters act as local variables that are initialized with the argument
 values:
 >
-      parlist ::= namelist [`,´ `...´] | `...´
+        parlist ::= namelist [`,´ `...´] | `...´
 <
 When a function is called, the list of arguments is adjusted to the
 length of the list of parameters, unless the function is a variadic or
@@ -935,25 +951,25 @@ parentheses).
 
 As an example, consider the following definitions:
 >
-       function f(a, b) end
-       function g(a, b, ...) end
-       function r() return 1,2,3 end
+         function f(a, b) end
+         function g(a, b, ...) end
+         function r() return 1,2,3 end
 <
 Then, we have the following mapping from arguments to parameters and to
 the vararg expression:
 >
-       CALL            PARAMETERS
+         CALL            PARAMETERS
 
-       f(3)             a=3, b=nil
-       f(3, 4)          a=3, b=4
-       f(3, 4, 5)       a=3, b=4
-       f(r(), 10)       a=1, b=10
-       f(r())           a=1, b=2
+         f(3)             a=3, b=nil
+         f(3, 4)          a=3, b=4
+         f(3, 4, 5)       a=3, b=4
+         f(r(), 10)       a=1, b=10
+         f(r())           a=1, b=2
 
-       g(3)             a=3, b=nil, ... -->  (nothing)
-       g(3, 4)          a=3, b=4,   ... -->  (nothing)
-       g(3, 4, 5, 8)    a=3, b=4,   ... -->  5  8
-       g(5, r())        a=5, b=1,   ... -->  2  3
+         g(3)             a=3, b=nil, ... -->  (nothing)
+         g(3, 4)          a=3, b=4,   ... -->  (nothing)
+         g(3, 4, 5, 8)    a=3, b=4,   ... -->  5  8
+         g(5, r())        a=5, b=1,   ... -->  2  3
 <
 Results are returned using the `return` statement (see
 |lua_control|). If control reaches the end of a function without
@@ -963,11 +979,11 @@ results.
 The `colon` syntax is used for defining `methods`, that is, functions
 that have an implicit extra parameter `self`. Thus, the statement
 >
-       function t.a.b.c:f (params) body end
+         function t.a.b.c:f (params) body end
 <
 is syntactic sugar for
 >
-       t.a.b.c.f = function (self, params) body end
+         t.a.b.c.f = function (self, params) body end
 <
 ==============================================================================
 VISIBILITY RULES                                                   *lua_scope*
@@ -977,18 +993,18 @@ first statement `after` their declaration and lasts until the end of the
 innermost block that includes the declaration. Consider the following
 example:
 >
-       x = 10                -- global variable
-       do                    -- new block
-         local x = x         -- new 'x', with value 10
-         print(x)            --> 10
-         x = x+1
-         do                  -- another block
-           local x = x+1     -- another 'x'
-           print(x)          --> 12
+         x = 10                -- global variable
+         do                    -- new block
+           local x = x         -- new 'x', with value 10
+           print(x)            --> 10
+           x = x+1
+           do                  -- another block
+             local x = x+1     -- another 'x'
+             print(x)          --> 12
+           end
+           print(x)            --> 11
          end
-         print(x)            --> 11
-       end
-       print(x)              --> 10  (the global one)
+         print(x)              --> 10  (the global one)
 <
 Notice that, in a declaration like =local x = x=, the new `x` being
 declared is not in scope yet, and so the second `x` refers to the
@@ -1002,12 +1018,12 @@ variable/, inside the inner function.
 Notice that each execution of a `local` statement defines new local
 variables. Consider the following example:
 >
-       a = {}
-       local x = 20
-       for i=1,10 do
-         local y = 0
-         a[i] = function () y=y+1; return x+y end
-       end
+         a = {}
+         local x = 20
+         for i=1,10 do
+           local y = 0
+           a[i] = function () y=y+1; return x+y end
+         end
 <
 The loop creates ten closures (that is, ten instances of the anonymous
 function). Each of these closures uses a different `y` variable, while
@@ -1078,11 +1094,11 @@ simulation. All functions used in these descriptions
 described in |lua_builtins|. In particular, to retrieve the metamethod
 of a given object, we use the expression
 >
-       metatable(obj)[event]
+         metatable(obj)[event]
 <
 This should be read as
 >
-       rawget(getmetatable(obj) or {}, event)
+         rawget(getmetatable(obj) or {}, event)
 <
 That is, the access to a metamethod does not invoke other metamethods,
 and the access to objects with no metatables does not fail (it simply
@@ -1095,91 +1111,86 @@ results in `nil`).
   type does not define a handler for the operation, then Lua tries the
   second operand.
 >
-         function getbinhandler (op1, op2, event)
-           return metatable(op1)[event] or metatable(op2)[event]
-         end
+           function getbinhandler (op1, op2, event)
+             return metatable(op1)[event] or metatable(op2)[event]
+           end
 <
   By using this function, the behavior of the `op1 + op2` is
 >
-         function add_event (op1, op2)
-           local o1, o2 = tonumber(op1), tonumber(op2)
-           if o1 and o2 then  -- both operands are numeric?
-             return o1 + o2   -- '+' here is the primitive 'add'
-           else  -- at least one of the operands is not numeric
-             local h = getbinhandler(op1, op2, "__add")
-             if h then
-               -- call the handler with both operands
-               return (h(op1, op2))
-             else  -- no handler available: default behavior
-               error(···)
+           function add_event (op1, op2)
+             local o1, o2 = tonumber(op1), tonumber(op2)
+             if o1 and o2 then  -- both operands are numeric?
+               return o1 + o2   -- '+' here is the primitive 'add'
+             else  -- at least one of the operands is not numeric
+               local h = getbinhandler(op1, op2, "__add")
+               if h then
+                 -- call the handler with both operands
+                 return (h(op1, op2))
+               else  -- no handler available: default behavior
+                 error(···)
+               end
              end
            end
-         end
 <
 - `sub`: the `-` operation. Behavior similar to the "add" operation.
-
 - `mul`: the `*` operation. Behavior similar to the "add" operation.
-
 - `div`: the `/` operation. Behavior similar to the "add" operation.
-
 - `mod`: the `%` operation. Behavior similar to the "add" operation,
   with the operation `o1 - floor(o1/o2)*o2` as the primitive operation.
-
 - `pow`: the `^` (exponentiation) operation. Behavior similar to the
   "add" operation, with the function `pow` (from the C math library) as
   the primitive operation.
-
 - `unm`: the unary `-` operation.
 >
-         function unm_event (op)
-           local o = tonumber(op)
-           if o then  -- operand is numeric?
-             return -o  -- '-' here is the primitive 'unm'
-           else  -- the operand is not numeric.
-             -- Try to get a handler from the operand
-             local h = metatable(op).__unm
-             if h then
-               -- call the handler with the operand
-               return (h(op))
-             else  -- no handler available: default behavior
-               error(···)
+           function unm_event (op)
+             local o = tonumber(op)
+             if o then  -- operand is numeric?
+               return -o  -- '-' here is the primitive 'unm'
+             else  -- the operand is not numeric.
+               -- Try to get a handler from the operand
+               local h = metatable(op).__unm
+               if h then
+                 -- call the handler with the operand
+                 return (h(op))
+               else  -- no handler available: default behavior
+                 error(···)
+               end
              end
            end
-         end
 <
 - `concat`: the `..` (concatenation) operation.
 >
-         function concat_event (op1, op2)
-           if (type(op1) == "string" or type(op1) == "number") and
-              (type(op2) == "string" or type(op2) == "number") then
-             return op1 .. op2  -- primitive string concatenation
-           else
-             local h = getbinhandler(op1, op2, "__concat")
-             if h then
-               return (h(op1, op2))
+           function concat_event (op1, op2)
+             if (type(op1) == "string" or type(op1) == "number") and
+                (type(op2) == "string" or type(op2) == "number") then
+               return op1 .. op2  -- primitive string concatenation
              else
-               error(···)
+               local h = getbinhandler(op1, op2, "__concat")
+               if h then
+                 return (h(op1, op2))
+               else
+                 error(···)
+               end
              end
            end
-         end
 <
 - `len`: the `#` operation.
 >
-         function len_event (op)
-           if type(op) == "string" then
-             return strlen(op)         -- primitive string length
-           elseif type(op) == "table" then
-             return #op                -- primitive table length
-           else
-             local h = metatable(op).__len
-             if h then
-               -- call the handler with the operand
-               return (h(op))
-             else  -- no handler available: default behavior
-               error(···)
+           function len_event (op)
+             if type(op) == "string" then
+               return strlen(op)         -- primitive string length
+             elseif type(op) == "table" then
+               return #op                -- primitive table length
+             else
+               local h = metatable(op).__len
+               if h then
+                 -- call the handler with the operand
+                 return (h(op))
+               else  -- no handler available: default behavior
+                 error(···)
+               end
              end
            end
-         end
 <
   See |lua_len| for a description of the length of a table.
 
@@ -1188,73 +1199,73 @@ results in `nil`).
   is selected when both objects being compared have the same type and
   the same metamethod for the selected operation.
 >
-         function getcomphandler (op1, op2, event)
-           if type(op1) ~= type(op2) then return nil end
-           local mm1 = metatable(op1)[event]
-           local mm2 = metatable(op2)[event]
-           if mm1 == mm2 then return mm1 else return nil end
-         end
+           function getcomphandler (op1, op2, event)
+             if type(op1) ~= type(op2) then return nil end
+             local mm1 = metatable(op1)[event]
+             local mm2 = metatable(op2)[event]
+             if mm1 == mm2 then return mm1 else return nil end
+           end
 <
   The "eq" event is defined as follows:
 >
-         function eq_event (op1, op2)
-           if type(op1) ~= type(op2) then  -- different types?
-             return false   -- different objects
+           function eq_event (op1, op2)
+             if type(op1) ~= type(op2) then  -- different types?
+               return false   -- different objects
+             end
+             if op1 == op2 then   -- primitive equal?
+               return true   -- objects are equal
+             end
+             -- try metamethod
+             local h = getcomphandler(op1, op2, "__eq")
+             if h then
+               return (h(op1, op2))
+             else
+               return false
+             end
            end
-           if op1 == op2 then   -- primitive equal?
-             return true   -- objects are equal
-           end
-           -- try metamethod
-           local h = getcomphandler(op1, op2, "__eq")
-           if h then
-             return (h(op1, op2))
-           else
-             return false
-           end
-         end
 <
   `a ~` b= is equivalent to =not (a == b)=.
 
 - `lt`: the `<` operation.
 >
-         function lt_event (op1, op2)
-           if type(op1) == "number" and type(op2) == "number" then
-             return op1 < op2   -- numeric comparison
-           elseif type(op1) == "string" and type(op2) == "string" then
-             return op1 < op2   -- lexicographic comparison
-           else
-             local h = getcomphandler(op1, op2, "__lt")
-             if h then
-               return (h(op1, op2))
+           function lt_event (op1, op2)
+             if type(op1) == "number" and type(op2) == "number" then
+               return op1 < op2   -- numeric comparison
+             elseif type(op1) == "string" and type(op2) == "string" then
+               return op1 < op2   -- lexicographic comparison
              else
-               error(···)
-             end
-           end
-         end
-<
-  `a > b` is equivalent to `b < a`.
-
-- `le`: the `<`= operation.
->
-         function le_event (op1, op2)
-           if type(op1) == "number" and type(op2) == "number" then
-             return op1 <= op2   -- numeric comparison
-           elseif type(op1) == "string" and type(op2) == "string" then
-             return op1 <= op2   -- lexicographic comparison
-           else
-             local h = getcomphandler(op1, op2, "__le")
-             if h then
-               return (h(op1, op2))
-             else
-               h = getcomphandler(op1, op2, "__lt")
+               local h = getcomphandler(op1, op2, "__lt")
                if h then
-                 return not h(op2, op1)
+                 return (h(op1, op2))
                else
                  error(···)
                end
              end
            end
-         end
+<
+  `a > b` is equivalent to `b < a`.
+
+- `le`: the `<`= operation.
+>
+           function le_event (op1, op2)
+             if type(op1) == "number" and type(op2) == "number" then
+               return op1 <= op2   -- numeric comparison
+             elseif type(op1) == "string" and type(op2) == "string" then
+               return op1 <= op2   -- lexicographic comparison
+             else
+               local h = getcomphandler(op1, op2, "__le")
+               if h then
+                 return (h(op1, op2))
+               else
+                 h = getcomphandler(op1, op2, "__lt")
+                 if h then
+                   return not h(op2, op1)
+                 else
+                   error(···)
+                 end
+               end
+             end
+           end
 <
   `a >` b= is equivalent to `b <` a=. Note that, in the absence of a
   "le" metamethod, Lua tries the "lt", assuming that `a <` b= is
@@ -1262,60 +1273,60 @@ results in `nil`).
 
 - `index`: The indexing access `table[key]`.
 >
-         function gettable_event (table, key)
-           local h
-           if type(table) == "table" then
-             local v = rawget(table, key)
-             if v ~= nil then return v end
-             h = metatable(table).__index
-             if h == nil then return nil end
-           else
-             h = metatable(table).__index
-             if h == nil then
-               error(···)
+           function gettable_event (table, key)
+             local h
+             if type(table) == "table" then
+               local v = rawget(table, key)
+               if v ~= nil then return v end
+               h = metatable(table).__index
+               if h == nil then return nil end
+             else
+               h = metatable(table).__index
+               if h == nil then
+                 error(···)
+               end
+             end
+             if type(h) == "function" then
+               return (h(table, key))     -- call the handler
+             else return h[key]           -- or repeat operation on it
              end
            end
-           if type(h) == "function" then
-             return (h(table, key))     -- call the handler
-           else return h[key]           -- or repeat operation on it
-           end
-         end
 <
 - `newindex`: The indexing assignment =table[key] = value=.
 >
-         function settable_event (table, key, value)
-           local h
-           if type(table) == "table" then
-             local v = rawget(table, key)
-             if v ~= nil then rawset(table, key, value); return end
-             h = metatable(table).__newindex
-             if h == nil then rawset(table, key, value); return end
-           else
-             h = metatable(table).__newindex
-             if h == nil then
-               error(···)
+           function settable_event (table, key, value)
+             local h
+             if type(table) == "table" then
+               local v = rawget(table, key)
+               if v ~= nil then rawset(table, key, value); return end
+               h = metatable(table).__newindex
+               if h == nil then rawset(table, key, value); return end
+             else
+               h = metatable(table).__newindex
+               if h == nil then
+                 error(···)
+               end
+             end
+             if type(h) == "function" then
+               h(table, key,value)           -- call the handler
+             else h[key] = value             -- or repeat operation on it
              end
            end
-           if type(h) == "function" then
-             h(table, key,value)           -- call the handler
-           else h[key] = value             -- or repeat operation on it
-           end
-         end
 <
 - `call`: called when Lua calls a value.
 >
-         function function_event (func, ...)
-           if type(func) == "function" then
-             return func(...)   -- primitive call
-           else
-             local h = metatable(func).__call
-             if h then
-               return h(func, ...)
+           function function_event (func, ...)
+             if type(func) == "function" then
+               return func(...)   -- primitive call
              else
-               error(···)
+               local h = metatable(func).__call
+               if h then
+                 return h(func, ...)
+               else
+                 error(···)
+               end
              end
            end
-         end
 <
 ==============================================================================
 ENVIRONMENTS                                                *lua_environments*
@@ -1470,36 +1481,36 @@ error is propagated to the caller.
 
 As an example, consider the following code:
 >
-       function foo (a)
-         print("foo", a)
-         return coroutine.yield(2*a)
-       end
+         function foo (a)
+           print("foo", a)
+           return coroutine.yield(2*a)
+         end
 
-       co = coroutine.create(function (a,b)
-             print("co-body", a, b)
-             local r = foo(a+1)
-             print("co-body", r)
-             local r, s = coroutine.yield(a+b, a-b)
-             print("co-body", r, s)
-             return b, "end"
-       end)
+         co = coroutine.create(function (a,b)
+               print("co-body", a, b)
+               local r = foo(a+1)
+               print("co-body", r)
+               local r, s = coroutine.yield(a+b, a-b)
+               print("co-body", r, s)
+               return b, "end"
+         end)
 
-       print("main", coroutine.resume(co, 1, 10))
-       print("main", coroutine.resume(co, "r"))
-       print("main", coroutine.resume(co, "x", "y"))
-       print("main", coroutine.resume(co, "x", "y"))
+         print("main", coroutine.resume(co, 1, 10))
+         print("main", coroutine.resume(co, "r"))
+         print("main", coroutine.resume(co, "x", "y"))
+         print("main", coroutine.resume(co, "x", "y"))
 <
 When you run it, it produces the following output:
 >
-       co-body 1       10
-       foo     2
+         co-body 1       10
+         foo     2
 
-       main    true    4
-       co-body r
-       main    true    11      -9
-       co-body x       y
-       main    true    10      end
-       main    false   cannot resume dead coroutine
+         main    true    4
+         co-body r
+         main    true    11      -9
+         co-body x       y
+         main    true    10      end
+         main    false   cannot resume dead coroutine
 <
 ==============================================================================
 STANDARD LIBRARIES                                                *lua_stdlib*
@@ -1614,7 +1625,7 @@ ipairs (t)                                                            *ipairs*
     Returns three values: an iterator function, the table `t`, and 0, so
     that the construction
     >
-	   for i,v in ipairs(t) do body end
+	     for i,v in ipairs(t) do body end
     <
     will iterate over the pairs (`1,t[1]`), (`2,t[2]`), ···, up to the first
     integer key absent from the table.
@@ -1642,7 +1653,7 @@ loadstring (string [, chunkname])                                 *loadstring*
 
     To load and run a given string, use the idiom
     >
-	   assert(loadstring(s))()
+	     assert(loadstring(s))()
     <
     When absent, `chunkname` defaults to the given string.
 
@@ -1668,7 +1679,7 @@ pairs (t)                                                              *pairs*
     Returns three values: the |next| function, the table `t`,
     and `nil`, so that the construction
     >
-	   for k,v in pairs(t) do body end
+	     for k,v in pairs(t) do body end
     <
     will iterate over all key--value pairs of table `t`.
 
@@ -1760,7 +1771,7 @@ unpack (list [, i [, j]])                                             *unpack*
     Returns the elements from the given table. This function is equivalent
     to
     >
-	   return list[i], list[i+1], ···, list[j]
+	     return list[i], list[i+1], ···, list[j]
     <
     except that the above code can be written only for a fixed number of
     elements. By default, `i` is 1 and `j` is the length of the list, as
@@ -1927,7 +1938,7 @@ package.loaders                                              *package.loaders*
     (such as "`/`" in Unix); then it will try to open the resulting file
     name. So, for instance, if the Lua path is the string
     >
-	   "./?.lua;./?.lc;/usr/local/?/init.lua"
+	     "./?.lua;./?.lc;/usr/local/?/init.lua"
     <
     the search for a Lua file for module `foo` will try to open the files
     `./foo.lua`, `./foo.lc`, and `/usr/local/foo/init.lua`, in that order.
@@ -1936,7 +1947,7 @@ package.loaders                                              *package.loaders*
     given by the variable |package.cpath|. For
     instance, if the C path is the string
     >
-	   "./?.so;./?.dll;/usr/local/?/init.so"
+	     "./?.so;./?.dll;/usr/local/?/init.so"
     <
     the searcher for module `foo` will try to open the files `./foo.so`,
     `./foo.dll`, and `/usr/local/foo/init.so`, in that order. Once it finds
@@ -2056,12 +2067,12 @@ string.format (formatstring, ···)                              *string.format
     embedded zeros, and backslashes in the string are correctly escaped when
     written. For instance, the call
     >
-	   string.format('%q', 'a string with "quotes" and \n new line')
+	     string.format('%q', 'a string with "quotes" and \n new line')
     <
     will produce the string:
     >
-	   "a string with \"quotes\" and \
-	    new line"
+	     "a string with \"quotes\" and \
+	      new line"
     <
     The options `c`, `d`, `E`, `e`, `f`, `g`, `G`, `i`, `o`, `u`, `X`, and
     `x` all expect a number as argument, whereas `q` and `s` expect a
@@ -2077,20 +2088,20 @@ string.gmatch (s, pattern)                                     *string.gmatch*
 
     As an example, the following loop
     >
-	   s = "hello world from Lua"
-	   for w in string.gmatch(s, "%a+") do
-	     print(w)
-	   end
+	     s = "hello world from Lua"
+	     for w in string.gmatch(s, "%a+") do
+	       print(w)
+	     end
     <
     will iterate over all the words from string `s`, printing one per line.
     The next example collects all pairs `key`value= from the given string
     into a table:
     >
-	   t = {}
-	   s = "from=world, to=Lua"
-	   for k, v in string.gmatch(s, "(%w+)=(%w+)") do
-	     t[k] = v
-	   end
+	     t = {}
+	     s = "from=world, to=Lua"
+	     for k, v in string.gmatch(s, "(%w+)=(%w+)") do
+	       t[k] = v
+	     end
     <
     For this function, a '`^`' at the start of a pattern does not work as an
     anchor, as this would prevent the iteration.
@@ -2124,26 +2135,26 @@ string.gsub (s, pattern, repl [, n])                             *string.gsub*
 
     Here are some examples:
     >
-	   x = string.gsub("hello world", "(%w+)", "%1 %1")
-	   --> x="hello hello world world"
+	     x = string.gsub("hello world", "(%w+)", "%1 %1")
+	     --> x="hello hello world world"
 
-	   x = string.gsub("hello world", "%w+", "%0 %0", 1)
-	   --> x="hello hello world"
+	     x = string.gsub("hello world", "%w+", "%0 %0", 1)
+	     --> x="hello hello world"
 
-	   x = string.gsub("hello world from Lua", "(%w+)%s*(%w+)", "%2 %1")
-	   --> x="world hello Lua from"
+	     x = string.gsub("hello world from Lua", "(%w+)%s*(%w+)", "%2 %1")
+	     --> x="world hello Lua from"
 
-	   x = string.gsub("home = $HOME, user = $USER", "%$(%w+)", os.getenv)
-	   --> x="home = `home`roberto, user = roberto"
+	     x = string.gsub("home = $HOME, user = $USER", "%$(%w+)", os.getenv)
+	     --> x="home = `home`roberto, user = roberto"
 
-	   x = string.gsub("4+5 = $return 4+5$", "%$(.-)%$", function (s)
-		 return loadstring(s)()
-	       end)
-	   --> x="4+5 = 9"
+	     x = string.gsub("4+5 = $return 4+5$", "%$(.-)%$", function (s)
+		   return loadstring(s)()
+		 end)
+	     --> x="4+5 = 9"
 
-	   local t = {name="lua", version="5.1"}
-	   x = string.gsub("$name-$version.tar.gz", "%$(%w+)", t)
-	   --> x="lua-5.1.tar.gz"
+	     local t = {name="lua", version="5.1"}
+	     x = string.gsub("$name-$version.tar.gz", "%$(%w+)", t)
+	     --> x="lua-5.1.tar.gz"
     <
 string.len (s)                                                    *string.len*
     Receives a string and returns its length. The empty string `""` has
@@ -2192,34 +2203,21 @@ following combinations are allowed in describing a character class:
 
 - `x`: (where `x` is not one of the `magic characters` `^$()%.[]*+-?`)
   represents the character `x` itself.
-
 - `.`: (a dot) represents all characters.
-
 - `%a`: represents all letters.
-
 - `%c`: represents all control characters.
-
 - `%d`: represents all digits.
-
 - `%l`: represents all lowercase letters.
-
 - `%p`: represents all punctuation characters.
-
 - `%s`: represents all space characters.
-
 - `%u`: represents all uppercase letters.
-
 - `%w`: represents all alphanumeric characters.
-
 - `%x`: represents all hexadecimal digits.
-
 - `%z`: represents the character with representation 0.
-
 - `%x`: (where `x` is any non-alphanumeric character) represents the
   character `x`. This is the standard way to escape the magic
   characters. Any punctuation character (even the non magic) can be
   preceded by a '`%`' when used to represent itself in a pattern.
-
 - `[set]`: represents the class which is the union of all characters
   in `set`. A range of characters can be specified by separating the end
   characters of the range with a '`-`'. All classes `%x` described
@@ -2497,7 +2495,7 @@ io.lines ([filename])                                               *io.lines*
     that, each time it is called, returns a new line from the file.
     Therefore, the construction
     >
-	   for line in io.lines(filename) do body end
+	     for line in io.lines(filename) do body end
     <
     will iterate over all lines of the file. When the iterator function
     detects the end of file, it returns `nil` (to finish the loop) and
@@ -2564,7 +2562,7 @@ file:lines ()                                                     *file:lines*
     Returns an iterator function that, each time it is called, returns a new
     line from the file. Therefore, the construction
     >
-	   for line in file:lines() do body end
+	     for line in file:lines() do body end
     <
     will iterate over all lines of the file. (Unlike
     |io.lines|, this function does not close the file
@@ -2873,61 +2871,61 @@ Here is the complete syntax of Lua in extended BNF. (It does not
 describe operator precedences.)
 >
 
-      chunk ::= {stat [`;´]} [laststat [`;´]]
+        chunk ::= {stat [`;´]} [laststat [`;´]]
 
-      block ::= chunk
+        block ::= chunk
 
-      stat ::=  varlist `=´ explist | 
-           functioncall | 
-           do block end | 
-           while exp do block end | 
-           repeat block until exp | 
-           if exp then block {elseif exp then block} [else block] end | 
-           for Name `=´ exp `,´ exp [`,´ exp] do block end | 
-           for namelist in explist do block end | 
-           function funcname funcbody | 
-           local function Name funcbody | 
-           local namelist [`=´ explist] 
+        stat ::=  varlist `=´ explist | 
+             functioncall | 
+             do block end | 
+             while exp do block end | 
+             repeat block until exp | 
+             if exp then block {elseif exp then block} [else block] end | 
+             for Name `=´ exp `,´ exp [`,´ exp] do block end | 
+             for namelist in explist do block end | 
+             function funcname funcbody | 
+             local function Name funcbody | 
+             local namelist [`=´ explist] 
 
-      laststat ::= return [explist] | break
+        laststat ::= return [explist] | break
 
-      funcname ::= Name {`.´ Name} [`:´ Name]
+        funcname ::= Name {`.´ Name} [`:´ Name]
 
-      varlist ::= var {`,´ var}
+        varlist ::= var {`,´ var}
 
-      var ::=  Name | prefixexp `[´ exp `]´ | prefixexp `.´ Name 
+        var ::=  Name | prefixexp `[´ exp `]´ | prefixexp `.´ Name 
 
-      namelist ::= Name {`,´ Name}
+        namelist ::= Name {`,´ Name}
 
-      explist ::= {exp `,´} exp
+        explist ::= {exp `,´} exp
 
-      exp ::=  nil | false | true | Number | String | `...´ | function | 
-           prefixexp | tableconstructor | exp binop exp | unop exp 
+        exp ::=  nil | false | true | Number | String | `...´ | function | 
+             prefixexp | tableconstructor | exp binop exp | unop exp 
 
-      prefixexp ::= var | functioncall | `(´ exp `)´
+        prefixexp ::= var | functioncall | `(´ exp `)´
 
-      functioncall ::=  prefixexp args | prefixexp `:´ Name args 
+        functioncall ::=  prefixexp args | prefixexp `:´ Name args 
 
-      args ::=  `(´ [explist] `)´ | tableconstructor | String 
+        args ::=  `(´ [explist] `)´ | tableconstructor | String 
 
-      function ::= function funcbody
+        function ::= function funcbody
 
-      funcbody ::= `(´ [parlist] `)´ block end
+        funcbody ::= `(´ [parlist] `)´ block end
 
-      parlist ::= namelist [`,´ `...´] | `...´
+        parlist ::= namelist [`,´ `...´] | `...´
 
-      tableconstructor ::= `{´ [fieldlist] `}´
+        tableconstructor ::= `{´ [fieldlist] `}´
 
-      fieldlist ::= field {fieldsep field} [fieldsep]
+        fieldlist ::= field {fieldsep field} [fieldsep]
 
-      field ::= `[´ exp `]´ `=´ exp | Name `=´ exp | exp
+        field ::= `[´ exp `]´ `=´ exp | Name `=´ exp | exp
 
-      fieldsep ::= `,´ | `;´
+        fieldsep ::= `,´ | `;´
 
-      binop ::= `+´ | `-´ | `*´ | `/´ | `^´ | `%´ | `..´ | 
-           `<´ | `<=´ | `>´ | `>=´ | `==´ | `~=´ | 
-           and | or
+        binop ::= `+´ | `-´ | `*´ | `/´ | `^´ | `%´ | `..´ | 
+             `<´ | `<=´ | `>´ | `>=´ | `==´ | `~=´ | 
+             and | or
 
-      unop ::= `-´ | not | `#´
+        unop ::= `-´ | not | `#´
 <
 Last update: Thu Aug 29 20:43:58 UTC 2019
