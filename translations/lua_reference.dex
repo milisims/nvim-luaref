@@ -9,60 +9,59 @@ terms of the Lua license: https://www.lua.org/license.html.
 ==============================================================================
 INHALT                                                     *lua_reference_toc*
 
-1      - Einführung                        |lua_introduction|
+1      - Einführung                              |lua_introduction|
 
-2      - Die Sprache                       |lua_language|
-2.1    - Lexikalische Konventionen         |lua_conventions|
-2.2    - Typumwandlung                     |lua_types|
-2.2.1  - Werte und Typen                   |lua_type_coercion|
-2.3    - Variablen                         |lua_variables|
+2      - Die Sprache                             |lua_language|
+2.1    - Lexikalische Konventionen               |lua_conventions|
+2.2    - Typumwandlung                           |lua_types|
+2.2.1  - Werte und Typen                         |lua_type_coercion|
+2.3    - Variablen                               |lua_variables|
 
-2.4    - Anweisungen                       |lua_statements|
-2.4.1  - Chunks                            |lua_chunks|
-2.4.2  - Blöcke                            |lua_blocks|
-2.4.3  - Zuweisungen                       |lua_assignment|
-2.4.4  - Kontrollstrukturen                |lua_control|
-2.4.5  - FOR-Anweisung                     |lua_for|
-2.4.6  - Funktionsaufrufe als Anweisungen  |lua_func_statement|
-2.4.7  - Lokale Deklarationen              |lua_local|
+2.4    - Anweisungen                             |lua_statements|
+2.4.1  - Chunks                                  |lua_chunks|
+2.4.2  - Blöcke                                  |lua_blocks|
+2.4.3  - Zuweisungen                             |lua_assignment|
+2.4.4  - Kontrollstrukturen                      |lua_control|
+2.4.5  - FOR-Anweisung                           |lua_for|
+2.4.6  - Funktionsaufrufe als Anweisungen        |lua_func_statement|
+2.4.7  - Lokale Deklarationen                    |lua_local|
 
-2.5    - Ausdrücke                         |lua_expressions|
-2.5.1  - Arithmetische Operatoren          |lua_arithmetic_ops|
-2.5.2  - Relationale Operatoren            |lua_relational_ops|
-2.5.3  - Logische Operatoren               |lua_logical_ops|
-2.5.4  - Konkatenierung                    |lua_concatenation|
-2.5.5  - Der Längenoperator                |lua_len|
-2.5.6  - Präzedenz                         |lua_precedence|
-2.5.7  - Tabellen-Konstruktoren            |lua_table_constructors|
-2.5.8  - Funktionsaufrufe                  |lua_function_calls|
-2.5.9  - Funktionsdefinitionen             |lua_function_defs|
+2.5    - Ausdrücke                               |lua_expressions|
+2.5.1  - Arithmetische Operatoren                |lua_arithmetic_ops|
+2.5.2  - Relationale Operatoren                  |lua_relational_ops|
+2.5.3  - Logische Operatoren                     |lua_logical_ops|
+2.5.4  - Konkatenierung                          |lua_concatenation|
+2.5.5  - Der Längenoperator                      |lua_len|
+2.5.6  - Präzedenz                               |lua_precedence|
+2.5.7  - Tabellen-Konstruktoren                  |lua_table_constructors|
+2.5.8  - Funktionsaufrufe                        |lua_function_calls|
+2.5.9  - Funktionsdefinitionen                   |lua_function_defs|
 
-2.6    - Sichtbarkeitsregeln               |lua_scope|
-2.7    - Fehlerbehandlung                  |lua_errors|
-2.8    - Metatabellen                      |lua_metatables|
-2.9    - Umgebungen                        |lua_environments|
+2.6    - Sichtbarkeitsregeln                     |lua_scope|
+2.7    - Fehlerbehandlung                        |lua_errors|
+2.8    - Metatabellen                            |lua_metatables|
+2.9    - Umgebungen                              |lua_environments|
 
-2.10   - Automatische Speicherbereinigung  |lua_gc|
-2.10.2 - Weak-Tabellen                     |lua_weak|
-2.11   - Koroutinen                        |lua_coroutines|
+2.10   - Automatische Speicherbereinigung        |lua_gc|
+2.10.2 - Weak-Tabellen                           |lua_weak|
+2.11   - Koroutinen                              |lua_coroutines|
 
-5      - Die Standardbibliotheken          |lua_stdlib|
-5.1    - Basisfunktionen                   |lua_builtins|
-5.2    - Koroutinen-Verarbeitung           |lua_module_coroutines|
-5.3    - Module                            |lua_modules|
-5.4    - Zeichenkettenverarbeitung         |lua_module_string|
-5.4.1  - Muster                            |lua_patterns|
-5.5    - Tabellenverarbeitung              |lua_module_table|
-5.6    - Mathematische Funktionen          |lua_module_math|
-5.7    - Ein- und Ausgabe                  |lua_module_io|
-5.8    - Betriebssystem                    |lua_module_os|
-5.9    - Die Debug-Bibliothek              |lua_debug|
+5      - Die Standardbibliotheken                |lua_stdlib|
+5.1    - Basisfunktionen                         |lua_builtins|
+5.2    - Koroutinen-Verarbeitung                 |lua_module_coroutines|
+5.3    - Module                                  |lua_modules|
+5.4    - Zeichenkettenverarbeitung               |lua_module_string|
+5.4.1  - Muster                                  |lua_patterns|
+5.5    - Tabellenverarbeitung                    |lua_module_table|
+5.6    - Mathematische Funktionen                |lua_module_math|
+5.7    - Ein- und Ausgabe                        |lua_module_io|
+5.8    - Betriebssystem                          |lua_module_os|
+5.9    - Die Debug-Bibliothek                    |lua_debug|
 
-8      - Die komplette Syntax von Lua      |lua_syntax|
+8      - Die komplette Syntax von Lua            |lua_syntax|
 
 ==============================================================================
 EINFÜHRUNG                                                  *lua_introduction*
-
 
 Lua ist eine Skriptsprache um allgemeine prozedurale Programmierung zu
 ermöglichen. Lua bietet darüber hinaus eine gute Unterstützung zur
@@ -96,7 +95,6 @@ sehen Sie sich Robertos Buch "/Programming in Lua/" (zweite Auflage) an.
 ==============================================================================
 DIE SPRACHE                                                     *lua_language*
 
-
 Dieser Abschnitt beschreibt den Wortschatz, die Syntax und die Semantik
 von Lua. Mit anderen Worten: Dieser Abschnitt beschreibt, welche Zeichen
 gültig sind, wie diese kombiniert werden können und was diese
@@ -111,7 +109,6 @@ Dokumentation.
 
 ==============================================================================
 LEXIKALISCHE KONVENTIONEN                                    *lua_conventions*
-
 
 Bezeichner (auch `Identifikatoren` genannt) können in Lua eine beliebige
 Zeichenkette aus Buchstaben, Ziffern und Unterstrichen sein, dürfen
@@ -208,7 +205,6 @@ temporär zu deaktivieren.
 ==============================================================================
 WERTE UND TYPEN                                            *lua_type_coercion*
 
-
 Lua ist eine `dynamisch typisierte Sprache`. Das bedeutet, dass
 Variablen keine Typen besitzen, sondern nur Werte einen solchen haben.
 Es gibt keine Typdefinitionen in der Sprache. Alle Werte besitzen ihren
@@ -279,7 +275,6 @@ Beschreibung des Typs eines übergebenen Wertes.
 ==============================================================================
 TYPUMWANDLUNG                                                      *lua_types*
 
-
 Lua bietet eine automatische Konvertierung von Zeichenketten und
 Zahlenwerten zur Laufzeit. Jede arithmetische Operation, welche auf eine
 Zeichenkette angewendet wird, versucht diese Zeichenkette nach den
@@ -292,7 +287,6 @@ Zeichenkettenbibliothek (s. `string.format`).
 
 ==============================================================================
 VARIABLEN                                                      *lua_variables*
-
 
 Variablen sind Orte, an denen Werte gespeichert werden. Es gibt drei
 Arten von Variablen in Lua: globale Variablen, lokale Variablen und
@@ -355,14 +349,12 @@ lediglich zu Erklärungszwecken.)
 ==============================================================================
 ANWEISUNGEN                                                   *lua_statements*
 
-
 Lua unterstützt eine weitestgehend konventionelle Menge an Anweisungen,
 ähnlich denen von Pascal oder C. Dies beinhaltet Zuweisungen,
 Kontrollstrukturen, Funktionsaufrufe und Variablendeklarationen.
 
 ==============================================================================
 CHUNKS                                                            *lua_chunks*
-
 
 Eine Ausführungseinheit in Lua wird `Chunk` genannt. Ein Chunk ist ganz
 einfach eine Folge von Anweisungen, welche sequentiell ausgeführt
@@ -390,7 +382,6 @@ entsprechend.
 ==============================================================================
 BLÖCKE                                                            *lua_blocks*
 
-
 Ein Block ist eine Liste von Anweisungen; syntaktisch ist ein Block
 dasselbe wie ein Chunk:
 >
@@ -408,7 +399,6 @@ hinzuzufügen (s. § 2.4.4).
 
 ==============================================================================
 ZUWEISUNGEN                                                   *lua_assignment*
-
 
 Lua erlaubt mehrfache Zuweisungen. Somit definiert die Syntax von für
 Zuweisungen eine Liste von Variablen auf der linken Seite und eine Liste
@@ -467,7 +457,6 @@ lediglich zu Erklärungszwecken.)
 ==============================================================================
 KONTROLLSTRUKTUREN                                               *lua_control*
 
-
 Die Kontrollstrukturen `if`, `while` und `repeat` haben die gewöhnliche
 Bedeutung und bekannte Syntax:
 >
@@ -512,7 +501,6 @@ letzten Anweisungen in deren (inneren) Blöcken sind.
 
 ==============================================================================
 FOR-ANWEISUNG                                                        *lua_for*
-
 
 Die `for`-Anweisung hat zwei Formen: Eine numerische und eine
 generische.
@@ -595,7 +583,6 @@ Beachten Sie Folgendes:
 ==============================================================================
 FUNKTIONSAUFRUFE ALS ANWEISUNGEN                          *lua_func_statement*
 
-
 Um Seiteneffekte zu ermöglichen, können Funktionsaufrufe als Anweisung
 ausgeführt werden:
 >
@@ -606,7 +593,6 @@ Funktionsaufrufe werden unter § 2.5.8 beschrieben.
 
 ==============================================================================
 LOKALE DEKLARATIONEN                                               *lua_local*
-
 
 Lokale Variablen können überall innerhalb eines Blocks deklariert
 werden. Die Deklaration kann eine initiale Zuweisung beinhalten:
@@ -626,7 +612,6 @@ beschrieben.
 
 ==============================================================================
 AUSDRÜCKE                                                    *lua_expressions*
-
 
 Die Basis-Ausdrücke in Lua lauten wie folgt:
 >
@@ -692,7 +677,6 @@ Wert oder `nil`, wenn `f` keinerlei Werte zurückgibt.)
 ==============================================================================
 ARITHMETISCHE OPERATOREN                                  *lua_arithmetic_ops*
 
-
 Lua unterstützt die geläufigen arithmetischen Operatoren: das binäre +
 (Addition), - (Subtraktion), * (Multiplikation), / (Division), %
 (Modulo) und ^ (Exponentiation) sowie das unäre - (Negation). Sofern die
@@ -709,7 +693,6 @@ rundet.
 
 ==============================================================================
 RELATIONALE OPERATOREN                                    *lua_relational_ops*
-
 
 Die relationalen Operatoren in Lua sind ...
 >
@@ -746,7 +729,6 @@ wird zu `b < a` übersetzt und `a >` b= zu `b <` a=.
 ==============================================================================
 LOGISCHE OPERATOREN                                          *lua_logical_ops*
 
-
 Die logischen Operatoren in Lua sind `and`, `or` und `not`. Wie die
 Kontrollstrukturen (s. § 2.4.4) betrachten alle logischen Operatoren
 `false` sowie `nil` als false und alles andere als true.
@@ -775,7 +757,6 @@ an.)
 ==============================================================================
 KONKATENIERUNG                                             *lua_concatenation*
 
-
 Der Operator zur Konkatenierung von Zeichenketten in Lua wird mit zwei
 Punkten ("..") notiert. Wenn beide Operanden Zeichenketten oder Zahlen
 sind, so werden diese zu Zeichenketten entsprechend der unter § 2.2.1
@@ -784,7 +765,6 @@ erwähnten Vorgehensweise konvertiert. Andernfalls wird die
 
 ==============================================================================
 DER LÄNGENOPERATOR                                                   *lua_len*
-
 
 Der Längenoperator wird als unärer Operator `#` geschrieben. Die Länge
 einer Zeichenkette entspricht ihrer Anzahl an Bytes (dies ist die
@@ -802,7 +782,6 @@ irgendeiner der Indizes sein, welcher direkt einem `nil`-Wert vorangeht
 
 ==============================================================================
 PRÄZEDENZ                                                     *lua_precedence*
-
 
 Die Operatorpräzedenz in Lua entspricht der unten angegebenen Tabelle;
 von niedriger zu hoher Priorität:
@@ -823,7 +802,6 @@ linksassoziativ.
 
 ==============================================================================
 TABELLEN-KONSTRUKTOREN                                *lua_table_constructors*
-
 
 Tabellen-Konstruktoren sind Ausdrücke, welche eine Tabelle erzeugen.
 Jedes mal, wenn ein Konstruktor ausgewertet wird, wird eine neue Tabelle
@@ -869,8 +847,7 @@ Die Feldliste kann -- zur Bequemlichkeit bei automatisch erzeugtem Code
 -- optional einen abschließenden Separator enthalten.
 
 ==============================================================================
-FUNKTIONSAUFRUFE                                          *lua_func_statement*
-
+FUNKTIONSAUFRUFE                                          *lua_function_calls*
 
 Ein Funkionsaufruf in Lua hat folgende Syntax:
 >
@@ -937,7 +914,6 @@ Endrekursionen:
 <
 ==============================================================================
 FUNKTIONSDEFINITIONEN                                      *lua_function_defs*
-
 
 Die Syntax zur Funktionsdefinition lautet wie folgt:
 >
@@ -1051,7 +1027,6 @@ besitzen. Insofern ist die Anweisung ...
 ==============================================================================
 SICHTBARKEITSREGELN                                                *lua_scope*
 
-
 Lua ist eine Sprache mit lexikalischer Sichtbarkeit. Der
 Gültigkeitsbereich einer Variablen beginnt mit der ersten Anweisung nach
 deren Deklaration und bleibt bis zum Ende des innersten Blocks der in
@@ -1097,7 +1072,6 @@ das gleiche x teilen.
 ==============================================================================
 FEHLERBEHANDLUNG                                                  *lua_errors*
 
-
 Auf Grund der Tatsache, dass Lua eine eingebettete Skriptsprache ist,
 werden alle Lua-Aktionen durch C-Code des Hostprogramms durch einen
 Aufruf einer Funktion der Lua-Bibliothek ausgelöst (s. `lua_pcall`).
@@ -1111,7 +1085,6 @@ können Sie die `pcall`-Funktion verwenden.
 
 ==============================================================================
 METATABELLEN                                                  *lua_metatables*
-
 
 Jeder Wert in Lua kann eine `Metatabelle` besitzen. Diese `Metatabelle`
 ist eine gewöhnliche Lua-Tabelle, welche das Verhalten des originalen
@@ -1404,7 +1377,6 @@ nicht fehlschlägt (sondern einfach in `nil` resultiert).
 ==============================================================================
 UMGEBUNGEN                                                  *lua_environments*
 
-
 Neben Metatabellen haben Objekte des Typs thread, function oder userdata
 eine weitere Tabelle, welche mit diesen assoziiert ist und deren
 `Umgebung` genannt wird. Ähnlich Metatabellen, sind Umgebungen reguläre
@@ -1449,7 +1421,6 @@ verwenden.
 ==============================================================================
 AUTOMATISCHE SPEICHERBEREINIGUNG                                      *lua_gc*
 
-
 Lua führt eine automatische Speicherverwaltung durch. Dies bedeutet,
 dass Sie sich weder um die Anforderung von Speicher für neue Objekte,
 noch um dessen Freigabe, wenn die Objekte nicht länger benötigt werden,
@@ -1489,7 +1460,6 @@ Bereinigung auch direkt steuern (z. B. anhalten und neu starten).
 ==============================================================================
 WEAK-TABELLEN                                                       *lua_weak*
 
-
 Eine `Weak-Tabelle` ist eine Tabelle, deren Elemente /schwache
 Referenzen/ sind. Eine schwache Referenz wird durch die automatische
 Speicherbereinigung ignoriert. Mit anderen Worten: Falls die einzigen
@@ -1514,7 +1484,6 @@ undefiniert.
 
 ==============================================================================
 KOROUTINEN                                                    *lua_coroutines*
-
 
 Lua unterstützt Koroutinen. Eine Koroutine in Lua repräsentiert einen
 unabhängigen Thread der Ausführung. Im Gegensatz zu Multithread-Systemen
@@ -1601,7 +1570,6 @@ Wenn Sie diesen ausführen, wird folgende Ausgabe erzeugt:
 ==============================================================================
 DIE STANDARDBIBLIOTHEKEN                                          *lua_stdlib*
 
-
 Die Lua-Standardbibliotheken stellen nützliche Funktionen zur Verfügung,
 welche direkt über die C-API implementiert sind. Manche dieser
 Funktionen stellen essentielle Dienste für die Sprache zur Verfügung (z.
@@ -1645,7 +1613,6 @@ wie jede andere C-Funktion von Lua aufrufen, z. B. durch Benutzung von
 ==============================================================================
 BASISFUNKTIONEN                                                 *lua_builtins*
 
-
 Die Basisbibliothek bietet einige grundsätzliche Funktionen für Lua.
 Wenn Sie diese Bibliothek nicht in Ihre Anwendung einbinden, sollten Sie
 sorgfältig prüfen, ob Sie für einige der Funktionen Implementierungen
@@ -1655,7 +1622,6 @@ anbieten müssen.
 
     *** `assert(v[,message])`
 
-
     Verursacht einen Fehler, wenn der Wert des Arguments `v` falsch (also
     `nil` oder `false`) ist; andernfalls werden alle Argumente
     zurückgeliefert. `message` ist eine Fehlermeldung; wenn nicht angegeben
@@ -1664,7 +1630,6 @@ anbieten müssen.
 --------------
 
     *** `collectgarbage(opt[,arg])`
-
 
     Diese Funktion ist eine generische Schnittstelle zur automatischen
     Speicherbereinigung. Sie führt div. Funktionen entsprechend ihres ersten
@@ -1692,7 +1657,6 @@ anbieten müssen.
 
     *** `dofile(filename)`
 
-
     Öffnet die benannte Datei und führt deren Inhalt als Lua-Code aus. Bei
     Aufruf ohne Argumente führt `dofile` den Inhalt der Standardeingabe
     (`stdin`) aus. Gibt alle vom Code gelieferten Werte zurück. Im
@@ -1702,7 +1666,6 @@ anbieten müssen.
 --------------
 
     *** `error(message[,level])`
-
 
     Beendet die zuletzt aufgerufene geschützte Funktion und liefert
     `message` als Fehlermeldung. Die Funktion `error` selbst liefert keinen
@@ -1718,7 +1681,6 @@ anbieten müssen.
     Nachricht.
 
 _G                                                                        *_G*
-
     Eine globale Variable (keine Funktion), welche die globale Umgebung
     enthält (d. h. =_G._G = _G=). Lua selbst verwendet diese Variable nicht;
     das Ändern des Wertes beeinfluss keine Umgebung. (Verwenden Sie
@@ -1727,7 +1689,6 @@ _G                                                                        *_G*
 --------------
 
     *** `getfenv([f])`
-
 
     Liefert die derzeit von der Funktion genutzte Umgebung. `f` kann eine
     Lua-Funktion sein, oder aber eine Nummer, welche die Funktion der
@@ -1740,7 +1701,6 @@ _G                                                                        *_G*
 
     *** `getmetatable(object)`
 
-
     Wenn `object` keine Metatabelle enthält, wird `nil` geliefert. Wenn die
     Metatabelle des Objekts ein "`__metatable`"-Feld enthält, wird der
     zugeordnete Wert geliefert. Andernfalls wird die Metatabelle des
@@ -1749,7 +1709,6 @@ _G                                                                        *_G*
 --------------
 
     *** `ipairs(t)`
-
 
     Liefert drei Werte: Eine Iterator-Funktion, die Tabelle `t` und 0, so
     dass die Konstruktion ...
@@ -1762,7 +1721,6 @@ _G                                                                        *_G*
 --------------
 
     *** `load(func[,chunkname])`
-
 
     Lädt einen Code mit Hilfe der Funktion `func`, um dessen Teile zu
     erhalten. Jeder Aufruf von `func` muss eine mit vorherigen Ergebnissen
@@ -1781,14 +1739,12 @@ _G                                                                        *_G*
 
     *** `loadfile([filename])`
 
-
     Ähnlich wie `load`, erhält den Code jedoch aus der Datei `filename` oder
     von der Standardeingabe, wenn kein Dateiname angegeben wurde.
 
 --------------
 
     *** `loadstring(string[,chunkname])`
-
 
     Ähnlich wie `load`, erhält den Code jedoch aus der übergebenen
     Zeichenkette.
@@ -1804,7 +1760,6 @@ _G                                                                        *_G*
 --------------
 
     *** `next(table[,index])`
-
 
     Ermöglicht einem Programm, alle Felder einer Tabelle zu durchlaufen. Das
     erste Argument ist eine Tabelle und das zweite ein Index dieser Tabelle.
@@ -1830,7 +1785,6 @@ _G                                                                        *_G*
 
     *** `pairs(t)`
 
-
     Liefert drei Werte: Die `next`-Funktion, die Tabelle `t` und `nil`, so
     dass die Konstruktion ...
     >
@@ -1845,7 +1799,6 @@ _G                                                                        *_G*
 
     *** `pcall(f,arg1,···)`
 
-
     Ruft die Funktion `f` mit den gegebenen Argumenten im /geschützten
     Modus/ auf. Das bedeutet, dass ein Fehler in `f` nicht weitergereicht
     wird; stattdessen fängt `pcall` den Fehler und liefert einen Statuscode.
@@ -1859,7 +1812,6 @@ _G                                                                        *_G*
 
     *** `print(···)`
 
-
     Nimmt eine beliebige Anzahl Argumente entgegen und gibt deren Werte
     unter Zuhilfenahme der `tostring`-Funktion zu deren Konvertierung zu
     Zeichenketten auf `stdout` aus. `print` ist nicht für formatierte
@@ -1871,7 +1823,6 @@ _G                                                                        *_G*
 
     *** `rawequal(v1,v2)`
 
-
     Prüft, ob `v1` gleich zu `v2` ist, ohne dabei Metamethoden aufzurufen.
     Liefert einen Wahrheitswert.
 
@@ -1879,14 +1830,12 @@ _G                                                                        *_G*
 
     *** `rawget(table,index)`
 
-
     Liefert den Wert von `table[index]`, ohne Metamethoden aufzurufen.
     `table` muss eine Tabelle sein; `index` kann ein beliebiger Wert sein.
 
 --------------
 
     *** `rawset(table,index,value)`
-
 
     Setzt den Wert von `table[index]` auf `value`, ohne dabei Metamethoden
     aufzurufen. `table` muss eine Tabelle sein, `index` ein von `nil`
@@ -1898,7 +1847,6 @@ _G                                                                        *_G*
 
     *** `select(index,···)`
 
-
     Wenn `index` eine Zahl ist, werden alle Argumente nach dem Argument
     `index` geliefert. Andernfalls muss `index` die Zeichenkette `"#"` sein,
     damit `select` die Gesamtzahl der zusätzlich übergebenen Argumente zu
@@ -1907,7 +1855,6 @@ _G                                                                        *_G*
 --------------
 
     *** `setfenv(f,table)`
-
 
     Setzt die von der gegebenen Funktion zu nutzende Umgebung. `f` kann eine
     Lua-Funktion sein, oder eine Zahl, welche die Funktion an entsprechender
@@ -1921,7 +1868,6 @@ _G                                                                        *_G*
 
     *** `setmetatable(table,metatable)`
 
-
     Setzt die Metatabelle für die gegebene Tabelle. (Sie können die
     Metatabelle anderer Lua-Typen nicht ändern, nur von C aus.) Wenn
     `metatable` `nil` ist, wird die Metatabelle der gegebenen Tabelle
@@ -1933,7 +1879,6 @@ _G                                                                        *_G*
 --------------
 
     *** `tonumber(e[,base])`
-
 
     Versucht das Argument zu einer Zahl zu konvertieren. Wenn das Argument
     bereits eine zu einer Zahl konvertierbare Zahl oder Zeichenkette ist,
@@ -1951,7 +1896,6 @@ _G                                                                        *_G*
 
     *** `tostring(e)`
 
-
     Nimmt ein Argument beliebigen Typs entgegen und konvertiert dieses in
     eine passende Zeichenkette. Für eine umfassende Kontrolle darüber, wie
     Zahlen konvertiert werden, verwenden Sie `string.format`.
@@ -1964,7 +1908,6 @@ _G                                                                        *_G*
 
     *** `type(v)`
 
-
     Liefert den Wert des einzigen Arguments als Zeichenkette. Die möglichen
     Ergebnisse dieser Funktion sind "`nil`" (eine Zeichenkette, nicht den
     Wert `nil`), "`number`", "`string`", "`boolean`", "`table`",
@@ -1973,7 +1916,6 @@ _G                                                                        *_G*
 --------------
 
     *** `unpack(list[,i[,j]])`
-
 
     Liefert die Elemente der gegebenen Tabelle. Diese Funktion ist
     äquivalent zu ...
@@ -1985,7 +1927,6 @@ _G                                                                        *_G*
     ist die wie vom Längenoperator definierte Länge der Liste (s. § 2.5.5).
 
 _VERSION                                                            *_VERSION*
-
     Eine globale Variable (keine Funktion), welche eine Zeichenkette mit der
     aktuellen Interpreter-Version enthält. Der aktuelle Inhalt dieser
     Variablen lautet "`Lua 5.1`".
@@ -1993,7 +1934,6 @@ _VERSION                                                            *_VERSION*
 --------------
 
     *** `xpcall(f,err)`
-
 
     Diese Funktion ist ähnlich wie `pcall`, mit dem Unterschied, dass Sie
     einen neuen Error-Handler setzen können.
@@ -2010,7 +1950,6 @@ _VERSION                                                            *_VERSION*
 ==============================================================================
 KOROUTINEN-VERARBEITUNG                                *lua_module_coroutines*
 
-
 Die Koroutinen-bezogenen Operationen enthalten eine Unterbibliothek der
 Standardbibliothek und befinden sich innerhalb der `coroutine`-Tabelle.
 Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
@@ -2019,7 +1958,6 @@ Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
 
     *** `coroutine.create(f)`
 
-
     Erzeugt eine neue Koroutine mit dem Inhalt `f`. `f` muss eine
     Lua-Function sein. Liefert diese neue Koroutine als Objekt vom Typ
     "`thread`" zurück.
@@ -2027,7 +1965,6 @@ Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
 --------------
 
     *** `coroutine.resume(co[,val1,···])`
-
 
     Startet die Ausführung der Koroutine `co` und setzt diese fort. Wenn Sie
     das erste Mal eine Koroutine wiederaufnehmen, wird deren Inhalt
@@ -2046,14 +1983,12 @@ Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
 
     *** `coroutine.running()`
 
-
     Liefert die laufende Koroutine oder `nil`, wenn sie vom Haupt-Thread
     aufgerufen wird.
 
 --------------
 
     *** `coroutine.status(co)`
-
 
     Liefert den Status der Koroutine `co` als Zeichenkette: "`running`",
     wenn die Koroutine läuft (dies ist der Fall, wenn `status` aufgerufen
@@ -2068,7 +2003,6 @@ Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
 
     *** `coroutine.wrap(f)`
 
-
     Erstellt eine neue Koroutine mit dem Inhalt `f`. `f` muss eine
     Lua-Funktion sein. Liefert eine Funktion, welche die Koroutine bei jedem
     Aufruf wiederaufnimmt. Alle Argumente, welche der Funktion übergeben
@@ -2080,15 +2014,13 @@ Siehe § 2.11 für eine allgemeine Beschreibung zu Koroutinen.
 
     *** `coroutine.yield(···)`
 
-
     Unterbricht die Ausführung der aufrufenden Koroutine. Die Koroutine kann
     keine C-Funktionen, Metamethoden oder Iteratoren aufrufen.Alle
     Argumente, die `yield` übergeben werden, werden als separates Ergebnis
     an `resume` durchgereicht.
 
 ==============================================================================
-Module
-
+MODULE                                                           *lua_modules*
 
 Die Paketbibliothek bietet grundsätzliche Funktionen zum Laden und
 Erstellen von Modulen in Lua. Sie exportiert zwei ihrer Funktionen
@@ -2098,7 +2030,6 @@ wird in eine Tabelle `package` exportiert.
 --------------
 
     *** `module(name[,···])`
-
 
     Erstellt ein Modul. Falls sich eine Tabelle unter `package.loaded[name]`
     befindet, ist diese Tabelle das Modul. Wenn andernfalls eine globale
@@ -2124,7 +2055,6 @@ wird in eine Tabelle `package` exportiert.
 --------------
 
     *** `require(modname)`
-
 
     Lädt das angegebene Modul. Die Funktion beginnt mit einer Suche in der
     `package.loaded`-Tabelle um herauszufinden, ob `modname` bereits geladen
@@ -2158,7 +2088,6 @@ wird in eine Tabelle `package` exportiert.
     Fehler.
 
 package.cpath                                                  *package.cpath*
-
     Der Pfad, welcher von `require` verwendet wird, um nach einem C-Loader
     zu suchen.
 
@@ -2167,14 +2096,12 @@ package.cpath                                                  *package.cpath*
     `LUA_CPATH` oder einen `luaconf.h` definierten Standardpfad.
 
 package.loaded                                                *package.loaded*
-
     Eine Tabelle, welche von `require` genutzt wird um zu kontrollieren,
     welche Module bereits geladen sind. Wenn Sie ein Modul `modname`
     einbinden und `package.loaded[modname]` nicht "false" ist, liefert
     `require` einfach den dort gespeicherten Wert.
 
 package.loaders                                              *package.loaders*
-
     Eine Tabelle, welche von `require` verwendet wird, um zu steuern, wie
     Module geladen werden.
 
@@ -2237,7 +2164,6 @@ package.loaders                                              *package.loaders*
 
     *** `package.loadlib(libname,funcname)`
 
-
     Linkt das Host-Programm dynamisch mit der C-Bibliothek `libname`.
     Innerhalb dieser Bibliothek wird nach einer `funcname`-Funktion gesucht
     und diese Funltion als C-Funktion zurückgeliefert. (`funcname` muss
@@ -2257,7 +2183,6 @@ package.loaders                                              *package.loaders*
     unterstützen).
 
 package.path                                                    *package.path*
-
     Der Pfad, welcher von `require` verwendet wird, um nach einem Lua-Loader
     zu suchen.
 
@@ -2268,14 +2193,12 @@ package.path                                                    *package.path*
     ersetzt.
 
 package.preload                                              *package.preload*
-
     Eine Tabelle zum Speicher von Loadern für spezifische Module (s.
     `require`).
 
 --------------
 
     *** `package.seeall(module)`
-
 
     Setzt eine Metatabelle für `module`, dessen `__index`-Feld auf die
     globale Umgebung zeigt, so dass dieses Modul Werte aus der globalen
@@ -2284,7 +2207,6 @@ package.preload                                              *package.preload*
 
 ==============================================================================
 ZEICHENKETTENVERARBEITUNG                                  *lua_module_string*
-
 
 Diese Bibliothek stellt generische Funktion zur
 Zeichenkettenverarbeitung zur Verfügung, unter anderem das Suchen und
@@ -2308,7 +2230,6 @@ Zeichen aus.
 
     *** `string.byte(s[,i[,j]])`
 
-
     Liefert den internen numerischen Code der Zeichen `s[i]`, `s[i+1]`, ···,
     `s[j]`. Der Standardwert für `i` ist 1; der Standardwert für `j` ist
     `i`.
@@ -2319,7 +2240,6 @@ Zeichen aus.
 --------------
 
     *** `string.char(···)`
-
 
     Erwartet 0 oder mehr Ganzzahlen. Liefert eine Zeichenkette mit einer
     Länge entsprechend der Anzahl der Argumente, wobei jedes Zeichen den
@@ -2332,7 +2252,6 @@ Zeichen aus.
 
     *** `string.dump(function)`
 
-
     Liefert eine Zeichenkette, welche eine binäre Repräsentation der
     gegebenen Funktion enthält, so dass ein Späteres `loadstring` mit dieser
     Zeichenkette eine Kopie dieser Funktion liefert. `function` muss eine
@@ -2341,7 +2260,6 @@ Zeichen aus.
 --------------
 
     *** `string.find(s,pattern[,init[,plain]])`
-
 
     Sucht nach der ersten Übereinstimmung von `pattern` in der Zeichenkette
     `s`. Wenn eine Übereinstimmung gefunden wird, liefert `find` die Indizes
@@ -2361,7 +2279,6 @@ Zeichen aus.
 --------------
 
     *** `string.format(formatstring,···)`
-
 
     Liefert eine formatierte Version seiner variablen Anzahl an Argumenten
     nach der als erstes Argument angegebenen Vorgabe (welche eine
@@ -2394,7 +2311,6 @@ Zeichen aus.
 
     *** `string.gmatch(s,pattern)`
 
-
     Liefert einen Iterator, welcher bei jedem Aufruf den nächsten Treffer
     aus `pattern` in der Zeichenkette `s` liefert. Falls `pattern` keine
     Treffer sichert, wird bei jedem Aufruf die komplette Übereinstimmung
@@ -2423,7 +2339,6 @@ Zeichen aus.
 --------------
 
     *** `string.gsub(s,pattern,repl[,n])`
-
 
     Liefert eine Kopie von `s`, bei welcher alle (bzw. die ersten `n`, falls
     gegeben) Auftreten von `pattern` durch eine Ersetzungs-Zeichenkette,
@@ -2481,7 +2396,6 @@ Zeichen aus.
 
     *** `string.len(s)`
 
-
     Erhält eine Zeichenkette und liefert dessen Länge. Die leere
     Zeichenkette `""` hat die Länge 0. Eingebettete Nullen werden gezählt,
     so dass `"a\000bc\000"` die Länge 5 hat.
@@ -2489,7 +2403,6 @@ Zeichen aus.
 --------------
 
     *** `string.lower(s)`
-
 
     Erhält eine Zeichenkette und liefert eine Kopie dieser Zeichenkette,
     wobei alle Großbuchstaben zu Kleinbuchstaben geändert werden. Alle
@@ -2499,7 +2412,6 @@ Zeichen aus.
 --------------
 
     *** `string.match(s,pattern[,init])`
-
 
     Sucht nach der ersten /Übereinstimmung/ von `pattern` in der
     Zeichenkette `s`. Falls eine solche gefunden wird, liefert `match` die
@@ -2513,7 +2425,6 @@ Zeichen aus.
 
     *** `string.rep(s,n)`
 
-
     Liefert eine Zeichenkette, welche eine Verknüpfung von `n` Kopien der
     Zeichenkette `s` darstellt.
 
@@ -2521,14 +2432,12 @@ Zeichen aus.
 
     *** `string.reverse(s)`
 
-
     Liefert eine Zeichenkette, welche die Zeichenkette `s` umgekehrt
     darstellt.
 
 --------------
 
     *** `string.sub(s,i[,j])`
-
 
     Liefert eine Teil-Zeichenkette von `s`, welche sich von `i` bis `j`
     erstreckt; `i` und `j` können negativ sein. Falls `j` nicht angegeben
@@ -2541,7 +2450,6 @@ Zeichen aus.
 
     *** `string.upper(s)`
 
-
     Erhält eine Zeichenkette und liefert eine Kopie dieser Zeichenkette,
     wobei alle Kleinbuchstaben zu Großbuchstaben geändert werden. Alle
     anderen Zeichen bleiben ungeändert. Die Definition eines
@@ -2550,9 +2458,7 @@ Zeichen aus.
 ==============================================================================
 MUSTER                                                          *lua_patterns*
 
-
 **** Zeichenklasse
-
 
 Eine Zeichenklasse repräsentiert eine Menge von Zeichen. Die folgenden
 Kombinationen sind zur Beschreibung einer Zeichenklasse erlaubt:
@@ -2602,7 +2508,6 @@ von der gegenwärtig gesetzten Sprache ab. Insbesondere kann die Klasse
 
 **** Muster-Element
 
-
 Ein `Muster-Element` kann sein ...
 
 - ... eine Klasse aus einzelnen Zeichen, welches auf jedes einzelne
@@ -2633,7 +2538,6 @@ Ein `Muster-Element` kann sein ...
 
 **** Muster
 
-
 Ein `Muster` ist eine Sequenz von Muster-Elementen. Ein '`^`' am Beginn
 eines Musters verankert die Übereinstimmung am Beginn der zu
 untersuchenden Zeichenkette. Ein '`$`' am Ende eines Musters verankert
@@ -2642,7 +2546,6 @@ anderen Stellen haben '`^`' und '`$`' keine spezielle Bedeutung und
 stehen für sich selbst.
 
 **** Treffer
-
 
 Ein Muster kann in Klammern eingeschlossene Teilmuster beinhalten; diese
 beschreiben Treffer. Wenn eine Übereinstimmung gefunden wird, wird die
@@ -2663,7 +2566,6 @@ Ein Muster kann keine Nullen enthalten. Benutzen Sie stattdessen `%z`.
 ==============================================================================
 TABELLENVERARBEITUNG                                        *lua_module_table*
 
-
 Diese Bibliothek bietet generische Funktionen zur Tabellenverarbeitung.
 Sie stellt alle ihre Funktionen innerhalb der Tabelle `table` zur
 Verfügung..
@@ -2677,7 +2579,6 @@ Ergebnis des Längenoperators meinen.
 
     *** `table.concat(table[,sep[,i[,j]]])`
 
-
     Bei Übergabe eines Feldes, dessen Elemente alle Zeichenketten oder
     Zahlen sind, wird `table[i]..sep..table[i+1] ··· sep..table[j]`
     zurückgegeben. Der Standardwert für `sep` ist die leere Zeichenkette,
@@ -2689,7 +2590,6 @@ Ergebnis des Längenoperators meinen.
 
     *** `table.insert(table,[pos,]value)`
 
-
     Fügt `table` das Element `value` an Position `pos` hinzu, wobei andere
     Elemente falls notwendig nach oben verschoben werden, um Platz zu
     schaffen. Der Standardwert für `pos` ist `n+1`, wobei `n` die Länge der
@@ -2700,7 +2600,6 @@ Ergebnis des Längenoperators meinen.
 
     *** `table.maxn(table)`
 
-
     Liefert den größten positiven numerischen Index der gegebenen Tabelle
     oder 0, falls die Tabelle keine positiven numerischen Indizes besitzt.
     (Um dies zu erledigen, führt die Funktion eine lineare Traversierung der
@@ -2709,7 +2608,6 @@ Ergebnis des Längenoperators meinen.
 --------------
 
     *** `table.remove(table[,pos])`
-
 
     Entfernt das Element an der Position `pos` aus `table`, wobei andere
     Elemente falls notwendig nach unten verschoben werden, um Platz zu
@@ -2720,7 +2618,6 @@ Ergebnis des Längenoperators meinen.
 --------------
 
     *** `table.sort(table[,comp])`
-
 
     Sortiert die Elemente der Tabelle in-place mit der gegebenen Sortierung
     von `table[1]` nach `table[n]`, wobei `n` die Länge der Tabelle ist.
@@ -2737,7 +2634,6 @@ Ergebnis des Längenoperators meinen.
 ==============================================================================
 MATHEMATISCHE FUNKTIONEN                                     *lua_module_math*
 
-
 Diese Bibliothek ist ein Wrapper zur math-Standardbibliothek von C.
 Dieser stellt alle seine Funktionen innerhalb der Tabelle `math` zur
 Verfügung.
@@ -2746,13 +2642,11 @@ Verfügung.
 
     *** `math.abs(x)`
 
-
     Liefert den absoluten Betrag von `x`.
 
 --------------
 
     *** `math.acos(x)`
-
 
     Liefert den Arkuskosinus von `x` (in Radiant).
 
@@ -2760,20 +2654,17 @@ Verfügung.
 
     *** `math.asin(x)`
 
-
     Liefert den Arkussinus von `x` (in Radiant).
 
 --------------
 
     *** `math.atan(x)`
 
-
     Liefert den Arkustangens von `x` (in Radiant).
 
 --------------
 
     *** `math.atan2(y,x)`
-
 
     Liefert den Arkustangens von `y/x` (in Radiant), aber benutzt die
     Vorzeichen beider Parameter, um den korrekten Quadranten des Ergebnisses
@@ -2784,13 +2675,11 @@ Verfügung.
 
     *** `math.ceil(x)`
 
-
     Liefert die kleinste Ganzzahl größer oder gleich `x`.
 
 --------------
 
     *** `math.cos(x)`
-
 
     Liefert den Kosinus von `x` (in Radiant).
 
@@ -2798,13 +2687,11 @@ Verfügung.
 
     *** `math.cosh(x)`
 
-
     Liefert den Kosinus Hyperbolicus von `x` (in Radiant).
 
 --------------
 
     *** `math.deg(x)`
-
 
     Liefert den Winkel `x` (in Radiant) in Grad.
 
@@ -2812,20 +2699,17 @@ Verfügung.
 
     *** `math.exp(x)`
 
-
     Liefert den Wert `e`^{=x=}.
 
 --------------
 
     *** `math.floor(x)`
 
-
     Liefert die größte Ganzzahl kleiner oder gleich `x`.
 
 --------------
 
     *** `math.fmod(x,y)`
-
 
     Liefert den Rest der Division `x` durch `y`, welche den Quotienten auf 0
     rundet.
@@ -2834,13 +2718,11 @@ Verfügung.
 
     *** `math.frexp(x)`
 
-
     Liefert `m` und `e`, welche =x = m2e= lösen; `e` ist eine Ganzzahl und
     der absolute Betrag von `m` ist im Intervall /[0.5,1)/ (oder 0, wenn `x`
     gleich 0 ist).
 
 math.huge                                                          *math.huge*
-
     Der Wert `HUGE_VAL`, welcher größer oder gleich jedem anderen Zahlenwert
     ist.
 
@@ -2848,13 +2730,11 @@ math.huge                                                          *math.huge*
 
     *** `math.ldexp(m,e)`
 
-
     Liefert `m2e` (`e` sollte eine Ganzzahl sein).
 
 --------------
 
     *** `math.log(x)`
-
 
     Liefert den natürlichen Logarithmus von `x`.
 
@@ -2862,13 +2742,11 @@ math.huge                                                          *math.huge*
 
     *** `math.log10(x)`
 
-
     Liefert den dekadischen Logarithmus von `x`.
 
 --------------
 
     *** `math.max(x,···)`
-
 
     Liefert den größten Wert seiner Argumente.
 
@@ -2876,25 +2754,21 @@ math.huge                                                          *math.huge*
 
     *** `math.min(x,···)`
 
-
     Liefert den kleinsten Wert seiner Argumente.
 
 --------------
 
     *** `math.modf(x)`
 
-
     Liefert zwei Zahlen: Den ganzzahligen und den gebrochenen Anteil von
     `x`.
 
 math.pi                                                              *math.pi*
-
     Der Wert von `Pi`.
 
 --------------
 
     *** `math.pow(x,y)`
-
 
     Liefert `xy`. (Sie können diesen Wert auch durch den Ausdruck `x^y`
     berechnen.)
@@ -2903,13 +2777,11 @@ math.pi                                                              *math.pi*
 
     *** `math.rad(x)`
 
-
     Liefert den Winkel `x` (in Grad) in Radiant.
 
 --------------
 
     *** `math.random([m[,n]])`
-
 
     Diese Funktion ist ein Wrapper zum einfachen
     Pseudozufallszahlen-Generator `rand`, welcher von ANSI C zur Verfügung
@@ -2928,7 +2800,6 @@ math.pi                                                              *math.pi*
 
     *** `math.randomseed(x)`
 
-
     Setzt `x` als "Seed" für den Pseudozufallszahlen-Generator: Gleiche
     Seeds produzieren gleiche Zahlensequenzen.
 
@@ -2936,20 +2807,17 @@ math.pi                                                              *math.pi*
 
     *** `math.sin(x)`
 
-
     Liefert den Sinus von `x` (in Radiant).
 
 --------------
 
     *** `math.sinh(x)`
 
-
     Liefert den Sinus Hyperbolicus von `x` (in Radiant).
 
 --------------
 
     *** `math.sqrt(x)`
-
 
     Liefert die Quadratwurzel von `x`. (Sie können diesen Wert auch durch
     den Ausdruck `x^0.5` berechnen.)
@@ -2958,19 +2826,16 @@ math.pi                                                              *math.pi*
 
     *** `math.tan(x)`
 
-
     Liefert den Tangens von `x` (in Radiant).
 
 --------------
 
     *** `math.tanh(x)`
 
-
     Liefert den Tangens Hyperbolicus von `x` (in Radiant).
 
 ==============================================================================
 EIN- UND AUSGABE                                               *lua_module_io*
-
 
 Die I/O-Bibliothek stellt zwei verschiedene Arten der Dateiverarbeitung
 zur Verfügung. Die erste nutzt implizite Dateideskriptoren; d. h. es
@@ -2997,7 +2862,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `io.close([file])`
 
-
     Äquivalent zu `file:close()`. Ohne `file` wird die Standard-Ausgabedatei
     geschlossen.
 
@@ -3005,13 +2869,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `io.flush()`
 
-
     Äquivalent zu `file:flush` für die Standard-Ausgabedatei.
 
 --------------
 
     *** `io.input([file])`
-
 
     Wenn diese Funktion mit einem Dateinamen aufgerufen wird, öffnet sie die
     angegebene Datei (im Textmodus) und setzt dessen Handle als
@@ -3026,7 +2888,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 --------------
 
     *** `io.lines([filename])`
-
 
     Öffnet den angegebenen Dateinamen im Lesemodus und liefert einen
     Iterator, welcher bei jedem Aufruf eine neue Zeile der Datei liefert.
@@ -3046,7 +2907,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 --------------
 
     *** `io.open(filename[,mode])`
-
 
     Diese Funktion öffnet eine Datei im mit der Zeichenkette `mode`
     angegebenen Modus. Sie liefert ein neues Datei-Handle, oder -- im Falle
@@ -3071,13 +2931,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `io.output([file])`
 
-
     Ähnlich wie `io.input`, arbeitet jedoch auf der Standard-Ausgabedatei.
 
 --------------
 
     *** `io.popen(prog[,mode])`
-
 
     Öffnet das Programm `prog` in einem separaten Prozess und liefert ein
     Datei-Handle, welches Sie verwenden können, um Daten von diesem Programm
@@ -3091,13 +2949,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `io.read(···)`
 
-
     Äquivalent zu `io.input():read`.
 
 --------------
 
     *** `io.tmpfile()`
-
 
     Liefert ein Handle für eine temporäre Datei. Die Datei wird im
     Aktualisierungsmodus geöffnet und automatisch entfernt, wenn das
@@ -3106,7 +2962,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 --------------
 
     *** `io.type(obj)`
-
 
     Prüft, ob `obj` ein gültiges Datei-Handle ist. Liefert die Zeichenkette
     "`file`", wenn `obj` ein offenes Datei-Handle ist, "`closed file`", wenn
@@ -3117,13 +2972,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `io.write(···)`
 
-
     Äquivalent zu `io.output():write`.
 
 --------------
 
     *** `file:close()`
-
 
     Schließt `file`. Beachen Sie, dass Dateien automatisch geschlossen
     werden, wenn deren Handles von der automatischen Speicherbereinigung
@@ -3133,13 +2986,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `file:flush()`
 
-
     Speichert jegliche geschriebenen Datei für `file`.
 
 --------------
 
     *** `file:lines()`
-
 
     Liefert einen Iterator, welcher bei jedem Aufruf eine neue Zeile der
     Datei liefert. Somit wird eine Konstruktion wie ...
@@ -3152,7 +3003,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 --------------
 
     *** `file:read(···)`
-
 
     Liest die Datei `file` im angegebenen Format, welches spezifiziert, was
     gelesen werden soll. Diese Funktion liefert für jedes Format eine
@@ -3178,7 +3028,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `file:seek([whence][,offset])`
 
-
     Setzt und liefert die Position des Dateizeigers, gemessen vom Anfang der
     Datei bis zur durch `offset` gegebenen Position und einer durch die
     Zeichenkette `whence` spezifizierten Basis:
@@ -3203,7 +3052,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `file:setvbuf(mode[,size])`
 
-
     Setzt den Puffermodus für eine Ausgabedatei. Es sind drei Modi
     verfügbar:
 
@@ -3223,7 +3071,6 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 
     *** `file:write(···)`
 
-
     Schreibt den Wertes jedes Arguments in `file`. Die Argumente müssen
     Zeichenketten oder Zahlen sein. Um andere Werte zu schreiben, verwenden
     Sie `tostring` oder `string.format` vor `write`.
@@ -3231,13 +3078,11 @@ einen systemabhängigen Fehlercode als drittes Ergebnis) und einen von
 ==============================================================================
 BETRIEBSSYSTEM                                                 *lua_module_os*
 
-
 Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
 --------------
 
     *** `os.clock()`
-
 
     Liefert eine Annäherung der CPU-Zeit in Sekunden, welche durch das
     Programm benutzt wird.
@@ -3245,7 +3090,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 --------------
 
     *** `os.date([format[,time]])`
-
 
     Liefert eine Zeichenkette oder Tabelle, welche das Datum und die Uhrzeit
     entsprechend der angegebenen Zeichenkette `format` beinhalten.
@@ -3273,14 +3117,12 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
     *** `os.difftime(t2,t1)`
 
-
     Liefert die Anzahl Sekunden von `t1` zu `t2`. Unter POSIX, Windows und
     einigen anderen Systeme entspricht dieser Wert exakt `t2-t1`.
 
 --------------
 
     *** `os.execute([command])`
-
 
     Diese Funktion ist äquivalent zur C-Funktion `system`. Sie übergibt
     `command` zur Ausführung über eine Betriebssystem-Shell. Sie liefert
@@ -3292,7 +3134,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
     *** `os.exit([code])`
 
-
     Ruft die C-Funktion `exit` mit einem optionalen `code` zur Beendigung
     des Hostprogramms auf. Der Standardwert für `code` ist der
     "success"-Code.
@@ -3301,14 +3142,12 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
     *** `os.getenv(varname)`
 
-
     Liefert den Wert der Prozess-Umgebungsvariable `varname`, oder `nil`
     falls die Variable nicht definiert ist.
 
 --------------
 
     *** `os.remove(filename)`
-
 
     Löscht die Datei oder das Verzeichnis mit dem angegebenen Namen. Ordner
     müssen leer sein, um entfernt werden zu können. Falls diese Funktion
@@ -3319,7 +3158,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
     *** `os.rename(oldname,newname)`
 
-
     Benennt die Datei oder das Verzeichnis mit dem Namen `oldname` zu
     `newname` um. Falls diese Funktion fehlschlägt, liefert diese `nil` und
     eine den Fehler beschreibende Zeichenkette.
@@ -3327,7 +3165,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 --------------
 
     *** `os.setlocale(locale[,category])`
-
 
     Setzt die aktuelle Sprache des Programms. `locale` ist eine
     Zeichenkette, welche die Sprache spezifiziert; `category` ist eine
@@ -3350,7 +3187,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
     *** `os.time([table])`
 
-
     Liefert bei Aufruf ohne Argumente die aktuelle Zeit oder die Zeit,
     welche durch die übergebene Tabelle spezifiziert wird. Diese Tabelle
     muss die Felder `year`, `month` und `day` besitzen und kann (zusätzlich)
@@ -3367,7 +3203,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 --------------
 
     *** `os.tmpname()`
-
 
     Liefert eine Zeichenkette mit einem Dateinamen, welcher für eine
     temporäre Datei genutzt werden kann. Die Datei muss vor deren Benutzung
@@ -3386,7 +3221,6 @@ Diese Bibliothek ist über die `os`-Tabelle implementiert.
 
 ==============================================================================
 DIE DEBUG-BIBLIOTHEK                                               *lua_debug*
-
 
 Diese Bibliothek stellt die Funktionalität der Debug-Schnittstelle
 Lua-Programmen zur Verfügung. Sie sollten vorsichtig sein, wenn Sie
@@ -3409,7 +3243,6 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.debug()`
 
-
     Startet einen interaktiven Modus mit dem Benutzer, wobei jede von diesem
     eingegebene Zeichenkette ausgeführt wird. Durch die Verwendung einfacher
     Befehle und anderer Debug-Funktionen kann der Benutzer globale und
@@ -3425,13 +3258,11 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.getfenv(o)`
 
-
     Liefert die Umgebung des Objekts `o`.
 
 --------------
 
     *** `debug.gethook([thread])`
-
 
     Liefert die aktuellen Hook-Einstellungen des Threads in drei Werten: Die
     aktuelle Hook-Funktion, die aktuelle Hook-Maske und die aktuelle Anzahl
@@ -3440,7 +3271,6 @@ ist. Standard ist immer der aktuelle Thread.
 --------------
 
     *** `debug.getinfo([thread,]function[,what])`
-
 
     Liefert eine Tabelle mit Informationen zu einer Funktion. Sie können
     direkt die Funktion angeben, oder aber eine Nummer als Wert von
@@ -3469,7 +3299,6 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.getlocal([thread,]level,local)`
 
-
     Diese Funktion liefert den Namen und Wert der lokalen Variable mit dem
     Index `local` der Funktion auf Ebene `level` des Aufrufstapels. (Der
     erste Parameter oder die erste lokale Variable hat Index 1 usw., bis zur
@@ -3487,7 +3316,6 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.getmetatable(object)`
 
-
     Liefert die Metatabelle des gegebenen `object` oder `nil`, falls es
     keine Metatabelle besitzt.
 
@@ -3495,13 +3323,11 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.getregistry()`
 
-
     Liefert die Registry-Tabelle (s. §3.5).
 
 --------------
 
     *** `debug.getupvalue(func,up)`
-
 
     Diese Funktion liefert den Namen und Wert der gebundenen Variable mit
     dem Index `up` der Funktion `func`. Die Funktion liefert `nil`, falls es
@@ -3511,14 +3337,12 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.setfenv(object,table)`
 
-
     Setzt die Umgebung des gegebenen `object` auf die gegebene `table`.
     Liefert `object`.
 
 --------------
 
     *** `debug.sethook([thread,]hook,mask[,count])`
-
 
     Setzt die gegebene Funktion als Hook. Die Zeichenkette `mask` und die
     Zahl `count` beschreiben, wann der Hook aufgerufen wird. Die
@@ -3553,7 +3377,6 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.setlocal([thread,] level,local,value)`
 
-
     Diese Funktion weist den Wert `value` der Variablen `local` mit dem
     Index `local` der Funktion der Ebene `level` des Stapelspeichers zu. Die
     Funktion liefert `nil`, falls es keine lokale Variable mit dem gegebenen
@@ -3566,14 +3389,12 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.setmetatable(object,table)`
 
-
     Setzt die Metatabelle des gegebenen `object` auf `table` (welche `nil`
     sein kann).
 
 --------------
 
     *** `debug.setupvalue(func,up,value)`
-
 
     Diese Funktion weist den Wert `value` der gebundenen Variable mit dem
     Index `up` der Funktion `func` zu. Die Funktion liefert `nil`, falls es
@@ -3584,7 +3405,6 @@ ist. Standard ist immer der aktuelle Thread.
 
     *** `debug.traceback([thread,] [message[, level]])`
 
-
     Liefert eine Zeichenkette mit einem Stacktrace des Aufrufstapels. Eine
     optionale `message`-Zeichenkette wird dem Stacktrace vorangestellt. Eine
     optionale `level`-Nummer legt fest, auf welcher Ebene die
@@ -3593,7 +3413,6 @@ ist. Standard ist immer der aktuelle Thread.
 
 ==============================================================================
 DIE KOMPLETTE SYNTAX VON LUA                                      *lua_syntax*
-
 
 Hier ist die komplette Syntax von Lua in EBNF: (dies beschreibt nicht
 die Operatorpräzedenz)

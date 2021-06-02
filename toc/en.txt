@@ -1,56 +1,56 @@
 ==============================================================================
 TABLE OF CONTENTS                                          *lua_reference_toc*
 
-1      - Introduction                      |lua_introduction|
+1      - Introduction                            |lua_introduction|
 
-2      - The Language                      |lua_language|
-2.1    - Lexical Conventions               |lua_conventions|
-2.2    - Values and Types                  |lua_types|
-2.2.1  - Coercion                          |lua_type_coercion|
-2.3    - Variables                         |lua_variables|
+2      - The Language                            |lua_language|
+2.1    - Lexical Conventions                     |lua_conventions|
+2.2    - Values and Types                        |lua_types|
+2.2.1  - Coercion                                |lua_type_coercion|
+2.3    - Variables                               |lua_variables|
 
-2.4    - Statements                        |lua_statements|
-2.4.1  - Chunks                            |lua_chunks|
-2.4.2  - Blocks                            |lua_blocks|
-2.4.3  - Assignment                        |lua_assignment|
-2.4.4  - Control Structures                |lua_control|
-2.4.5  - For Statement                     |lua_for|
-2.4.6  - Function Calls as Statements      |lua_func_statement|
-2.4.7  - Local Declarations                |lua_local|
+2.4    - Statements                              |lua_statements|
+2.4.1  - Chunks                                  |lua_chunks|
+2.4.2  - Blocks                                  |lua_blocks|
+2.4.3  - Assignment                              |lua_assignment|
+2.4.4  - Control Structures                      |lua_control|
+2.4.5  - For Statement                           |lua_for|
+2.4.6  - Function Calls as Statements            |lua_func_statement|
+2.4.7  - Local Declarations                      |lua_local|
 
-2.5    - Expressions                       |lua_expressions|
-2.5.1  - Arithmetic Operators              |lua_arithmetic_ops|
-2.5.2  - Relational Operators              |lua_relational_ops|
-2.5.3  - Logical Operators                 |lua_logical_ops|
-2.5.4  - Concatenation                     |lua_concatenation|
-2.5.5  - The Length Operator               |lua_len|
-2.5.6  - Precedence                        |lua_precedence|
-2.5.7  - Table Constructors                |lua_table_constructors|
-2.5.8  - Function Calls                    |lua_function_calls|
-2.5.9  - Function Definitions              |lua_function_defs|
+2.5    - Expressions                             |lua_expressions|
+2.5.1  - Arithmetic Operators                    |lua_arithmetic_ops|
+2.5.2  - Relational Operators                    |lua_relational_ops|
+2.5.3  - Logical Operators                       |lua_logical_ops|
+2.5.4  - Concatenation                           |lua_concatenation|
+2.5.5  - The Length Operator                     |lua_len|
+2.5.6  - Precedence                              |lua_precedence|
+2.5.7  - Table Constructors                      |lua_table_constructors|
+2.5.8  - Function Calls                          |lua_function_calls|
+2.5.9  - Function Definitions                    |lua_function_defs|
 
-2.6    - Visibility Rules                  |lua_scope|
-2.7    - Error Handling                    |lua_errors|
-2.8    - Metatables                        |lua_metatables|
-2.9    - Environments                      |lua_environments|
+2.6    - Visibility Rules                        |lua_scope|
+2.7    - Error Handling                          |lua_errors|
+2.8    - Metatables                              |lua_metatables|
+2.9    - Environments                            |lua_environments|
 
-2.10   - Garbage Collection                |lua_gc|
-2.10.2 - Weak Tables                       |lua_weak|
-2.11   - Coroutines                        |lua_coroutines|
+2.10   - Garbage Collection                      |lua_gc|
+2.10.2 - Weak Tables                             |lua_weak|
+2.11   - Coroutines                              |lua_coroutines|
 
-5      - Standard Libraries                |lua_stdlib|
-5.1    - Basic Functions                   |lua_builtins|
-5.2    - Coroutine Manipulation            |lua_module_coroutines|
-5.3    - Modules                           |lua_modules|
-5.4    - String Manipulation               |lua_module_string|
-5.4.1  - Patterns                          |lua_patterns|
-5.5    - Table Manipulation                |lua_module_table|
-5.6    - Mathematical Functions            |lua_module_math|
-5.7    - Input and Output Facilities       |lua_module_io|
-5.8    - Operating System Facilities       |lua_module_os|
-5.9    - The Debug Library                 |lua_debug|
+5      - Standard Libraries                      |lua_stdlib|
+5.1    - Basic Functions                         |lua_builtins|
+5.2    - Coroutine Manipulation                  |lua_module_coroutines|
+5.3    - Modules                                 |lua_modules|
+5.4    - String Manipulation                     |lua_module_string|
+5.4.1  - Patterns                                |lua_patterns|
+5.5    - Table Manipulation                      |lua_module_table|
+5.6    - Mathematical Functions                  |lua_module_math|
+5.7    - Input and Output Facilities             |lua_module_io|
+5.8    - Operating System Facilities             |lua_module_os|
+5.9    - The Debug Library                       |lua_debug|
 
-8      - The Complete Syntax of Lua        |lua_syntax|
+8      - The Complete Syntax of Lua              |lua_syntax|
 
 ==============================================================================
 TRANSLATIONS                                      *lua_reference_translations*

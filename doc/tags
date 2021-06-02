@@ -71,6 +71,8 @@ lua_language	lua_reference.txt	/*lua_language*
 lua_len	lua_reference.txt	/*lua_len*
 lua_local	lua_reference.txt	/*lua_local*
 lua_logical_ops	lua_reference.txt	/*lua_logical_ops*
+lua_metamethods	lua_reference.txt	/*lua_metamethods*
+lua_metatable_events	lua_reference.txt	/*lua_metatable_events*
 lua_metatables	lua_reference.txt	/*lua_metatables*
 lua_module_coroutines	lua_reference.txt	/*lua_module_coroutines*
 lua_module_io	lua_reference.txt	/*lua_module_io*

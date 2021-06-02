@@ -15,7 +15,7 @@ lua_errors	lua_reference.dex	/*lua_errors*
 lua_expressions	lua_reference.dex	/*lua_expressions*
 lua_for	lua_reference.dex	/*lua_for*
 lua_func_statement	lua_reference.dex	/*lua_func_statement*
-lua_func_statement	lua_reference.dex	/*lua_func_statement*
+lua_function_calls	lua_reference.dex	/*lua_function_calls*
 lua_function_defs	lua_reference.dex	/*lua_function_defs*
 lua_gc	lua_reference.dex	/*lua_gc*
 lua_introduction	lua_reference.dex	/*lua_introduction*
@@ -30,6 +30,7 @@ lua_module_math	lua_reference.dex	/*lua_module_math*
 lua_module_os	lua_reference.dex	/*lua_module_os*
 lua_module_string	lua_reference.dex	/*lua_module_string*
 lua_module_table	lua_reference.dex	/*lua_module_table*
+lua_modules	lua_reference.dex	/*lua_modules*
 lua_patterns	lua_reference.dex	/*lua_patterns*
 lua_precedence	lua_reference.dex	/*lua_precedence*
 lua_reference_toc	lua_reference.dex	/*lua_reference_toc*

@@ -48,6 +48,10 @@ ipairs	lua_reference.esx	/*ipairs*
 load	lua_reference.esx	/*load*
 loadfile	lua_reference.esx	/*loadfile*
 loadstring	lua_reference.esx	/*loadstring*
+lua_introduction	lua_reference.esx	/*lua_introduction*
+lua_language	lua_reference.esx	/*lua_language*
+lua_metamethods	lua_reference.esx	/*lua_metamethods*
+lua_metatable_events	lua_reference.esx	/*lua_metatable_events*
 lua_reference_toc	lua_reference.esx	/*lua_reference_toc*
 math.abs	lua_reference.esx	/*math.abs*
 math.acos	lua_reference.esx	/*math.acos*

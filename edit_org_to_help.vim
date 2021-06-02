@@ -29,6 +29,8 @@ g/^\s*:PROPERTIES:$/,+2d
 %s/\%([[{]\|\s\|^\)\zs\/\(\w\%([^/]*\S\)\?\)\//`\1`/g
 " verbatim used a lot in links, do later
 
+" Add target for metamethod/metatable
+%s/- `add`/                                      *lua_metamethods* *lua_metatable_events*\r&/
 " ======== Set up columns/sections
 
 " insert table of contents
@@ -100,5 +102,5 @@ g/--------------\n\n\*\{3}/,+2s/--------------\n\n\*\{3} =\([^(]\+\)\( (.*)\)\?=
 " Finish verbatim
 %s/\%([\t ("']\|^\)\zs=\([^= \t]\%([^=]*[^= \t]\)\?\)=/`\1`/g
 
-write translations/lua_reference.%:rx
+write translations/lua_reference.%:t:rx
 quit!
