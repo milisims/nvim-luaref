@@ -20,8 +20,4 @@ for lang in en pt es de; do
   echo
 done
 
-echo Generating tags
-nvim -es -u NONE doc/lua_reference.txt +'helptags %:h' +q
-nvim -es -u NONE translations/lua_reference.ptx +'helptags %:h' +q
-
 mv translations/lua_reference.enx doc/lua_reference.txt
