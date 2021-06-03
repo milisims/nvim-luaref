@@ -55,7 +55,7 @@ endif
 
 setlocal shiftwidth=4
 " reformat and set up builtin function, option/variable targets
-g/--------------\n\n\*\{3}/,+2s/--------------\n\n\*\{3} =\([^(]\+\)\( (.*)\)\?=\n/\=submatch(1).submatch(2).repeat(' ', 76-strwidth(submatch(1).submatch(1).submatch(2))).'*'.submatch(1).'*'/|silent +1,/^---\|^===/->
+g/--------------\n\n\*\{3}/,+2s/--------------\n\n\*\{3} =\([^(]\+\)\( (.*)\)\?=\n/\=submatch(1).submatch(2).repeat(' ', 74-strwidth(submatch(1).submatch(1).submatch(2))).'*'.submatch(1).'()*'/|silent +1,/^---\|^===/->
 
 " Finish verbatim
 %s/\%([\t ("']\|^\)\zs=\([^= \t]\%([^=]*[^= \t]\)\?\)=/`\1`/g

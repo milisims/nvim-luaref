@@ -1560,12 +1560,12 @@ The basic library provides some core functions to Lua. If you do not
 include this library in your application, you should check carefully
 whether you need to provide implementations for some of its facilities.
 
-assert (v [, message])                                                *assert*
+assert (v [, message])                                              *assert()*
     Issues an error when the value of its argument `v` is false (i.e., `nil`
     or `false`); otherwise, returns all its arguments. `message` is an error
     message; when absent, it defaults to "assertion failed!"
 
-collectgarbage ([opt [, arg]])                                *collectgarbage*
+collectgarbage ([opt [, arg]])                              *collectgarbage()*
     This function is a generic interface to the garbage collector. It
     performs different functions according to its first argument, `opt`:
 
@@ -1586,14 +1586,14 @@ collectgarbage ([opt [, arg]])                                *collectgarbage*
       of the collector (see |lua_gc|). Returns the previous value
       for `step`.
 
-dofile ([filename])                                                   *dofile*
+dofile ([filename])                                                 *dofile()*
     Opens the named file and executes its contents as a Lua chunk. When
     called without arguments, `dofile` executes the contents of the standard
     input (`stdin`). Returns all values returned by the chunk. In case of
     errors, `dofile` propagates the error to its caller (that is, `dofile`
     does not run in protected mode).
 
-error (message [, level])                                              *error*
+error (message [, level])                                            *error()*
     Terminates the last protected function called and returns `message` as
     the error message. Function `error` never returns.
 
@@ -1604,25 +1604,25 @@ error (message [, level])                                              *error*
     function that called `error` was called; and so on. Passing a level 0
     avoids the addition of error position information to the message.
 
-_G                                                                        *_G*
+_G                                                                      *_G()*
     A global variable (not a function) that holds the global environment
     (that is, =_G._G = _G=). Lua itself does not use this variable; changing
     its value does not affect any environment, nor vice-versa. (Use
     |setfenv| to change environments.)
 
-getfenv ([f])                                                        *getfenv*
+getfenv ([f])                                                      *getfenv()*
     Returns the current environment in use by the function. `f` can be a Lua
     function or a number that specifies the function at that stack level:
     Level 1 is the function calling `getfenv`. If the given function is not
     a Lua function, or if `f` is 0, `getfenv` returns the global
     environment. The default for `f` is 1.
 
-getmetatable (object)                                           *getmetatable*
+getmetatable (object)                                         *getmetatable()*
     If `object` does not have a metatable, returns `nil`. Otherwise, if the
     object's metatable has a `"__metatable"` field, returns the associated
     value. Otherwise, returns the metatable of the given object.
 
-ipairs (t)                                                            *ipairs*
+ipairs (t)                                                          *ipairs()*
     Returns three values: an iterator function, the table `t`, and 0, so
     that the construction
     >
@@ -1631,7 +1631,7 @@ ipairs (t)                                                            *ipairs*
     will iterate over the pairs (`1,t[1]`), (`2,t[2]`), ···, up to the first
     integer key absent from the table.
 
-load (func [, chunkname])                                               *load*
+load (func [, chunkname])                                             *load()*
     Loads a chunk using function `func` to get its pieces. Each call to
     `func` must return a string that concatenates with previous results. A
     return of an empty string, `nil`, or no value signals the end of the
@@ -1644,11 +1644,11 @@ load (func [, chunkname])                                               *load*
     `chunkname` is used as the chunk name for error messages and debug
     information. When absent, it defaults to "==(load)=".
 
-loadfile ([filename])                                               *loadfile*
+loadfile ([filename])                                             *loadfile()*
     Similar to |load|, but gets the chunk from file
     `filename` or from the standard input, if no file name is given.
 
-loadstring (string [, chunkname])                                 *loadstring*
+loadstring (string [, chunkname])                               *loadstring()*
     Similar to |load|, but gets the chunk from the given
     string.
 
@@ -1658,7 +1658,7 @@ loadstring (string [, chunkname])                                 *loadstring*
     <
     When absent, `chunkname` defaults to the given string.
 
-next (table [, index])                                                  *next*
+next (table [, index])                                                *next()*
     Allows a program to traverse all fields of a table. Its first argument
     is a table and its second argument is an index in this table. `next`
     returns the next index of the table and its associated value. When
@@ -1676,7 +1676,7 @@ next (table [, index])                                                  *next*
     assign any value to a non-existent field in the table. You may however
     modify existing fields. In particular, you may clear existing fields.
 
-pairs (t)                                                              *pairs*
+pairs (t)                                                            *pairs()*
     Returns three values: the |next| function, the table `t`,
     and `nil`, so that the construction
     >
@@ -1687,7 +1687,7 @@ pairs (t)                                                              *pairs*
     See function |next| for the caveats of modifying the
     table during its traversal.
 
-pcall (f, arg1, ···)                                                   *pcall*
+pcall (f, arg1, ···)                                                 *pcall()*
     Calls function `f` with the given arguments in `protected mode`. This
     means that any error inside `f` is not propagated; instead, `pcall`
     catches the error and returns a status code. Its first result is the
@@ -1696,34 +1696,34 @@ pcall (f, arg1, ···)                                                   *pcall
     after this first result. In case of any error, `pcall` returns `false`
     plus the error message.
 
-print (···)                                                            *print*
+print (···)                                                          *print()*
     Receives any number of arguments, and prints their values to `stdout`,
     using the |tostring| function to convert them to
     strings. `print` is not intended for formatted output, but only as a
     quick way to show a value, typically for debugging. For formatted
     output, use |string.format|.
 
-rawequal (v1, v2)                                                   *rawequal*
+rawequal (v1, v2)                                                 *rawequal()*
     Checks whether `v1` is equal to `v2`, without invoking any metamethod.
     Returns a boolean.
 
-rawget (table, index)                                                 *rawget*
+rawget (table, index)                                               *rawget()*
     Gets the real value of `table[index]`, without invoking any metamethod.
     `table` must be a table; `index` may be any value.
 
-rawset (table, index, value)                                          *rawset*
+rawset (table, index, value)                                        *rawset()*
     Sets the real value of `table[index]` to `value`, without invoking any
     metamethod. `table` must be a table, `index` any value different from
     `nil`, and `value` any Lua value.
 
     This function returns `table`.
 
-select (index, ···)                                                   *select*
+select (index, ···)                                                 *select()*
     If `index` is a number, returns all arguments after argument number
     `index`. Otherwise, `index` must be the string `"#"`, and `select`
     returns the total number of extra arguments it received.
 
-setfenv (f, table)                                                   *setfenv*
+setfenv (f, table)                                                 *setfenv()*
     Sets the environment to be used by the given function. `f` can be a Lua
     function or a number that specifies the function at that stack level:
     Level 1 is the function calling `setfenv`. `setfenv` returns the given
@@ -1732,7 +1732,7 @@ setfenv (f, table)                                                   *setfenv*
     As a special case, when `f` is 0 `setfenv` changes the environment of
     the running thread. In this case, `setfenv` returns no values.
 
-setmetatable (table, metatable)                                 *setmetatable*
+setmetatable (table, metatable)                               *setmetatable()*
     Sets the metatable for the given table. (You cannot change the metatable
     of other types from Lua, only from C.) If `metatable` is `nil`, removes
     the metatable of the given table. If the original metatable has a
@@ -1740,7 +1740,7 @@ setmetatable (table, metatable)                                 *setmetatable*
 
     This function returns `table`.
 
-tonumber (e [, base])                                               *tonumber*
+tonumber (e [, base])                                             *tonumber()*
     Tries to convert its argument to a number. If the argument is already a
     number or a string convertible to a number, then `tonumber` returns this
     number; otherwise, it returns `nil`.
@@ -1753,7 +1753,7 @@ tonumber (e [, base])                                               *tonumber*
     exponent part (see |lua_conventions|). In other bases, only unsigned
     integers are accepted.
 
-tostring (e)                                                        *tostring*
+tostring (e)                                                      *tostring()*
     Receives an argument of any type and converts it to a string in a
     reasonable format. For complete control of how numbers are converted,
     use |string.format|.
@@ -1762,13 +1762,13 @@ tostring (e)                                                        *tostring*
     calls the corresponding value with `e` as argument, and uses the result
     of the call as its result.
 
-type (v)                                                                *type*
+type (v)                                                              *type()*
     Returns the type of its only argument, coded as a string. The possible
     results of this function are "`nil`" (a string, not the value `nil`),
     "`number`", "`string`", "`boolean`", "`table`", "`function`",
     "`thread`", and "`userdata`".
 
-unpack (list [, i [, j]])                                             *unpack*
+unpack (list [, i [, j]])                                           *unpack()*
     Returns the elements from the given table. This function is equivalent
     to
     >
@@ -1778,12 +1778,12 @@ unpack (list [, i [, j]])                                             *unpack*
     elements. By default, `i` is 1 and `j` is the length of the list, as
     defined by the length operator (see |lua_len|).
 
-_VERSION                                                            *_VERSION*
+_VERSION                                                          *_VERSION()*
     A global variable (not a function) that holds a string containing the
     current interpreter version. The current contents of this variable is
     "`Lua 5.1`".
 
-xpcall (f, err)                                                       *xpcall*
+xpcall (f, err)                                                     *xpcall()*
     This function is similar to |pcall|, except that you can
     set a new error handler.
 
@@ -1803,11 +1803,11 @@ The operations related to coroutines comprise a sub-library of the basic
 library and come inside the table `coroutine`. See |lua_coroutines| for
 a general description of coroutines.
 
-coroutine.create (f)                                        *coroutine.create*
+coroutine.create (f)                                      *coroutine.create()*
     Creates a new coroutine, with body `f`. `f` must be a Lua function.
     Returns this new coroutine, an object with type `"thread"`.
 
-coroutine.resume (co [, val1, ···])                         *coroutine.resume*
+coroutine.resume (co [, val1, ···])                       *coroutine.resume()*
     Starts or continues the execution of coroutine `co`. The first time you
     resume a coroutine, it starts running its body. The values `val1`, ···
     are passed as the arguments to the body function. If the coroutine has
@@ -1819,10 +1819,10 @@ coroutine.resume (co [, val1, ···])                         *coroutine.resume
     returned by the body function (if the coroutine terminates). If there is
     any error, `resume` returns `false` plus the error message.
 
-coroutine.running ()                                       *coroutine.running*
+coroutine.running ()                                     *coroutine.running()*
     Returns the running coroutine, or `nil` when called by the main thread.
 
-coroutine.status (co)                                       *coroutine.status*
+coroutine.status (co)                                     *coroutine.status()*
     Returns the status of coroutine `co`, as a string: `"running"`, if the
     coroutine is running (that is, it called `status`); `"suspended"`, if
     the coroutine is suspended in a call to `yield`, or if it has not
@@ -1831,14 +1831,14 @@ coroutine.status (co)                                       *coroutine.status*
     coroutine has finished its body function, or if it has stopped with an
     error.
 
-coroutine.wrap (f)                                            *coroutine.wrap*
+coroutine.wrap (f)                                          *coroutine.wrap()*
     Creates a new coroutine, with body `f`. `f` must be a Lua function.
     Returns a function that resumes the coroutine each time it is called.
     Any arguments passed to the function behave as the extra arguments to
     `resume`. Returns the same values returned by `resume`, except the first
     boolean. In case of error, propagates the error.
 
-coroutine.yield (···)                                        *coroutine.yield*
+coroutine.yield (···)                                      *coroutine.yield()*
     Suspends the execution of the calling coroutine. The coroutine cannot be
     running a C function, a metamethod, or an iterator. Any arguments to
     `yield` are passed as extra results to `resume`.
@@ -1851,7 +1851,7 @@ modules in Lua. It exports two of its functions directly in the global
 environment: |require| and |module|.
 Everything else is exported in a table `package`.
 
-module (name [, ···])                                                 *module*
+module (name [, ···])                                               *module()*
     Creates a module. If there is a table in `package.loaded[name]`, this
     table is the module. Otherwise, if there is a global table `t` with the
     given name, this table is the module. Otherwise creates a new table `t`
@@ -1871,7 +1871,7 @@ module (name [, ···])                                                 *module
     This function can receive optional `options` after the module name,
     where each option is a function to be applied over the module.
 
-require (modname)                                                    *require*
+require (modname)                                                  *require()*
     Loads the given module. The function starts by looking into the
     |package.loaded| table to determine whether
     `modname` is already loaded. If it is, then `require` returns the value
@@ -1902,7 +1902,7 @@ require (modname)                                                    *require*
     If there is any error loading or running the module, or if it cannot
     find any loader for the module, then `require` signals an error.
 
-package.cpath                                                  *package.cpath*
+package.cpath                                                *package.cpath()*
     The path used by |require| to search for a C loader.
 
     Lua initializes the C path |package.cpath| in
@@ -1910,13 +1910,13 @@ package.cpath                                                  *package.cpath*
     |package.path|, using the environment variable
     `LUA_CPATH` or a default path defined in `luaconf.h`.
 
-package.loaded                                                *package.loaded*
+package.loaded                                              *package.loaded()*
     A table used by |require| to control which modules are
     already loaded. When you require a module `modname` and
     `package.loaded[modname]` is not false, |require|
     simply returns the value stored there.
 
-package.loaders                                              *package.loaders*
+package.loaders                                            *package.loaders()*
     A table used by |require| to control how to load
     modules.
 
@@ -1969,7 +1969,7 @@ package.loaders                                              *package.loaders*
     several C submodules into one single library, with each submodule
     keeping its original open function.
 
-package.loadlib (libname, funcname)                          *package.loadlib*
+package.loadlib (libname, funcname)                        *package.loadlib()*
     Dynamically links the host program with the C library `libname`. Inside
     this library, looks for a function `funcname` and returns this function
     as a C function. (So, `funcname` must follow the protocol (see
@@ -1986,7 +1986,7 @@ package.loadlib (libname, funcname)                          *package.loadlib*
     on some platforms (Windows, Linux, Mac OS X, Solaris, BSD, plus other
     Unix systems that support the `dlfcn` standard).
 
-package.path                                                    *package.path*
+package.path                                                  *package.path()*
     The path used by |require| to search for a Lua loader.
 
     At start-up, Lua initializes this variable with the value of the
@@ -1994,11 +1994,11 @@ package.path                                                    *package.path*
     `luaconf.h`, if the environment variable is not defined. Any "`;;`" in
     the value of the environment variable is replaced by the default path.
 
-package.preload                                              *package.preload*
+package.preload                                            *package.preload()*
     A table to store loaders for specific modules (see
     |require|).
 
-package.seeall (module)                                       *package.seeall*
+package.seeall (module)                                     *package.seeall()*
     Sets a metatable for `module` with its `__index` field referring to the
     global environment, so that this module inherits values from the global
     environment. To be used as an option to function
@@ -2022,27 +2022,27 @@ as `s:byte(i)`.
 
 The string library assumes one-byte character encodings.
 
-string.byte (s [, i [, j]])                                      *string.byte*
+string.byte (s [, i [, j]])                                    *string.byte()*
     Returns the internal numerical codes of the characters `s[i]`, `s[i+1]`,
     ···, `s[j]`. The default value for `i` is 1; the default value for `j`
     is `i`.
 
     Note that numerical codes are not necessarily portable across platforms.
 
-string.char (···)                                                *string.char*
+string.char (···)                                              *string.char()*
     Receives zero or more integers. Returns a string with length equal to
     the number of arguments, in which each character has the internal
     numerical code equal to its corresponding argument.
 
     Note that numerical codes are not necessarily portable across platforms.
 
-string.dump (function)                                           *string.dump*
+string.dump (function)                                         *string.dump()*
     Returns a string containing a binary representation of the given
     function, so that a later |loadstring| on this
     string returns a copy of the function. `function` must be a Lua function
     without upvalues.
 
-string.find (s, pattern [, init [, plain]])                      *string.find*
+string.find (s, pattern [, init [, plain]])                    *string.find()*
     Looks for the first match of `pattern` in the string `s`. If it finds a
     match, then `find` returns the indices of `s` where this occurrence
     starts and ends; otherwise, it returns `nil`. A third, optional
@@ -2056,7 +2056,7 @@ string.find (s, pattern [, init [, plain]])                      *string.find*
     If the pattern has captures, then in a successful match the captured
     values are also returned, after the two indices.
 
-string.format (formatstring, ···)                              *string.format*
+string.format (formatstring, ···)                            *string.format()*
     Returns a formatted version of its variable number of arguments
     following the description given in its first argument (which must be a
     string). The format string follows the same rules as the `printf` family
@@ -2082,7 +2082,7 @@ string.format (formatstring, ···)                              *string.format
     This function does not accept string values containing embedded zeros,
     except as arguments to the `q` option.
 
-string.gmatch (s, pattern)                                     *string.gmatch*
+string.gmatch (s, pattern)                                   *string.gmatch()*
     Returns an iterator function that, each time it is called, returns the
     next captures from `pattern` over string `s`. If `pattern` specifies no
     captures, then the whole match is produced in each call.
@@ -2107,7 +2107,7 @@ string.gmatch (s, pattern)                                     *string.gmatch*
     For this function, a '`^`' at the start of a pattern does not work as an
     anchor, as this would prevent the iteration.
 
-string.gsub (s, pattern, repl [, n])                             *string.gsub*
+string.gsub (s, pattern, repl [, n])                           *string.gsub()*
     Returns a copy of `s` in which all (or the first `n`, if given)
     occurrences of the `pattern` have been replaced by a replacement string
     specified by `repl`, which can be a string, a table, or a function.
@@ -2157,38 +2157,38 @@ string.gsub (s, pattern, repl [, n])                             *string.gsub*
 	     x = string.gsub("$name-$version.tar.gz", "%$(%w+)", t)
 	     --> x="lua-5.1.tar.gz"
     <
-string.len (s)                                                    *string.len*
+string.len (s)                                                  *string.len()*
     Receives a string and returns its length. The empty string `""` has
     length 0. Embedded zeros are counted, so `"a\000bc\000"` has length 5.
 
-string.lower (s)                                                *string.lower*
+string.lower (s)                                              *string.lower()*
     Receives a string and returns a copy of this string with all uppercase
     letters changed to lowercase. All other characters are left unchanged.
     The definition of what an uppercase letter is depends on the current
     locale.
 
-string.match (s, pattern [, init])                              *string.match*
+string.match (s, pattern [, init])                            *string.match()*
     Looks for the first `match` of `pattern` in the string `s`. If it finds
     one, then `match` returns the captures from the pattern; otherwise it
     returns `nil`. If `pattern` specifies no captures, then the whole match
     is returned. A third, optional numerical argument `init` specifies where
     to start the search; its default value is 1 and can be negative.
 
-string.rep (s, n)                                                 *string.rep*
+string.rep (s, n)                                               *string.rep()*
     Returns a string that is the concatenation of `n` copies of the string
     `s`.
 
-string.reverse (s)                                            *string.reverse*
+string.reverse (s)                                          *string.reverse()*
     Returns a string that is the string `s` reversed.
 
-string.sub (s, i [, j])                                           *string.sub*
+string.sub (s, i [, j])                                         *string.sub()*
     Returns the substring of `s` that starts at `i` and continues until `j`;
     `i` and `j` can be negative. If `j` is absent, then it is assumed to be
     equal to -1 (which is the same as the string length). In particular, the
     call `string.sub(s,1,j)` returns a prefix of `s` with length `j`, and
     `string.sub(s, -i)` returns a suffix of `s` with length `i`.
 
-string.upper (s)                                                *string.upper*
+string.upper (s)                                              *string.upper()*
     Receives a string and returns a copy of this string with all lowercase
     letters changed to uppercase. All other characters are left unchanged.
     The definition of what a lowercase letter is depends on the current
@@ -2303,32 +2303,32 @@ Most functions in the table library assume that the table represents an
 array or a list. For these functions, when we talk about the "length" of
 a table we mean the result of the length operator.
 
-table.concat (table [, sep [, i [, j]]])                        *table.concat*
+table.concat (table [, sep [, i [, j]]])                      *table.concat()*
     Given an array where all elements are strings or numbers, returns
     `table[i]..sep..table[i+1] ··· sep..table[j]`. The default value for
     `sep` is the empty string, the default for `i` is 1, and the default for
     `j` is the length of the table. If `i` is greater than `j`, returns the
     empty string.
 
-table.insert (table, [pos,] value)                              *table.insert*
+table.insert (table, [pos,] value)                            *table.insert()*
     Inserts element `value` at position `pos` in `table`, shifting up other
     elements to open space, if necessary. The default value for `pos` is
     `n+1`, where `n` is the length of the table (see |lua_len|), so
     that a call `table.insert(t,x)` inserts `x` at the end of table `t`.
 
-table.maxn (table)                                                *table.maxn*
+table.maxn (table)                                              *table.maxn()*
     Returns the largest positive numerical index of the given table, or zero
     if the table has no positive numerical indices. (To do its job this
     function does a linear traversal of the whole table.)
 
-table.remove (table [, pos])                                    *table.remove*
+table.remove (table [, pos])                                  *table.remove()*
     Removes from `table` the element at position `pos`, shifting down other
     elements to close the space, if necessary. Returns the value of the
     removed element. The default value for `pos` is `n`, where `n` is the
     length of the table, so that a call `table.remove(t)` removes the last
     element of table `t`.
 
-table.sort (table [, comp])                                       *table.sort*
+table.sort (table [, comp])                                     *table.sort()*
     Sorts table elements in a given order, `in-place`, from `table[1]` to
     `table[n]`, where `n` is the length of the table. If `comp` is given,
     then it must be a function that receives two table elements, and returns
@@ -2345,84 +2345,84 @@ MATHEMATICAL FUNCTIONS                                       *lua_module_math*
 This library is an interface to the standard C math library. It provides
 all its functions inside the table `math`.
 
-math.abs (x)                                                        *math.abs*
+math.abs (x)                                                      *math.abs()*
     Returns the absolute value of `x`.
 
-math.acos (x)                                                      *math.acos*
+math.acos (x)                                                    *math.acos()*
     Returns the arc cosine of `x` (in radians).
 
-math.asin (x)                                                      *math.asin*
+math.asin (x)                                                    *math.asin()*
     Returns the arc sine of `x` (in radians).
 
-math.atan (x)                                                      *math.atan*
+math.atan (x)                                                    *math.atan()*
     Returns the arc tangent of `x` (in radians).
 
-math.atan2 (y, x)                                                 *math.atan2*
+math.atan2 (y, x)                                               *math.atan2()*
     Returns the arc tangent of `y/x` (in radians), but uses the signs of
     both parameters to find the quadrant of the result. (It also handles
     correctly the case of `x` being zero.)
 
-math.ceil (x)                                                      *math.ceil*
+math.ceil (x)                                                    *math.ceil()*
     Returns the smallest integer larger than or equal to `x`.
 
-math.cos (x)                                                        *math.cos*
+math.cos (x)                                                      *math.cos()*
     Returns the cosine of `x` (assumed to be in radians).
 
-math.cosh (x)                                                      *math.cosh*
+math.cosh (x)                                                    *math.cosh()*
     Returns the hyperbolic cosine of `x`.
 
-math.deg (x)                                                        *math.deg*
+math.deg (x)                                                      *math.deg()*
     Returns the angle `x` (given in radians) in degrees.
 
-math.exp (x)                                                        *math.exp*
+math.exp (x)                                                      *math.exp()*
     Returns the value `e^{x}`.
 
-math.floor (x)                                                    *math.floor*
+math.floor (x)                                                  *math.floor()*
     Returns the largest integer smaller than or equal to `x`.
 
-math.fmod (x, y)                                                   *math.fmod*
+math.fmod (x, y)                                                 *math.fmod()*
     Returns the remainder of the division of `x` by `y` that rounds the
     quotient towards zero.
 
-math.frexp (x)                                                    *math.frexp*
+math.frexp (x)                                                  *math.frexp()*
     Returns `m` and `e` such that `x = m2^{e}`, `e` is an integer and the
     absolute value of `m` is in the range /[0.5, 1)/ (or zero when `x` is
     zero).
 
-math.huge                                                          *math.huge*
+math.huge                                                        *math.huge()*
     The value `HUGE_VAL`, a value larger than or equal to any other
     numerical value.
 
-math.ldexp (m, e)                                                 *math.ldexp*
+math.ldexp (m, e)                                               *math.ldexp()*
     Returns `m2^{e}` (`e` should be an integer).
 
-math.log (x)                                                        *math.log*
+math.log (x)                                                      *math.log()*
     Returns the natural logarithm of `x`.
 
-math.log10 (x)                                                    *math.log10*
+math.log10 (x)                                                  *math.log10()*
     Returns the base-10 logarithm of `x`.
 
-math.max (x, ···)                                                   *math.max*
+math.max (x, ···)                                                 *math.max()*
     Returns the maximum value among its arguments.
 
-math.min (x, ···)                                                   *math.min*
+math.min (x, ···)                                                 *math.min()*
     Returns the minimum value among its arguments.
 
-math.modf (x)                                                      *math.modf*
+math.modf (x)                                                    *math.modf()*
     Returns two numbers, the integral part of `x` and the fractional part of
     `x`.
 
-math.pi                                                              *math.pi*
+math.pi                                                            *math.pi()*
     The value of `pi`.
 
-math.pow (x, y)                                                     *math.pow*
+math.pow (x, y)                                                   *math.pow()*
     Returns `x^{y}`. (You can also use the expression `x^y` to compute this
     value.)
 
-math.rad (x)                                                        *math.rad*
+math.rad (x)                                                      *math.rad()*
     Returns the angle `x` (given in degrees) in radians.
 
-math.random ([m [, n]])                                          *math.random*
+math.random ([m [, n]])                                        *math.random()*
     This function is an interface to the simple pseudo-random generator
     function `rand` provided by ANSI C. (No guarantees can be given for its
     statistical properties.)
@@ -2433,24 +2433,24 @@ math.random ([m [, n]])                                          *math.random*
     m]/. When called with two integer numbers `m` and `n`, `math.random`
     returns a uniform pseudo-random integer in the range /[m, n]/.
 
-math.randomseed (x)                                          *math.randomseed*
+math.randomseed (x)                                        *math.randomseed()*
     Sets `x` as the "seed" for the pseudo-random generator: equal seeds
     produce equal sequences of numbers.
 
-math.sin (x)                                                        *math.sin*
+math.sin (x)                                                      *math.sin()*
     Returns the sine of `x` (assumed to be in radians).
 
-math.sinh (x)                                                      *math.sinh*
+math.sinh (x)                                                    *math.sinh()*
     Returns the hyperbolic sine of `x`.
 
-math.sqrt (x)                                                      *math.sqrt*
+math.sqrt (x)                                                    *math.sqrt()*
     Returns the square root of `x`. (You can also use the expression `x^0.5`
     to compute this value.)
 
-math.tan (x)                                                        *math.tan*
+math.tan (x)                                                      *math.tan()*
     Returns the tangent of `x` (assumed to be in radians).
 
-math.tanh (x)                                                      *math.tanh*
+math.tanh (x)                                                    *math.tanh()*
     Returns the hyperbolic tangent of `x`.
 
 ==============================================================================
@@ -2475,14 +2475,14 @@ Unless otherwise stated, all I/O functions return `nil` on failure (plus
 an error message as a second result and a system-dependent error code as
 a third result) and some value different from `nil` on success.
 
-io.close ([file])                                                   *io.close*
+io.close ([file])                                                 *io.close()*
     Equivalent to `file:close()`. Without a `file`, closes the default
     output file.
 
-io.flush ()                                                         *io.flush*
+io.flush ()                                                       *io.flush()*
     Equivalent to `file:flush` over the default output file.
 
-io.input ([file])                                                   *io.input*
+io.input ([file])                                                 *io.input()*
     When called with a file name, it opens the named file (in text mode),
     and sets its handle as the default input file. When called with a file
     handle, it simply sets this file handle as the default input file. When
@@ -2491,7 +2491,7 @@ io.input ([file])                                                   *io.input*
     In case of errors this function raises the error, instead of returning
     an error code.
 
-io.lines ([filename])                                               *io.lines*
+io.lines ([filename])                                             *io.lines()*
     Opens the given file name in read mode and returns an iterator function
     that, each time it is called, returns a new line from the file.
     Therefore, the construction
@@ -2506,7 +2506,7 @@ io.lines ([filename])                                               *io.lines*
     `io.input():lines()`; that is, it iterates over the lines of the default
     input file. In this case it does not close the file when the loop ends.
 
-io.open (filename [, mode])                                          *io.open*
+io.open (filename [, mode])                                        *io.open()*
     This function opens a file, in the mode specified in the string `mode`.
     It returns a new file handle, or, in case of errors, `nil` plus an error
     message.
@@ -2525,41 +2525,41 @@ io.open (filename [, mode])                                          *io.open*
     some systems to open the file in binary mode. This string is exactly
     what is used in the standard C function `fopen`.
 
-io.output ([file])                                                 *io.output*
+io.output ([file])                                               *io.output()*
     Similar to |io.input|, but operates over the default
     output file.
 
-io.popen (prog [, mode])                                            *io.popen*
+io.popen (prog [, mode])                                          *io.popen()*
     Starts program `prog` in a separated process and returns a file handle
     that you can use to read data from this program (if `mode` is `"r"`, the
     default) or to write data to this program (if `mode` is `"w"`).
 
     This function is system dependent and is not available on all platforms.
 
-io.read (···)                                                        *io.read*
+io.read (···)                                                      *io.read()*
     Equivalent to `io.input():read`.
 
-io.tmpfile ()                                                     *io.tmpfile*
+io.tmpfile ()                                                   *io.tmpfile()*
     Returns a handle for a temporary file. This file is opened in update
     mode and it is automatically removed when the program ends.
 
-io.type (obj)                                                        *io.type*
+io.type (obj)                                                      *io.type()*
     Checks whether `obj` is a valid file handle. Returns the string `"file"`
     if `obj` is an open file handle, `"closed file"` if `obj` is a closed
     file handle, or `nil` if `obj` is not a file handle.
 
-io.write (···)                                                      *io.write*
+io.write (···)                                                    *io.write()*
     Equivalent to `io.output():write`.
 
-file:close ()                                                     *file:close*
+file:close ()                                                   *file:close()*
     Closes `file`. Note that files are automatically closed when their
     handles are garbage collected, but that takes an unpredictable amount of
     time to happen.
 
-file:flush ()                                                     *file:flush*
+file:flush ()                                                   *file:flush()*
     Saves any written data to `file`.
 
-file:lines ()                                                     *file:lines*
+file:lines ()                                                   *file:lines()*
     Returns an iterator function that, each time it is called, returns a new
     line from the file. Therefore, the construction
     >
@@ -2569,7 +2569,7 @@ file:lines ()                                                     *file:lines*
     |io.lines|, this function does not close the file
     when the loop ends.)
 
-file:read (···)                                                    *file:read*
+file:read (···)                                                  *file:read()*
     Reads the file `file`, according to the given formats, which specify
     what to read. For each format, the function returns a string (or a
     number) with the characters read, or `nil` if it cannot read data with
@@ -2588,7 +2588,7 @@ file:read (···)                                                    *file:read
       returning `nil` on end of file. If number is zero, it reads nothing
       and returns an empty string, or `nil` on end of file.
 
-file:seek ([whence] [, offset])                                    *file:seek*
+file:seek ([whence] [, offset])                                  *file:seek()*
     Sets and gets the file position, measured from the beginning of the
     file, to the position given by `offset` plus a base specified by the
     string `whence`, as follows:
@@ -2608,7 +2608,7 @@ file:seek ([whence] [, offset])                                    *file:seek*
     `file:seek("end")` sets the position to the end of the file, and returns
     its size.
 
-file:setvbuf (mode [, size])                                    *file:setvbuf*
+file:setvbuf (mode [, size])                                  *file:setvbuf()*
     Sets the buffering mode for an output file. There are three available
     modes:
 
@@ -2624,7 +2624,7 @@ file:setvbuf (mode [, size])                                    *file:setvbuf*
     For the last two cases, `size` specifies the size of the buffer, in
     bytes. The default is an appropriate size.
 
-file:write (···)                                                  *file:write*
+file:write (···)                                                *file:write()*
     Writes the value of each of its arguments to the `file`. The arguments
     must be strings or numbers. To write other values, use
     |tostring| or |string.format|
@@ -2635,11 +2635,11 @@ OPERATING SYSTEM FACILITIES                                    *lua_module_os*
 
 This library is implemented through table `os`.
 
-os.clock ()                                                         *os.clock*
+os.clock ()                                                       *os.clock()*
     Returns an approximation of the amount in seconds of CPU time used by
     the program.
 
-os.date ([format [, time]])                                          *os.date*
+os.date ([format [, time]])                                        *os.date()*
     Returns a string or a table containing date and time, formatted
     according to the given string `format`.
 
@@ -2661,34 +2661,34 @@ os.date ([format [, time]])                                          *os.date*
     representation that depends on the host system and on the current locale
     (that is, `os.date()` is equivalent to `os.date("%c")`).
 
-os.difftime (t2, t1)                                             *os.difftime*
+os.difftime (t2, t1)                                           *os.difftime()*
     Returns the number of seconds from time `t1` to time `t2`. In POSIX,
     Windows, and some other systems, this value is exactly `t2`/-/=t1=.
 
-os.execute ([command])                                            *os.execute*
+os.execute ([command])                                          *os.execute()*
     This function is equivalent to the C function `system`. It passes
     `command` to be executed by an operating system shell. It returns a
     status code, which is system-dependent. If `command` is absent, then it
     returns nonzero if a shell is available and zero otherwise.
 
-os.exit ([code])                                                     *os.exit*
+os.exit ([code])                                                   *os.exit()*
     Calls the C function `exit`, with an optional `code`, to terminate the
     host program. The default value for `code` is the success code.
 
-os.getenv (varname)                                                *os.getenv*
+os.getenv (varname)                                              *os.getenv()*
     Returns the value of the process environment variable `varname`, or
     `nil` if the variable is not defined.
 
-os.remove (filename)                                               *os.remove*
+os.remove (filename)                                             *os.remove()*
     Deletes the file or directory with the given name. Directories must be
     empty to be removed. If this function fails, it returns `nil`, plus a
     string describing the error.
 
-os.rename (oldname, newname)                                       *os.rename*
+os.rename (oldname, newname)                                     *os.rename()*
     Renames file or directory named `oldname` to `newname`. If this function
     fails, it returns `nil`, plus a string describing the error.
 
-os.setlocale (locale [, category])                              *os.setlocale*
+os.setlocale (locale [, category])                            *os.setlocale()*
     Sets the current locale of the program. `locale` is a string specifying
     a locale; `category` is an optional string describing which category to
     change: `"all"`, `"collate"`, `"ctype"`, `"monetary"`, `"numeric"`, or
@@ -2702,7 +2702,7 @@ os.setlocale (locale [, category])                              *os.setlocale*
     When called with `nil` as the first argument, this function only returns
     the name of the current locale for the given category.
 
-os.time ([table])                                                    *os.time*
+os.time ([table])                                                  *os.time()*
     Returns the current time when called without arguments, or a time
     representing the date and time specified by the given table. This table
     must have fields `year`, `month`, and `day`, and may have fields `hour`,
@@ -2715,7 +2715,7 @@ os.time ([table])                                                    *os.time*
     meaning is not specified, and the number returned by `time` can be used
     only as an argument to `date` and `difftime`.
 
-os.tmpname ()                                                     *os.tmpname*
+os.tmpname ()                                                   *os.tmpname()*
     Returns a string with a file name that can be used for a temporary file.
     The file must be explicitly opened before its use and explicitly removed
     when no longer needed.
@@ -2747,7 +2747,7 @@ functions that operate over a thread have an optional first argument
 which is the thread to operate over. The default is always the current
 thread.
 
-debug.debug ()                                                   *debug.debug*
+debug.debug ()                                                 *debug.debug()*
     Enters an interactive mode with the user, running each string that the
     user enters. Using simple commands and other debug facilities, the user
     can inspect global and local variables, change their values, evaluate
@@ -2757,15 +2757,15 @@ debug.debug ()                                                   *debug.debug*
     Note that commands for `debug.debug` are not lexically nested within any
     function, and so have no direct access to local variables.
 
-debug.getfenv (o)                                              *debug.getfenv*
+debug.getfenv (o)                                            *debug.getfenv()*
     Returns the environment of object `o`.
 
-debug.gethook ([thread])                                       *debug.gethook*
+debug.gethook ([thread])                                     *debug.gethook()*
     Returns the current hook settings of the thread, as three values: the
     current hook function, the current hook mask, and the current hook count
     (as set by the |debug.sethook| function).
 
-debug.getinfo ([thread,] function [, what])                    *debug.getinfo*
+debug.getinfo ([thread,] function [, what])                  *debug.getinfo()*
     Returns a table with information about a function. You can give the
     function directly, or you can give a number as the value of `function`,
     which means the function running at level `function` of the call stack
@@ -2787,7 +2787,7 @@ debug.getinfo ([thread,] function [, what])                    *debug.getinfo*
     and the expression `debug.getinfo(print)` returns a table with all
     available information about the |print| function.
 
-debug.getlocal ([thread,] level, local)                       *debug.getlocal*
+debug.getlocal ([thread,] level, local)                     *debug.getlocal()*
     This function returns the name and the value of the local variable with
     index `local` of the function at level `level` of the stack. (The first
     parameter or local variable has index 1, and so on, until the last
@@ -2800,23 +2800,23 @@ debug.getlocal ([thread,] level, local)                       *debug.getlocal*
     Variable names starting with '`(`' (open parentheses) represent internal
     variables (loop control variables, temporaries, and C function locals).
 
-debug.getmetatable (object)                               *debug.getmetatable*
+debug.getmetatable (object)                             *debug.getmetatable()*
     Returns the metatable of the given `object` or `nil` if it does not have
     a metatable.
 
-debug.getregistry ()                                       *debug.getregistry*
+debug.getregistry ()                                     *debug.getregistry()*
     Returns the registry table (see https://www.lua.org/manual/5.1/manual.html#3.5).
 
-debug.getupvalue (func, up)                                 *debug.getupvalue*
+debug.getupvalue (func, up)                               *debug.getupvalue()*
     This function returns the name and the value of the upvalue with index
     `up` of the function `func`. The function returns `nil` if there is no
     upvalue with the given index.
 
-debug.setfenv (object, table)                                  *debug.setfenv*
+debug.setfenv (object, table)                                *debug.setfenv()*
     Sets the environment of the given `object` to the given `table`. Returns
     `object`.
 
-debug.sethook ([thread,] hook, mask [, count])                 *debug.sethook*
+debug.sethook ([thread,] hook, mask [, count])               *debug.sethook()*
     Sets the given function as a hook. The string `mask` and the number
     `count` describe when the hook will be called. The string mask may have
     the following characters, with the given meaning:
@@ -2841,7 +2841,7 @@ debug.sethook ([thread,] hook, mask [, count])                 *debug.sethook*
     event is `"tail return"`. In this case, Lua is only simulating the
     return, and a call to `getinfo` will return invalid data.
 
-debug.setlocal ([thread,] level, local, value)                *debug.setlocal*
+debug.setlocal ([thread,] level, local, value)              *debug.setlocal()*
     This function assigns the value `value` to the local variable with index
     `local` of the function at level `level` of the stack. The function
     returns `nil` if there is no local variable with the given index, and
@@ -2849,17 +2849,17 @@ debug.setlocal ([thread,] level, local, value)                *debug.setlocal*
     `getinfo` to check whether the level is valid.) Otherwise, it returns
     the name of the local variable.
 
-debug.setmetatable (object, table)                        *debug.setmetatable*
+debug.setmetatable (object, table)                      *debug.setmetatable()*
     Sets the metatable for the given `object` to the given `table` (which
     can be `nil`).
 
-debug.setupvalue (func, up, value)                          *debug.setupvalue*
+debug.setupvalue (func, up, value)                        *debug.setupvalue()*
     This function assigns the value `value` to the upvalue with index `up`
     of the function `func`. The function returns `nil` if there is no
     upvalue with the given index. Otherwise, it returns the name of the
     upvalue.
 
-debug.traceback ([thread,] [message [, level]])              *debug.traceback*
+debug.traceback ([thread,] [message [, level]])            *debug.traceback()*
     Returns a string with a traceback of the call stack. An optional
     `message` string is appended at the beginning of the traceback. An
     optional `level` number tells at which level to start the traceback
