@@ -1730,7 +1730,7 @@ error (mensaje [, nivel])                                            *error()*
     sucesivamente. Pasar un valor 0 como nivel evita la adición de la
     información de la posición al mensaje.
 
-_G                                                                      *_G()*
+_G                                                                        *_G*
     Una variable global (no una función) que almacena el entorno global (o
     sea, =_G._G = _G=). Lua mismo no usa esta variable; cambiar su valor no
     afecta ningún entorno, ni viceversa. (Úsese |setfenv|
@@ -1909,7 +1909,7 @@ unpack (lista [, i [, j]])                                          *unpack()*
     elementos. Por defecto `i` es 1 y `j` es la longitud de la lista, como
     se define a través del operador longitud (véase |lua_len|).
 
-_VERSION                                                          *_VERSION()*
+_VERSION                                                            *_VERSION*
     Una variable global (no una función) que almacena un `string` que
     contiene la versión actual del intérprete. En esta versión de Lua el
     contenido actual de esta variable es `"Lua 5.1"`.
@@ -2042,7 +2042,7 @@ require (nombre)                                                   *require()*
     si no se pudo encontrar un cargador para el módulo, entonces `require`
     activa un error.
 
-package.cpath                                                *package.cpath()*
+package.cpath                                                  *package.cpath*
     El camino de búsqueda usado por |require| para buscar
     un cargador en C.
 
@@ -2051,13 +2051,13 @@ package.cpath                                                *package.cpath()*
     usando la variable de entorno `LUA_CPATH` (además de otro camino por
     defecto definido en `luaconf.h`).
 
-package.loaded                                              *package.loaded()*
+package.loaded                                                *package.loaded*
     Una tabla usada por |require| para controlar qué
     módulos están ya cargados. Cuando se solicita un módulo `nombre` y
     `package.loaded[nombre]` no es falso, |require|
     simplemente retorna el valor almacenado.
 
-package.loaders                                            *package.loaders()*
+package.loaders                                              *package.loaders*
     Una tabla usada por |require| que controla cómo se
     cargan los módulos
 
@@ -2133,7 +2133,7 @@ package.loadlib (nombre_de_biblioteca, nombre_de_func)     *package.loadlib()*
     disponible en algunas plataformas (Windows, Linux, Mac OS X, Solaris,
     BSD, además de otros sistemas Unix que soportan el estándar `dlfcn`).
 
-package.path                                                  *package.path()*
+package.path                                                    *package.path*
     El camino de búsqueda usado por |require| para buscar
     un cargador de Lua.
 
@@ -2142,7 +2142,7 @@ package.path                                                  *package.path()*
     si la variable de entorno no está definida. Si aparece `";;"` en el
     valor de la variable de entorno se reemplaza por el camino por defecto.
 
-package.preload                                            *package.preload()*
+package.preload                                              *package.preload*
     Una tabla que almacena cargadores para módulos específicos (véase
     |require|).
 
@@ -2575,7 +2575,7 @@ math.frexp (x)                                                  *math.frexp()*
     absoluto de `m` está en el intervalo /[0.5, 1)/ (o cero cuando `x` es
     cero).
 
-math.huge                                                        *math.huge()*
+math.huge                                                          *math.huge*
     El valor `HUGE_VAL`, un valor más grande o igual que otro valor numérico
     cualquiera.
 
@@ -2597,7 +2597,7 @@ math.min (x, ···)                                                 *math.min()
 math.modf (x)                                                    *math.modf()*
     Devuelve dos números, las partes entera y fraccional de `x` .
 
-math.pi                                                            *math.pi()*
+math.pi                                                              *math.pi*
     El valor de `pi`.
 
 math.pow (x, y)                                                   *math.pow()*

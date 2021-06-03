@@ -1680,7 +1680,7 @@ error (message [, level])                                            *error()*
     Passando um valor 0 para `level` evita a adição de informação da posição
     do erro à mensagem.
 
-_G                                                                      *_G()*
+_G                                                                        *_G*
     Uma variável global (não uma função) que armazena o ambiente global
     (isto é, =_G._G = _G=). Lua por si só não usa esta variável; uma
     modificação do seu valor não afeta qualquer ambiente e vice-versa. (Use
@@ -1857,7 +1857,7 @@ unpack (list [, i [, j]])                                           *unpack()*
     de elementos. Por padrão, `i` é 1 e `j` é o comprimento da lista, como
     definido pelo operador de comprimento (ver |lua_len|).
 
-_VERSION                                                          *_VERSION()*
+_VERSION                                                            *_VERSION*
     Uma variável global (não uma função) que armazena uma cadeia contendo a
     versão corrente do interpretador. O conteúdo corrente desta variável é
     "`Lua 5.1`".
@@ -1989,7 +1989,7 @@ require (modname)                                                  *require()*
     não é possível encontrar um carregador para o módulo, então `require`
     sinaliza um erro.
 
-package.cpath                                                *package.cpath()*
+package.cpath                                                  *package.cpath*
     O caminho usado por |require| para procurar por um
     carregador C.
 
@@ -1998,13 +1998,13 @@ package.cpath                                                *package.cpath()*
     |package.path|, usando a variável de ambiente
     `LUA_CPATH` ou um caminho padrão definido em `luaconf.h`.
 
-package.loaded                                              *package.loaded()*
+package.loaded                                                *package.loaded*
     Uma tabela usada por |require| para controlar quais
     módulos já foram carregados. Quando você requisita um módulo `modname` e
     `package.loaded[modname]` não é falso, |require|
     simplesmente retorna o valor armazenado lá.
 
-package.loaders                                            *package.loaders()*
+package.loaders                                              *package.loaders*
     Uma tabela usada por |require| para controlar como
     carregar módulos.
 
@@ -2081,7 +2081,7 @@ package.loadlib (libname, funcname)                        *package.loadlib()*
     somente em algumas plataformas (Windows, Linux, Mac OS X, Solaris, BSD,
     mais outros sistemas Unix que dão suporte ao padrão `dlfcn`).
 
-package.path                                                  *package.path()*
+package.path                                                    *package.path*
     O caminho usado por |require| para buscar um
     carregador Lua.
 
@@ -2090,7 +2090,7 @@ package.path                                                  *package.path()*
     a variável de ambiente não está definida. Qualquer "`;;`" no valor da
     variável de ambiente será substituído pelo caminho padrão.
 
-package.preload                                            *package.preload()*
+package.preload                                              *package.preload*
     Uma tabela para armazenar carregadores para módulos específicos (ver
     |require|).
 
@@ -2498,7 +2498,7 @@ math.frexp (x)                                                  *math.frexp()*
     absoluto de `m` está no intervalo /[0.5, 1)/ (ou zero quando `x` é
     zero).
 
-math.huge                                                        *math.huge()*
+math.huge                                                          *math.huge*
     O valor de `HUGE_VAL`, um valor maior ou igual a qualquer outro valor
     numérico.
 
@@ -2521,7 +2521,7 @@ math.modf (x)                                                    *math.modf()*
     Retorna dois números, a parte integral de `x` e a parte fracionária de
     `x`.
 
-math.pi                                                            *math.pi()*
+math.pi                                                              *math.pi*
     O valor de `pi`.
 
 math.pow (x, y)                                                   *math.pow()*

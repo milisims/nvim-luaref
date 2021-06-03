@@ -1604,7 +1604,7 @@ error (message [, level])                                            *error()*
     function that called `error` was called; and so on. Passing a level 0
     avoids the addition of error position information to the message.
 
-_G                                                                      *_G()*
+_G                                                                        *_G*
     A global variable (not a function) that holds the global environment
     (that is, =_G._G = _G=). Lua itself does not use this variable; changing
     its value does not affect any environment, nor vice-versa. (Use
@@ -1778,7 +1778,7 @@ unpack (list [, i [, j]])                                           *unpack()*
     elements. By default, `i` is 1 and `j` is the length of the list, as
     defined by the length operator (see |lua_len|).
 
-_VERSION                                                          *_VERSION()*
+_VERSION                                                            *_VERSION*
     A global variable (not a function) that holds a string containing the
     current interpreter version. The current contents of this variable is
     "`Lua 5.1`".
@@ -1902,7 +1902,7 @@ require (modname)                                                  *require()*
     If there is any error loading or running the module, or if it cannot
     find any loader for the module, then `require` signals an error.
 
-package.cpath                                                *package.cpath()*
+package.cpath                                                  *package.cpath*
     The path used by |require| to search for a C loader.
 
     Lua initializes the C path |package.cpath| in
@@ -1910,13 +1910,13 @@ package.cpath                                                *package.cpath()*
     |package.path|, using the environment variable
     `LUA_CPATH` or a default path defined in `luaconf.h`.
 
-package.loaded                                              *package.loaded()*
+package.loaded                                                *package.loaded*
     A table used by |require| to control which modules are
     already loaded. When you require a module `modname` and
     `package.loaded[modname]` is not false, |require|
     simply returns the value stored there.
 
-package.loaders                                            *package.loaders()*
+package.loaders                                              *package.loaders*
     A table used by |require| to control how to load
     modules.
 
@@ -1986,7 +1986,7 @@ package.loadlib (libname, funcname)                        *package.loadlib()*
     on some platforms (Windows, Linux, Mac OS X, Solaris, BSD, plus other
     Unix systems that support the `dlfcn` standard).
 
-package.path                                                  *package.path()*
+package.path                                                    *package.path*
     The path used by |require| to search for a Lua loader.
 
     At start-up, Lua initializes this variable with the value of the
@@ -1994,7 +1994,7 @@ package.path                                                  *package.path()*
     `luaconf.h`, if the environment variable is not defined. Any "`;;`" in
     the value of the environment variable is replaced by the default path.
 
-package.preload                                            *package.preload()*
+package.preload                                              *package.preload*
     A table to store loaders for specific modules (see
     |require|).
 
@@ -2389,7 +2389,7 @@ math.frexp (x)                                                  *math.frexp()*
     absolute value of `m` is in the range /[0.5, 1)/ (or zero when `x` is
     zero).
 
-math.huge                                                        *math.huge()*
+math.huge                                                          *math.huge*
     The value `HUGE_VAL`, a value larger than or equal to any other
     numerical value.
 
@@ -2412,7 +2412,7 @@ math.modf (x)                                                    *math.modf()*
     Returns two numbers, the integral part of `x` and the fractional part of
     `x`.
 
-math.pi                                                            *math.pi()*
+math.pi                                                              *math.pi*
     The value of `pi`.
 
 math.pow (x, y)                                                   *math.pow()*
