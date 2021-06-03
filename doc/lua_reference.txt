@@ -657,7 +657,7 @@ Lua supports the usual arithmetic operators: the binary `+` (addition),
 `-` (subtraction), `*` (multiplication), `/` (division), `%` (modulo),
 and `^` (exponentiation); and unary `-` (negation). If the operands are
 numbers, or strings that can be converted to numbers (see
-[[#2.2.1][§2.2.1]]), then all operations have the usual meaning.
+|lua_type_coercion|), then all operations have the usual meaning.
 Exponentiation works for any exponent. For instance, `x^(-0.5)` computes
 the inverse of the square root of `x`. Modulo is defined as
 >
@@ -687,7 +687,7 @@ existing object.
 You can change the way that Lua compares tables and userdata by using
 the "eq" metamethod (see |lua_metatables|).
 
-The conversion rules of [[#2.2.1][§2.2.1]] `do not` apply to equality
+The conversion rules of |lua_type_coercion| `do not` apply to equality
 comparisons. Thus, `"0"`=0= evaluates to `false`, and `t[0]` and
 `t["0"]` denote different entries in a table.
 
@@ -733,7 +733,7 @@ CONCATENATION                                              *lua_concatenation*
 The string concatenation operator in Lua is denoted by two dots
 ('`..`'). If both operands are strings or numbers, then they are
 converted to strings according to the rules mentioned in
-[[#2.2.1][§2.2.1]]. Otherwise, the "concat" metamethod is called (see
+|lua_type_coercion|. Otherwise, the "concat" metamethod is called (see
 |lua_metatables|).
 
 ==============================================================================

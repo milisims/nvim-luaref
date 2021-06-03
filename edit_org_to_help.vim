@@ -51,49 +51,7 @@ endif
 
 " Note: type duplicates helptag.
 " Set up section links, some have no links, so `silent!`:
-silent! %s/\[\[#1\]\[[^]]*\]\]/|lua_introduction|/g
-silent! %s/\[\[#2\]\[[^]]*\]\]/|lua_language|/g
-silent! %s/\[\[#2.1\]\[[^]]*\]\]/|lua_conventions|/g
-silent! %s/\[\[#2.2\]\[[^]]*\]\]/|lua_types|/g
-silent! %s/\[\[#2.2\]\[[^]]*\]\]/|lua_type_coercion|/g
-silent! %s/\[\[#2.3\]\[[^]]*\]\]/|lua_variables|/g
-silent! %s/\[\[#2.4\]\[[^]]*\]\]/|lua_statements|/g
-silent! %s/\[\[#2.4.1\]\[[^]]*\]\]/|lua_chunks|/g
-silent! %s/\[\[#2.4.2\]\[[^]]*\]\]/|lua_blocks|/g
-silent! %s/\[\[#2.4.3\]\[[^]]*\]\]/|lua_assignment|/g
-silent! %s/\[\[#2.4.4\]\[[^]]*\]\]/|lua_control|/g
-silent! %s/\[\[#2.4.5\]\[[^]]*\]\]/|lua_for|/g
-silent! %s/\[\[#2.4.6\]\[[^]]*\]\]/|lua_func_statement|/g
-silent! %s/\[\[#2.4.7\]\[[^]]*\]\]/|lua_local|/g
-silent! %s/\[\[#2.5\]\[[^]]*\]\]/|lua_expressions|/g
-silent! %s/\[\[#2.5.1\]\[[^]]*\]\]/|lua_arithmetic_ops|/g
-silent! %s/\[\[#2.5.2\]\[[^]]*\]\]/|lua_relational_ops|/g
-silent! %s/\[\[#2.5.3\]\[[^]]*\]\]/|lua_logical_ops|/g
-silent! %s/\[\[#2.5.4\]\[[^]]*\]\]/|lua_concatenation|/g
-silent! %s/\[\[#2.5.5\]\[[^]]*\]\]/|lua_len|/g
-silent! %s/\[\[#2.5.6\]\[[^]]*\]\]/|lua_precedence|/g
-silent! %s/\[\[#2.5.7\]\[[^]]*\]\]/|lua_table_constructors|/g
-silent! %s/\[\[#2.5.8\]\[[^]]*\]\]/|lua_function_calls|/g
-silent! %s/\[\[#2.5.9\]\[[^]]*\]\]/|lua_function_defs|/g
-silent! %s/\[\[#2.6\]\[[^]]*\]\]/|lua_scope|/g
-silent! %s/\[\[#2.7\]\[[^]]*\]\]/|lua_errors|/g
-silent! %s/\[\[#2.8\]\[[^]]*\]\]/|lua_metatables|/g
-silent! %s/\[\[#2.9\]\[[^]]*\]\]/|lua_environments|/g
-silent! %s/\[\[#2.10\]\[[^]]*\]\]/|lua_gc|/g
-silent! %s/\[\[#2.10.2\]\[[^]]*\]\]/|lua_weak|/g
-silent! %s/\[\[#2.11\]\[[^]]*\]\]/|lua_coroutines|/g
-silent! %s/\[\[#5\]\[[^]]*\]\]/|lua_stdlib|/g
-silent! %s/\[\[#5.1\]\[[^]]*\]\]/|lua_builtins|/g
-silent! %s/\[\[#5.2\]\[[^]]*\]\]/|lua_module_coroutines|/g
-silent! %s/\[\[#5.3\]\[[^]]*\]\]/|lua_modules|/g
-silent! %s/\[\[#5.4\]\[[^]]*\]\]/|lua_module_string|/g
-silent! %s/\[\[#5.4.1\]\[[^]]*\]\]/|lua_patterns|/g
-silent! %s/\[\[#5.5\]\[[^]]*\]\]/|lua_module_table|/g
-silent! %s/\[\[#5.6\]\[[^]]*\]\]/|lua_module_math|/g
-silent! %s/\[\[#5.7\]\[[^]]*\]\]/|lua_module_io|/g
-silent! %s/\[\[#5.8\]\[[^]]*\]\]/|lua_module_os|/g
-silent! %s/\[\[#5.9\]\[[^]]*\]\]/|lua_debug|/g
-silent! %s/\[\[#8\]\[[^]]*\]\]/|lua_syntax|/g
+0/lua_reference_toc/;/===/g/^\d/execute printf('silent! %%s/\[\[#\V%s\m\]\[[^]]*\]\]/%s/g', expand('<cWORD>'), split(getline('.'))[-1])
 
 setlocal shiftwidth=4
 " reformat and set up builtin function, option/variable targets
