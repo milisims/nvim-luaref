@@ -11,7 +11,7 @@ normal! 2jdap
 %s/^\s*#+end_example\n/</
 %s/^\ze\*\+ \d/\=repeat('=', 78)."\n"/
 g/^\s*:PROPERTIES:$/,+2d
-%s/^\s\+$//g
+silent! %s/^\s\+$//g
 
 " ======== Handle markup first
 
@@ -23,6 +23,8 @@ g/^\s*:PROPERTIES:$/,+2d
 %s/\*=\*/`=`/
 %s/^\*\*\*\* \(.*\):/\1\~/
 %s/=www.lua.org=/www.lua.org/
+%s/=\(\([\][]\)=\+\2\)=/`\1`/g
+%s/[^=]\zs=\([~=]=\)=\ze[^=\]]/`\1`/g
 " big sweeps:
 %s/\*\(\w\%([^*]*\w\)\?\)\*/`\1`/g
 %s/\%(\s\|^\)\zs\/\(\w\%([^/]*\w\)\?\)\//`\1`/g

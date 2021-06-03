@@ -162,9 +162,9 @@ längeren Format definiert werden. Wir definieren eine /öffnende lange
 Klammer der Ebene n/ als eine öffnende eckige Klammer, gefolgt von `n`
 Gleichheitszeichen, gefolgt von einer weiteren öffnenden eckigen
 Klammer. Eine öffnende lange Klammer der Ebene 0 wird somit als `[[`
-geschrieben, eine öffnende lange Klammer der Ebene 1 als `[`[= usw. Eine
+geschrieben, eine öffnende lange Klammer der Ebene 1 als `[=[` usw. Eine
 `schließende lange Klammer` ist analog dazu definiert; eine schließende
-lange Klammer der Ebene 4 wird beispielsweise als `]`===]= geschrieben.
+lange Klammer der Ebene 4 wird beispielsweise als `]====]` geschrieben.
 Eine lange Zeichenkette beginnt mit einer öffnenden langen Klammer
 beliebiger Ebene und endet bei der ersten schließenden langen Klammer
 der gleichen Ebene. Literale in dieser geklammerten Form können sich
@@ -700,7 +700,7 @@ Die relationalen Operatoren in Lua sind ...
 <
 Diese Operatoren resultieren immer in `false` oder `true`.
 
-Gleichheit (====) vergleicht zuerst die Typen der Operanden. Falls die
+Gleichheit (`==`) vergleicht zuerst die Typen der Operanden. Falls die
 Typen unterschiedlich sind, ist das Ergebnis `false`. Andernfalls werden
 die Werte der Operanden verglichen. Zahlen und Zeichenketten werden auf
 gewöhnliche Weise verglichen. Objekte (Tabellen, Benutzerdaten, Threads
@@ -717,7 +717,7 @@ Die Konvertierungsregeln aus § 2.2.1 beziehen sich nicht auf
 Gleichheitsprüfungen. Insofern evaluiert `"0"`=0= zu `false` und `t[0]`
 und `t["0"]` bezeichnen verschiedene Einträge einer Tabelle.
 
-Der Operator `~`= ist exakt die Negation der Gleichheit (====).
+Der Operator `~=` ist exakt die Negation der Gleichheit (`==`).
 
 Die Richtungsoperatoren arbeiten wie folgt: Wenn beide Argumente Zahlen
 sind, werden sie als solche verglichen. Andernfalls, wenn beide
@@ -1240,7 +1240,7 @@ nicht fehlschlägt (sondern einfach in `nil` resultiert).
 <
   S. § 2.5.5 für eine Beschreibung der Länge einer Tabelle.
 
-- "`eq`": Die ====-Operation. Die Funktion `getcomphandler` definiert,
+- "`eq`": Die `==`-Operation. Die Funktion `getcomphandler` definiert,
   wie Lua eine Metamethode für Vergleichsoperationen auswählt. Eine
   Metamethode wird nur ausgewhlt, wenn beide Objekte vom selben Typ sind
   und die selbe Metamethode für die gewählte Operation haben.

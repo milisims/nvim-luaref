@@ -166,9 +166,9 @@ Literal strings can also be defined using a long format enclosed by
 `long brackets`. We define an `opening long bracket of level `n`` as an
 opening square bracket followed by `n` equal signs followed by another
 opening square bracket. So, an opening long bracket of level 0 is
-written as `[[`, an opening long bracket of level 1 is written as `[`[=,
+written as `[[`, an opening long bracket of level 1 is written as `[=[`,
 and so on. A `closing long bracket` is defined similarly; for instance,
-a closing long bracket of level 4 is written as `]`===]=. A long string
+a closing long bracket of level 4 is written as `]====]`. A long string
 starts with an opening long bracket of any level and ends at the first
 closing long bracket of the same level. Literals in this bracketed form
 can run for several lines, do not interpret any escape sequences, and
@@ -675,7 +675,7 @@ The relational operators in Lua are
 <
 These operators always result in `false` or `true`.
 
-Equality (====) first compares the type of its operands. If the types
+Equality (`==`) first compares the type of its operands. If the types
 are different, then the result is `false`. Otherwise, the values of the
 operands are compared. Numbers and strings are compared in the usual
 way. Objects (tables, userdata, threads, and functions) are compared by
@@ -691,7 +691,7 @@ The conversion rules of |lua_type_coercion| `do not` apply to equality
 comparisons. Thus, `"0"`=0= evaluates to `false`, and `t[0]` and
 `t["0"]` denote different entries in a table.
 
-The operator `~`= is exactly the negation of equality (====).
+The operator `~=` is exactly the negation of equality (`==`).
 
 The order operators work as follows. If both arguments are numbers, then
 they are compared as such. Otherwise, if both arguments are strings,
@@ -1195,7 +1195,7 @@ results in `nil`).
 <
   See |lua_len| for a description of the length of a table.
 
-- `eq`: the ==== operation. The function `getcomphandler` defines how
+- `eq`: the `==` operation. The function `getcomphandler` defines how
   Lua chooses a metamethod for comparison operators. A metamethod only
   is selected when both objects being compared have the same type and
   the same metamethod for the selected operation.

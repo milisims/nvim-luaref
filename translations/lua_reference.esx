@@ -177,9 +177,9 @@ encerrados en `corchetes largos`. Definimos un /corchete largo de abrir
 de nivel n/ como un corchete de abrir seguido de `n` signos igual (=)
 seguidos de otro corchete de abrir. Así, un corchete largo de abrir de
 nivel 0 se escribe `[[`, un corchete largo de abrir de nivel 1 se
-escribe `[`[=, y así sucesivamente. Los `corchetes largos de cerrar` se
+escribe `[=[`, y así sucesivamente. Los `corchetes largos de cerrar` se
 define de manera similar; por ejemplo, un corchete largo de cerrar de
-nivel 4 se expresa `]`===]=. Un `string` largo comienza en un corchete
+nivel 4 se expresa `]====]`. Un `string` largo comienza en un corchete
 largo de abrir de cualquier nivel y termina en el primer corchete largo
 de cerrar del mismo nivel. Los `strings` literales delimitados de esta
 manera pueden extenderse por varias líneas, las secuencias de escape no
@@ -750,7 +750,7 @@ Los operadores relacionales en Lua son
 <
 Devuelven siempre un resultado `false` o `true`.
 
-La igualdad (====) primero compara el tipo de los operandos. Si son
+La igualdad (`==`) primero compara el tipo de los operandos. Si son
 diferentes entonces el resultado es `false`. En otro caso se comparan
 los valores de los operandos. Los números y los `strings` se comparan de
 la manera usual. Los objetos (tablas, `userdata`, procesos y funciones)
@@ -766,7 +766,7 @@ Las reglas de conversión de |lua_type_coercion| `no` se aplican en las
 comparaciones de igualdad. De este modo `"0"`=0= es `false`, y `t[0]` y
 `t["0"]` denotan diferentes entradas en una tabla.
 
-El operador `~`= es exactamente la negación de la igualdad (====).
+El operador `~=` es exactamente la negación de la igualdad (`==`).
 
 El orden de los operadores funciona de la siguiente manera. Si ambos
 argumentos son números entonces se comparan como tales. En otro caso, si
@@ -1310,7 +1310,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
   Véase |lua_len| para una descripción de la longitud de una
   tabla.
 
-- `eq`: La operación ====. La función `getcomphandler` define cómo
+- `eq`: La operación `==`. La función `getcomphandler` define cómo
   elige Lua un metamétodo para el operador de comparación. Se selecciona
   un metamétodo cuando ambos objetos que son comparados tienen el mismo
   tipo y el mismo metamétodo para la operación dada.
