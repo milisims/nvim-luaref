@@ -30,13 +30,13 @@ g/^\s*:PROPERTIES:$/,+2d
 " verbatim used a lot in links, do later
 
 " Add target for metamethod/metatable
-%s/- `add`/                                      *lua_metamethods* *lua_metatable_events*\r&/
+0/^- `add`/-call append('.', '                                      *lua_metamethods* *lua_metatable_events*')
 " ======== Set up columns/sections
 
 " insert table of contents
 execute '0/1 --/-2read toc/' . expand('%:t:r') . '.txt'
 " Change section headers to proper format and insert link targets
-g/^\*\+ \d/execute "normal! d2f-xms\"aYgg/\<C-r>a   \<Cr>f|\"byf|'sA\<C-r>=repeat(' ', 79-strwidth(@a.@b))\<Cr>\<C-r>b\<Esc>0gUt|$r*F|r*"
+0/lua_reference_toc/;/===/g/^\d/execute printf('%%s/^\*\+ %s -- \(.*\)/\=toupper(submatch(1))..repeat(" ", 78-strwidth(submatch(1).."%s")).."*%s*"', expand('<cWORD>'), split(getline('.'))[-1], split(getline('.'))[-1][1:-2])
 
 " ======== Set up columns/sections
 
