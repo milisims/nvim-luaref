@@ -60,5 +60,5 @@ g/--------------\n\n\*\{3}/,+2s/--------------\n\n\*\{3} =\([^(]\+\)\( (.*)\)\?=
 " Finish verbatim
 %s/\%([\t ("']\|^\)\zs=\([^= \t]\%([^=]*[^= \t]\)\?\)=/`\1`/g
 
-write translations/lua_reference.%:t:rx
+write! translations/lua_reference.%:t:rx
 quit!

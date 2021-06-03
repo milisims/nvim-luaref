@@ -203,7 +203,7 @@ Klammer erstreckt. Lange Kommentare werden häufig benutzt, um Code
 temporär zu deaktivieren.
 
 ==============================================================================
-WERTE UND TYPEN                                            *lua_type_coercion*
+WERTE UND TYPEN                                                    *lua_types*
 
 Lua ist eine `dynamisch typisierte Sprache`. Das bedeutet, dass
 Variablen keine Typen besitzen, sondern nur Werte einen solchen haben.
@@ -273,7 +273,7 @@ Die Bibliotheksfunktion `type` liefert eine Zeichenkette zur
 Beschreibung des Typs eines übergebenen Wertes.
 
 ==============================================================================
-TYPUMWANDLUNG                                                      *lua_types*
+TYPUMWANDLUNG                                              *lua_type_coercion*
 
 Lua bietet eine automatische Konvertierung von Zeichenketten und
 Zahlenwerten zur Laufzeit. Jede arithmetische Operation, welche auf eine
@@ -1680,7 +1680,7 @@ anbieten müssen.
     unterbindet das Hinzufügen von Fehlerpositions-Informationen zur
     Nachricht.
 
-_G                                                                        *_G*
+_G                                                                      *_G()*
     Eine globale Variable (keine Funktion), welche die globale Umgebung
     enthält (d. h. =_G._G = _G=). Lua selbst verwendet diese Variable nicht;
     das Ändern des Wertes beeinfluss keine Umgebung. (Verwenden Sie
@@ -1926,7 +1926,7 @@ _G                                                                        *_G*
     Anzahl Elemente geschrieben werden kann. Standardmäßig ist `i` 1 und `j`
     ist die wie vom Längenoperator definierte Länge der Liste (s. § 2.5.5).
 
-_VERSION                                                            *_VERSION*
+_VERSION                                                          *_VERSION()*
     Eine globale Variable (keine Funktion), welche eine Zeichenkette mit der
     aktuellen Interpreter-Version enthält. Der aktuelle Inhalt dieser
     Variablen lautet "`Lua 5.1`".
@@ -2087,7 +2087,7 @@ wird in eine Tabelle `package` exportiert.
     Loader für das Modul gefunden werden kann, signalisiert `require` einen
     Fehler.
 
-package.cpath                                                  *package.cpath*
+package.cpath                                                *package.cpath()*
     Der Pfad, welcher von `require` verwendet wird, um nach einem C-Loader
     zu suchen.
 
@@ -2095,13 +2095,13 @@ package.cpath                                                  *package.cpath*
     den Lua-Pfad `package.path` unter Verwendung der Umgebungsvariable
     `LUA_CPATH` oder einen `luaconf.h` definierten Standardpfad.
 
-package.loaded                                                *package.loaded*
+package.loaded                                              *package.loaded()*
     Eine Tabelle, welche von `require` genutzt wird um zu kontrollieren,
     welche Module bereits geladen sind. Wenn Sie ein Modul `modname`
     einbinden und `package.loaded[modname]` nicht "false" ist, liefert
     `require` einfach den dort gespeicherten Wert.
 
-package.loaders                                              *package.loaders*
+package.loaders                                            *package.loaders()*
     Eine Tabelle, welche von `require` verwendet wird, um zu steuern, wie
     Module geladen werden.
 
@@ -2182,7 +2182,7 @@ package.loaders                                              *package.loaders*
     Solaris, BSD und andere unixoide Systeme, welche den `dlfcn`-Standard
     unterstützen).
 
-package.path                                                    *package.path*
+package.path                                                  *package.path()*
     Der Pfad, welcher von `require` verwendet wird, um nach einem Lua-Loader
     zu suchen.
 
@@ -2192,7 +2192,7 @@ package.path                                                    *package.path*
     "`;;`" im Wert der Umgebungsvariable wird durch den Standardpfad
     ersetzt.
 
-package.preload                                              *package.preload*
+package.preload                                            *package.preload()*
     Eine Tabelle zum Speicher von Loadern für spezifische Module (s.
     `require`).
 
@@ -2722,7 +2722,7 @@ Verfügung.
     der absolute Betrag von `m` ist im Intervall /[0.5,1)/ (oder 0, wenn `x`
     gleich 0 ist).
 
-math.huge                                                          *math.huge*
+math.huge                                                        *math.huge()*
     Der Wert `HUGE_VAL`, welcher größer oder gleich jedem anderen Zahlenwert
     ist.
 
@@ -2763,7 +2763,7 @@ math.huge                                                          *math.huge*
     Liefert zwei Zahlen: Den ganzzahligen und den gebrochenen Anteil von
     `x`.
 
-math.pi                                                              *math.pi*
+math.pi                                                            *math.pi()*
     Der Wert von `Pi`.
 
 --------------

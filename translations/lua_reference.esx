@@ -113,7 +113,7 @@ completa de Lua se encuentra al final de este manual.
 <<2.1>>
 
 ==============================================================================
-Convecciones léxicas
+CONVECCIONES LÉXICAS                                         *lua_conventions*
 
 Los `nombres` (también llamados `identificadores`) en Lua pueden ser
 cualquier tira de caracteres ([[#string][`string`]]) sólo con letras,
@@ -221,7 +221,7 @@ temporalmente trozos de código.
 <<2.2>>
 
 ==============================================================================
-** 2.2 -- Valores y tipos
+VALORES Y TIPOS                                                    *lua_types*
 
 Lua es un `lenguaje dinámicamente tipado`. Esto significa que las
 variables no tienen tipos; sólo tienen tipo los valores. No existen
@@ -295,7 +295,7 @@ describe el tipo de un valor dado.
 <<2.2.1>>
 
 ==============================================================================
-*** 2.2.1 -- Coerción
+COERCIÓN                                                   *lua_type_coercion*
 
 Lua puede convertir automáticamente entre valores `string` y valores
 numéricos en tiempo de ejecución. Cualquier operación aritmética
@@ -310,7 +310,7 @@ biblioteca de manejo de `strings` (véase
 <<2.3>>
 
 ==============================================================================
-** 2.3 -- Variables
+VARIABLES                                                      *lua_variables*
 
 Las variables son lugares donde se almacenan valores. Existen tres tipos
 de variables en Lua: globales, locales y campos de tabla.
@@ -378,7 +378,7 @@ usan aquí sólo con propósitos ilustrativos.)
 <<2.4>>
 
 ==============================================================================
-** 2.4 -- Sentencias
+SENTENCIAS                                                    *lua_statements*
 
 Lua soporta un conjunto casi convencional de sentencias, similar a los
 de Pascal o C. Este conjunto incluye la asignación, estructuras de
@@ -388,7 +388,7 @@ declaraciones de variables.
 <<2.4.1>>
 
 ==============================================================================
-*** 2.4.1 -- `Chunks`
+`CHUNKS`                                                          *lua_chunks*
 
 La unidad de ejecución en Lua se denomina [[#chunk][`chunk`]], el cual
 es simplemente un conjunto de sentencias que se ejecutan
@@ -417,7 +417,7 @@ de fichero y actúa de manera acorde.
 <<2.4.2>>
 
 ==============================================================================
-*** 2.4.2 -- Bloques
+BLOQUES                                                           *lua_blocks*
 
 Un bloque es una lista de sentencias; sintácticamente un bloque es lo
 mismo que un `chunk`:
@@ -437,7 +437,7 @@ sentencias `return` o `break` en medio de otro bloque (véase
 <<2.4.3>>
 
 ==============================================================================
-*** 2.4.3 -- La asignación
+LA ASIGNACIÓN                                                 *lua_assignment*
 
 Lua permite asignaciones múltiples. Por tanto la sintaxis de una
 asignación define una lista de variables a la izquierda y una lista de
@@ -492,7 +492,7 @@ sólo con propósitos ilustrativos.)
 <<2.4.4>>
 
 ==============================================================================
-*** 2.4.4 -- Estructuras de control
+ESTRUCTURAS DE CONTROL                                           *lua_control*
 
 Las estructuras de control `if`, `while` y `repeat` tienen el
 significado habitual y la sintaxis familiar:
@@ -539,7 +539,7 @@ bloque.
 <<2.4.5>>
 
 ==============================================================================
-*** 2.4.5 -- La sentencia for
+LA SENTENCIA FOR                                                     *lua_for*
 
 La sentencia `for` tiene dos formas: una numérica y otra genérica.
 
@@ -620,7 +620,7 @@ Nótese lo siguiente:
 <<2.4.6>>
 
 ==============================================================================
-*** 2.4.6 -- Sentencias de llamadas a función
+SENTENCIAS DE LLAMADAS A FUNCIÓN                          *lua_func_statement*
 
 Para evitar posibles efectos laterales, las llamadas a función pueden
 ser realizadas como sentencias:
@@ -633,7 +633,7 @@ función están explicadas en |lua_function_calls|.
 <<2.4.7>>
 
 ==============================================================================
-*** 2.4.7 -- Declaraciones locales
+DECLARACIONES LOCALES                                              *lua_local*
 
 Las variables locales pueden ser declaradas en cualquier lugar dentro de
 un bloque. Esas declaraciones pueden incluir una asignación inicial:
@@ -655,7 +655,7 @@ Las reglas de visibilidad para las variables locales se exponen en
 <<2.5>>
 
 ==============================================================================
-** 2.5 -- Expresiones
+EXPRESIONES                                                  *lua_expressions*
 
 Las expresiones básicas en Lua son las siguientes:
 >
@@ -723,13 +723,13 @@ por `f` o `nil` si `f` no retorna ningún valor).
 <<2.5.1>>
 
 ==============================================================================
-*** 2.5.1 -- Operadores aritméticos
+OPERADORES ARITMÉTICOS                                    *lua_arithmetic_ops*
 
 Lua tiene los operadores aritméticos comunes: los binarios `+`
 (adición), `-` (substracción), `*` (multiplicación), `/` (división), `%`
 (módulo) y `^` (exponenciación); y el unario `-` (negación). Si los
 operandos son números o `strings` que se convierten a números (véase
-[[#2.2.1][§2.2.1]]), entonces todas las operaciones tienen el
+|lua_type_coercion|), entonces todas las operaciones tienen el
 significado corriente. La exponenciación trabaja con cualquier
 exponente. Por ejemplo, `x^(-0.5)` calcula la inversa de la raiz
 cuadrada de `x`. El módulo se define como
@@ -742,7 +742,7 @@ infinito.
 <<2.5.2>>
 
 ==============================================================================
-*** 2.5.2 -- Operadores relacionales
+OPERADORES RELACIONALES                                   *lua_relational_ops*
 
 Los operadores relacionales en Lua son
 >
@@ -762,7 +762,7 @@ los demás objetos preexistentes.
 Se puede cambiar la manera en que Lua compara tablas y `userdata` usando
 el metamétodo "eq" (véase |lua_metatables|).
 
-Las reglas de conversión de [[#2.2.1][§2.2.1]] `no` se aplican en las
+Las reglas de conversión de |lua_type_coercion| `no` se aplican en las
 comparaciones de igualdad. De este modo `"0"`=0= es `false`, y `t[0]` y
 `t["0"]` denotan diferentes entradas en una tabla.
 
@@ -777,7 +777,7 @@ sistema local. En otro caso, Lua trata de usar los metamétodos "lt" o
 <<2.5.3>>
 
 ==============================================================================
-*** 2.5.3 -- Operadores lógicos
+OPERADORES LÓGICOS                                           *lua_logical_ops*
 
 Los operadores lógicos en Lua son `and`, `or` y `not`. Como las
 estructuras de control (véase |lua_control|) todos los operadores
@@ -807,18 +807,18 @@ ejemplos:
 <<2.5.4>>
 
 ==============================================================================
-*** 2.5.4 -- Concatenación
+CONCATENACIÓN                                              *lua_concatenation*
 
 El operador de concatenación de `strings` en Lua se denota mediante dos
 puntos seguidos ('`..`'). Si ambos operandos son `strings` o números
 entonces se convierten a `strings` mediante las reglas mencionadas en
-[[#2.2.1][§2.2.1]]. En otro caso se invoca al metamétodo "concat" (véase
+|lua_type_coercion|. En otro caso se invoca al metamétodo "concat" (véase
 |lua_metatables|).
 
 <<2.5.5>>
 
 ==============================================================================
-*** 2.5.5 -- El operador longitud
+EL OPERADOR LONGITUD                                                 *lua_len*
 
 El operador longitud se denota mediante `#`. La longitud de un `string`
 es su número de bytes (significado normal de la longitud de un `string`
@@ -836,7 +836,7 @@ Lua puede considerar ese valor `nil` como el final del `array`).
 <<2.5.6>>
 
 ==============================================================================
-*** 2.5.6 -- Precedencia de los operadores
+PRECEDENCIA DE LOS OPERADORES                                 *lua_precedence*
 
 La precedencia de los operadores en Lua sigue lo expuesto en la tabla
 siguiente de menor a mayor prioridad:
@@ -858,7 +858,7 @@ operadores son asociativos por la izquierda.
 <<2.5.7>>
 
 ==============================================================================
-*** 2.5.7 -- Constructores de tabla
+CONSTRUCTORES DE TABLA                                *lua_table_constructors*
 
 Los constructores de tabla son expresiones que crean tablas. Cada vez
 que se evalúa un constructor se crea una nueva tabla. Los constructores
@@ -907,7 +907,7 @@ conveniencia para código fuente generado de manera automática.
 <<2.5.8>>
 
 ==============================================================================
-*** 2.5.8 -- Llamadas a función
+LLAMADAS A FUNCIÓN                                        *lua_function_calls*
 
 Una llamada a una función tiene en Lua la siguiente sintaxis:
 >
@@ -975,7 +975,7 @@ siguientes ejemplos son llamadas de cola:
 <<2.5.9>>
 
 ==============================================================================
-*** 2.5.9 -- Definición de funciones
+DEFINICIÓN DE FUNCIONES                                    *lua_function_defs*
 
 La sintaxis para la definición de funciones es
 >
@@ -1087,7 +1087,7 @@ es otra manera de expresar
 <<2.6>>
 
 ==============================================================================
-** 2.6 -- Reglas de visibilidad
+REGLAS DE VISIBILIDAD                                              *lua_scope*
 
 Lua es un lenguaje con ámbito léxico. El ámbito de las variables
 comienza en la primera sentencia `después` de su declaración y termina
@@ -1134,7 +1134,7 @@ mientras que todas ellas comparten la misma `x`.
 <<2.7>>
 
 ==============================================================================
-** 2.7 -- Manejo de errores
+MANEJO DE ERRORES                                                 *lua_errors*
 
 Debido a que Lua es un lenguaje de extensión embebido, todas las
 acciones de Lua comienzan con código C en el programa anfitrión llamando
@@ -1150,7 +1150,7 @@ se puede usar la función |pcall|.
 <<2.8>>
 
 ==============================================================================
-** 2.8 -- Metatablas
+METATABLAS                                                    *lua_metatables*
 
 Cada valor en Lua puede tener una `metatabla`. Ésta es una tabla
 ordinaria de Lua que define el comportamiento del valor original para
@@ -1447,7 +1447,7 @@ acceso a los objetos sin metatablas no falla (simplemente devuelve
 <<2.9>>
 
 ==============================================================================
-** 2.9 -- Entornos
+ENTORNOS                                                    *lua_environments*
 
 Además de metatablas, los objetos de tipo proceso, las funciones y los
 `userdata` tienen otra tabla asociada, denominada `entorno`. Como las
@@ -1483,7 +1483,7 @@ entorno de una función Lua o del proceso en ejecución invocando
 <<2.10>>
 
 ==============================================================================
-** 2.10 -- Liberación de memoria no utilizada
+LIBERACIÓN DE MEMORIA NO UTILIZADA                                    *lua_gc*
 
 Lua realiza automáticamente la gestión de la memoria. Esto significa que
 no debemos preocuparnos ni de asignar (o reservar) memoria para nuevos
@@ -1523,7 +1523,7 @@ directamente (por ejemplo, pararlo y reiniciarlo).
 <<2.10.1>>
 
 ==============================================================================
-*** 2.10.2 -- Tablas débiles
+TABLAS DÉBILES                                                      *lua_weak*
 
 Una `tabla débil` es una tabla cuyos elementos son /referencias
 débiles/. Una referencia débil es ignorada por el liberador de memoria.
@@ -1548,7 +1548,7 @@ tablas controladas por esa metatabla es indefinido.
 <<2.11>>
 
 ==============================================================================
-** 2.11 -- co-rutinas
+CO-RUTINAS                                                    *lua_coroutines*
 
 Lua tiene co-rutinas, también denominadas `multiprocesos colaborativos`.
 En Lua una co-rutina representa un proceso de ejecución independiente. A
@@ -1636,7 +1636,7 @@ Cuando se ejecuta se produce la siguiente salida:
        main    false   cannot resume dead coroutine
 <
 ==============================================================================
-* 5 -- Bibliotecas estándar
+BIBLIOTECAS ESTÁNDAR                                              *lua_stdlib*
 
 Las bibliotecas estándar de Lua proporcionan funciones útiles que están
 implementadas directamente a través de la API de C. Algunas de estas
@@ -1680,20 +1680,20 @@ usando |lua_call|.
 <<5.1>>
 
 ==============================================================================
-** 5.1 -- Funciones básicas
+FUNCIONES BÁSICAS                                               *lua_builtins*
 
 La biblioteca básica proporciona algunas funciones del núcleo de Lua. Si
 no se desea incluir esta biblioteca en una aplicación se debe analizar
 cuidadosamente si se necesitan proporcionar implementaciones de algunas
 de sus utilidades.
 
-assert (v [, mensaje])                                                *assert*
+assert (v [, mensaje])                                              *assert()*
     Activa un error cuando el valor de su argumento `v` es falso (por
     ejemplo, `nil` o `false`); en otro caso retorna todos sus argumentos.
     `mensaje` es un mensaje de error; cuando está ausente se utiliza por
     defecto `"assertion failed!"`.
 
-collectgarbage (opt [, arg])                                  *collectgarbage*
+collectgarbage (opt [, arg])                                *collectgarbage()*
     Esta función es una interface genérica al liberador de memoria. Realiza
     diversas funciones de acuerdo a su primer argumento, `opt`:
 
@@ -1711,14 +1711,14 @@ collectgarbage (opt [, arg])                                  *collectgarbage*
     - `setstepmul`: establece `arg`/100 como el nuevo valor para el
       `multiplicador del paso` del liberador (véase |lua_gc|).
 
-dofile (nombre_de_fichero)                                            *dofile*
+dofile (nombre_de_fichero)                                          *dofile()*
     Abre el fichero con el nombre dado y ejecuta su contenido como un
     `chunk` de Lua. Cuando se invoca sin argumentos, `dofile` ejecuta el
     contenido de la entrada estándar (`stdin`). Devuelve todos los valores
     retornados por el `chunk`. En caso de error, `dofile` propaga el error a
     su invocador (esto es, `dofile` no se ejecuta en modo protegido).
 
-error (mensaje [, nivel])                                              *error*
+error (mensaje [, nivel])                                            *error()*
     Termina la última función protegida llamada, estableciendo `mensaje`
     como mensaje de error. La función `error` nunca retorna.
 
@@ -1730,25 +1730,25 @@ error (mensaje [, nivel])                                              *error*
     sucesivamente. Pasar un valor 0 como nivel evita la adición de la
     información de la posición al mensaje.
 
-_G                                                                        *_G*
+_G                                                                      *_G()*
     Una variable global (no una función) que almacena el entorno global (o
     sea, =_G._G = _G=). Lua mismo no usa esta variable; cambiar su valor no
     afecta ningún entorno, ni viceversa. (Úsese |setfenv|
     para cambiar entornos.)
 
-getfenv ([f])                                                        *getfenv*
+getfenv ([f])                                                      *getfenv()*
     Retorna el entorno actualmente en uso por la función. `f` puede ser una
     función Lua o un número que especifica la función a ese nivel de la
     pila: nivel 1 es la función que invoca a `getfenv`. Si la función dada
     no es una función Lua o si `f` es 0, `getfenv` retorna el entorno
     global. El valor por defecto de `f` es 1.
 
-getmetatable (objeto)                                           *getmetatable*
+getmetatable (objeto)                                         *getmetatable()*
     Si `objeto` no tiene una metatabla devuelve `nil`. En otro caso, si la
     metatabla del objeto tiene un campo `"__metatable"` retorna el valor
     asociado, o si no es así retorna la metatabla del objeto dado.
 
-ipairs (t)                                                            *ipairs*
+ipairs (t)                                                          *ipairs()*
     Retorna tres valores: una función iteradora, la tabla `t`, y 0, de tal
     modo que la construcción
     >
@@ -1757,7 +1757,7 @@ ipairs (t)                                                            *ipairs*
     iterará sobre los pares (`1,t[1]`), (`2,t[2]`), ···, hasta la primera
     clave entera con un valor nil en la tabla.
 
-load (func [, nombre_de_chunk])                                         *load*
+load (func [, nombre_de_chunk])                                       *load()*
     Carga un `chunk` usando la función `func` para obtener sus partes. Cada
     llamada a `func` debe retornar un `string` que se concatena con los
     resultados previos. Un retorno de `nil` (o no valor) señala el final del
@@ -1770,12 +1770,12 @@ load (func [, nombre_de_chunk])                                         *load*
     `nombre_de_chunk` se utiliza para identificar el `chunk` en los mensajes
     de error y para información de depuración.
 
-loadfile ([nombre_de_fichero])                                      *loadfile*
+loadfile ([nombre_de_fichero])                                    *loadfile()*
     Similar a |load|, pero obtiene el `chunk` del fichero
     `nombre_de_fichero` o de la entrada estándar si no se proporciona un
     nombre.
 
-loadstring (string [, nombre_de_chunk])                           *loadstring*
+loadstring (string [, nombre_de_chunk])                         *loadstring()*
     Similar a |load|, pero obtiene el `chunk` del `string`
     proporcionado.
 
@@ -1786,7 +1786,7 @@ loadstring (string [, nombre_de_chunk])                           *loadstring*
     Cuando está ausente, `nombre_de_chunk` toma por defecto el `string`
     dado.
 
-next (tabla [, índice])                                                 *next*
+next (tabla [, índice])                                               *next()*
     Permite al programa recorrer todos los campos de una tabla. Su primer
     argumento es una tabla y su segundo argumento es un índice en esta
     tabla. `next` retorna el siguiente índice de la tabla y su valor
@@ -1806,7 +1806,7 @@ next (tabla [, índice])                                                 *next*
     obstante se pueden modificar campos existentes. En particular se pueden
     borrar campos existentes.
 
-pairs (t)                                                              *pairs*
+pairs (t)                                                            *pairs()*
     Retorna tres valores: la función |next|, la tabla `t`, y
     `nil`, por lo que la construcción
     >
@@ -1817,7 +1817,7 @@ pairs (t)                                                              *pairs*
     Véase |next| para las precauciones a tomar cuando se
     modifica la tabla durante las iteraciones.
 
-pcall (f, arg1, ···)                                                   *pcall*
+pcall (f, arg1, ···)                                                 *pcall()*
     Invoca la función `f` con los argumentos dados en modo protegido. Esto
     significa que ningún error dentro de `f` se propaga; en su lugar `pcall`
     captura el error y retorna un código de estatus. Su primer resultado es
@@ -1826,7 +1826,7 @@ pcall (f, arg1, ···)                                                   *pcall
     resultados de la llamada después del primer resultado. En caso de error
     `pcall` retorna `false` más un mensaje de error.
 
-print (···)                                                            *print*
+print (···)                                                          *print()*
     Recibe cualquier número de argumentos e imprime sus valores en el
     fichero estándar de salida (`stdout`), usando
     |tostring| como función para convertir los argumentos
@@ -1835,26 +1835,26 @@ print (···)                                                            *print
     depuración del código. Para salida formateada úsese
     |string.format|.
 
-rawequal (v1, v2)                                                   *rawequal*
+rawequal (v1, v2)                                                 *rawequal()*
     Verifica si `v1` es igual a `v2`, sin invocar ningún metamétodo.
     Devuelve un booleano.
 
-rawget (tabla, índice)                                                *rawget*
+rawget (tabla, índice)                                              *rawget()*
     Obtiene el valor real de `tabla[índice]` sin invocar ningún metamétodo.
     `tabla` debe ser una tabla e `índice` cualquier valor diferente de
     `nil`.
 
-rawset (tabla, índice, valor)                                         *rawset*
+rawset (tabla, índice, valor)                                       *rawset()*
     Asigna `valor` a `tabla[índice]` sin invocar ningún metamétodo. `tabla`
     debe ser una tabla, `índice` cualquier valor diferente de `nil` y
     `valor` un valor cualquiera de Lua.
 
-select (índice, ···)                                                  *select*
+select (índice, ···)                                                *select()*
     Si `índice` es un número retorna todos los argumentos después del número
     `índice`. En otro caso `índice` debe ser el `string` `"#"`, y `select`
     retorna el número total de argumentos extra que recibe.
 
-setfenv (f, tabla)                                                   *setfenv*
+setfenv (f, tabla)                                                 *setfenv()*
     Establece el entorno que va a ser usado por una función. `f` puede ser
     una función Lua o un número que especifica la función al nivel de pila:
     nivel 1 es la función que invoca a `setfenv`. `setfenv` retorna la
@@ -1864,7 +1864,7 @@ setfenv (f, tabla)                                                   *setfenv*
     proceso que está en ejecución. En este caso `setfenv` no retorna
     valores.
 
-setmetatable (tabla, metatabla)                                 *setmetatable*
+setmetatable (tabla, metatabla)                               *setmetatable()*
     Establece la metatabla de una tabla dada. (No se puede cambiar la
     metatabla de otros tipos desde Lua, sino sólo desde C.) Si `metatabla`
     es `nil` entonces se elimina la metatabla de la tabla dada. Si la
@@ -1872,7 +1872,7 @@ setmetatable (tabla, metatabla)                                 *setmetatable*
 
     Esta función retorna `tabla`.
 
-tonumber (e [, base])                                               *tonumber*
+tonumber (e [, base])                                             *tonumber()*
     Intenta convertir su argumento en un número. Si el argumento es ya un
     número o un `string` convertible a un número entonces `tonumber` retorna
     este número; en otro caso devuelve `nil`.
@@ -1885,7 +1885,7 @@ tonumber (e [, base])                                               *tonumber*
     como un exponente opcional (véase |lua_conventions|). En otras bases sólo
     se aceptan enteros sin signo.
 
-tostring (e)                                                        *tostring*
+tostring (e)                                                      *tostring()*
     Recibe un argumento de cualquier tipo y lo convierte en un `string` con
     un formato razonable. Para un control completo de cómo se convierten los
     números, úsese |string.format|.
@@ -1894,13 +1894,13 @@ tostring (e)                                                        *tostring*
     invoca al correspondiente valor con `e` como argumento y usa el
     resultado de la llamada como su propio resultado.
 
-type (v)                                                                *type*
+type (v)                                                              *type()*
     Retorna el tipo de su único argumento, codificado como `string`. Los
     posibles resultados de esta función son `"nil"` (un string, no el valor
     `nil`), `"number"`, `"string"`, `"boolean`, `"table"`, `"function"`,
     `"thread"` y `"userdata"`.
 
-unpack (lista [, i [, j]])                                            *unpack*
+unpack (lista [, i [, j]])                                          *unpack()*
     Retorna los elementos de una tabla dada. Esta función equivale a
     >
 	  return lista[i], lista[i+1], ···, lista[j]
@@ -1909,12 +1909,12 @@ unpack (lista [, i [, j]])                                            *unpack*
     elementos. Por defecto `i` es 1 y `j` es la longitud de la lista, como
     se define a través del operador longitud (véase |lua_len|).
 
-_VERSION                                                            *_VERSION*
+_VERSION                                                          *_VERSION()*
     Una variable global (no una función) que almacena un `string` que
     contiene la versión actual del intérprete. En esta versión de Lua el
     contenido actual de esta variable es `"Lua 5.1"`.
 
-xpcall (f, err)                                                       *xpcall*
+xpcall (f, err)                                                     *xpcall()*
     Esta función es similar a `pcall`, excepto que se puede establecer un
     manejador de error.
 
@@ -1930,18 +1930,18 @@ xpcall (f, err)                                                       *xpcall*
     <<5.2>>
 
 ==============================================================================
-** 5.2 -- Manejo de co-rutinas
+MANEJO DE CO-RUTINAS                                   *lua_module_coroutines*
 
 Las operaciones relacionadas con co-rutinas comprenden una
 sub-biblioteca de la biblioteca básica y se sitúa en la tabla
 `coroutine`. Véase |lua_coroutines| para una descripción general de las
 co-rutinas.
 
-coroutine.create (f)                                        *coroutine.create*
+coroutine.create (f)                                      *coroutine.create()*
     Crea una nueva co-rutina con cuerpo `f`. `f` debe ser una función Lua.
     Retorna una nueva co-rutina, un objeto de tipo `"thread"`.
 
-coroutine.resume (co [, val1, ···])                         *coroutine.resume*
+coroutine.resume (co [, val1, ···])                       *coroutine.resume()*
     Comienza o continúa la ejecución de la co-rutina `co`. La primera vez
     que se llama a esta función la co-rutina comienza ejecutando su cuerpo.
     Los valores `val1`, ··· se pasan como argumentos al cuerpo de la
@@ -1955,11 +1955,11 @@ coroutine.resume (co [, val1, ···])                         *coroutine.resume
     Si existe cualquier error `resume` retorna `false` más un mensaje de
     error.
 
-coroutine.running ()                                       *coroutine.running*
+coroutine.running ()                                     *coroutine.running()*
     Retorna la co-rutina en ejecución o `nil` cuando se invoca desde el
     proceso principal.
 
-coroutine.status (co)                                       *coroutine.status*
+coroutine.status (co)                                     *coroutine.status()*
     Retorna el estatus de la co-rutina `co` como un `string`: `"running"`,
     si la co-rutina está en ejecución (esto es, invocó a `status`);
     `"suspended"`, si la co-rutina está suspendida en una llamada a `yield`,
@@ -1968,14 +1968,14 @@ coroutine.status (co)                                       *coroutine.status*
     co-rutina); y `"dead"` si la co-rutina ha finalizado su función o si se
     ha detenido con un error.
 
-coroutine.wrap (f)                                            *coroutine.wrap*
+coroutine.wrap (f)                                          *coroutine.wrap()*
     Crea una nueva co-rutina con cuerpo `f`. `f` debe ser una función Lua.
     Retorna una función que resume la co-rutina cada vez que es invocada.
     Cualquier argumento pasado a la función se comporta como un argumento
     extra para `resume`. Retorna los mismos valores devueltos por `resume`,
     excepto el primer booleano. En caso de error, éste se propaga.
 
-coroutine.yield (···)                                        *coroutine.yield*
+coroutine.yield (···)                                      *coroutine.yield()*
     Suspende la ejecución de la co-rutina invocante. La co-rutina no puede
     estar ejecutando una función C, un metamétodo o un iterador. Cualquier
     argumento de `yield` es pasado como resultado extra a `resume`.
@@ -1983,14 +1983,14 @@ coroutine.yield (···)                                        *coroutine.yield
     <<5.3>>
 
 ==============================================================================
-** 5.3 -- Módulos
+MÓDULOS                                                          *lua_modules*
 
 La biblioteca de empaquetado proporciona utilidades básicas para cargar
 y construir módulos en Lua. Exporta dos de sus funciones directamente al
 entorno global: |module| y |require|.
 Las demás se exportan en la tabla `package`.
 
-module (nombre [, ···])                                               *module*
+module (nombre [, ···])                                             *module()*
     Crea un módulo. Si existe una tabla en `package.loaded[nombre]` ésta es
     el módulo. En otro caso si existe una tabla global `t` con el nombre
     dado ésta es el módulo. Sino, finalmente, crea una nueva tabla `t` y le
@@ -2012,7 +2012,7 @@ module (nombre [, ···])                                               *module
     del módulo, donde cada opción es una función que será aplicada sobre el
     módulo.
 
-require (nombre)                                                     *require*
+require (nombre)                                                   *require()*
     Carga el módulo dado. La función comienza buscando en la tabla
     `package.loaded` para determinar si `nombre` está ya cargado. Si es así
     entonces `require` devuelve el valor almacenado en
@@ -2042,7 +2042,7 @@ require (nombre)                                                     *require*
     si no se pudo encontrar un cargador para el módulo, entonces `require`
     activa un error.
 
-package.cpath                                                  *package.cpath*
+package.cpath                                                *package.cpath()*
     El camino de búsqueda usado por |require| para buscar
     un cargador en C.
 
@@ -2051,13 +2051,13 @@ package.cpath                                                  *package.cpath*
     usando la variable de entorno `LUA_CPATH` (además de otro camino por
     defecto definido en `luaconf.h`).
 
-package.loaded                                                *package.loaded*
+package.loaded                                              *package.loaded()*
     Una tabla usada por |require| para controlar qué
     módulos están ya cargados. Cuando se solicita un módulo `nombre` y
     `package.loaded[nombre]` no es falso, |require|
     simplemente retorna el valor almacenado.
 
-package.loaders                                              *package.loaders*
+package.loaders                                            *package.loaders()*
     Una tabla usada por |require| que controla cómo se
     cargan los módulos
 
@@ -2113,7 +2113,7 @@ package.loaders                                              *package.loaders*
     puede guardar varios submódulos C en una única biblioteca, con cada
     submódulo manteniendo su función original de apertura.
 
-package.loadlib (nombre_de_biblioteca, nombre_de_func)       *package.loadlib*
+package.loadlib (nombre_de_biblioteca, nombre_de_func)     *package.loadlib()*
     Enlaza dinámicamente el programa anfitrión con la biblioteca en C
     `nombre_de_biblio`. Dentro de esta biblioteca busca una función
     `nombre_de_func` y la retorna como una función C. (Por tanto,
@@ -2133,7 +2133,7 @@ package.loadlib (nombre_de_biblioteca, nombre_de_func)       *package.loadlib*
     disponible en algunas plataformas (Windows, Linux, Mac OS X, Solaris,
     BSD, además de otros sistemas Unix que soportan el estándar `dlfcn`).
 
-package.path                                                    *package.path*
+package.path                                                  *package.path()*
     El camino de búsqueda usado por |require| para buscar
     un cargador de Lua.
 
@@ -2142,11 +2142,11 @@ package.path                                                    *package.path*
     si la variable de entorno no está definida. Si aparece `";;"` en el
     valor de la variable de entorno se reemplaza por el camino por defecto.
 
-package.preload                                              *package.preload*
+package.preload                                            *package.preload()*
     Una tabla que almacena cargadores para módulos específicos (véase
     |require|).
 
-package.seeall (módulo)                                       *package.seeall*
+package.seeall (módulo)                                     *package.seeall()*
     Establece una metatabla para `módulo` con su campo `__index`
     refiriéndose al entorno global, de tal manera que este módulo hereda los
     valores del entorno global. Se usa como una opción para la función
@@ -2155,7 +2155,7 @@ package.seeall (módulo)                                       *package.seeall*
     <<5.4>>
 
 ==============================================================================
-** 5.4 -- Manejo de `strings`
+MANEJO DE `STRINGS`                                        *lua_module_string*
 
 Esta biblioteca proporciona funciones genéricas de manejo de `strings`,
 tales como encontrar y extraer `substrings` y detectar
@@ -2171,7 +2171,7 @@ La biblioteca de `strings` proporciona todas sus funciones en la tabla
 funciones de manejo de `string` en un estilo orientado a objetos. Por
 ejemplo, `string.byte(s, i)` puede ponerse `s:byte(i)`.
 
-string.byte (s [, i [, j]])                                      *string.byte*
+string.byte (s [, i [, j]])                                    *string.byte()*
     Devuelve los códigos numéricos internos de los caracteres `s[i]`,
     `s[i+1]`, ···, `s[j]`. El valor por defecto de `i` es 1; el valor por
     defecto de `j` es `i`.
@@ -2179,7 +2179,7 @@ string.byte (s [, i [, j]])                                      *string.byte*
     Téngase en cuenta que los códigos numéricos no son necesariamente
     portables de unas plataformas a otras.
 
-string.char (···)                                                *string.char*
+string.char (···)                                              *string.char()*
     Recibe cero o más enteros. Devuelve un `string` con igual longitud que
     el número de argumentos, en el que cada carácter tiene un código
     numérico interno igual a su correspondiente argumento.
@@ -2187,13 +2187,13 @@ string.char (···)                                                *string.char
     Téngase en cuenta que los códigos numéricos no son necesariamente
     portables de unas plataformas a otras.
 
-string.dump (function)                                           *string.dump*
+string.dump (function)                                         *string.dump()*
     Devuelve un `string` que contiene la representación binaria de la
     función dada, de tal manera que una llamada posterior a
     |loadstring| con este `string` devuelve una copia
     de la función. `func` debe ser una función Lua sin `upvalues`.
 
-string.find (s, patrón [, inicio [, básica]])                    *string.find*
+string.find (s, patrón [, inicio [, básica]])                  *string.find()*
     Busca la primera aparición de |patrón| en el `string` `s`.
     Si la encuentra, `find` devuelve los índices de `s` donde comienza y
     acaba la aparación; en caso contrario retorna `nil`. Un tercer argumento
@@ -2209,7 +2209,7 @@ string.find (s, patrón [, inicio [, básica]])                    *string.find*
     con éxito se devuelven los valores capturados, después de los dos
     índices.
 
-string.format (formato, ···)                                   *string.format*
+string.format (formato, ···)                                 *string.format()*
     Devuelve una versión formateada de sus argumentos (en número variable)
     siguiendo la descripción dada en su primer argumento (`formato`, que
     debe ser un `string`). El `string` de formato sigue las mismas reglas
@@ -2236,7 +2236,7 @@ string.format (formato, ···)                                   *string.format
     Esta función no acepta valores de `string` que contengan caracteres
     cero, excepto como argumentos de la opción `q`.
 
-string.gmatch (s, patrón)                                      *string.gmatch*
+string.gmatch (s, patrón)                                    *string.gmatch()*
     Devuelve una función iteradora que, cada vez que se invoca, retorna las
     siguientes [[#captures][`capturas`]] del |patrón| en el
     `string` `s`.
@@ -2264,7 +2264,7 @@ string.gmatch (s, patrón)                                      *string.gmatch*
     Para esta función, un `'^'` al principio de un patrón no funciona como
     un ancla, sino que previene la iteración.
 
-string.gsub (s, patrón, reemplazamiento [, n])                   *string.gsub*
+string.gsub (s, patrón, reemplazamiento [, n])                 *string.gsub()*
     Devuelve una copia de `s` en la que todas (o las `n` primeras, si se
     especifica el argumento opcional) las apariciones del
     |patrón| han sido reemplazadas por el `reemplazamiento`
@@ -2319,17 +2319,17 @@ string.gsub (s, patrón, reemplazamiento [, n])                   *string.gsub*
 	   x = string.gsub("$nombre-$versión.tar.gz", "%$(%w+)", t)
 	   --> x="lua-5.1.tar.gz"
     <
-string.len (s)                                                    *string.len*
+string.len (s)                                                  *string.len()*
     Recibe un `string` y devuelve su longitud. El `string` vacío `""` tiene
     longitud 0. Los caracteres cero dentro del `string` también se cuentan,
     por lo que `"a\000bc\000"` tiene longitud 5.
 
-string.lower (s)                                                *string.lower*
+string.lower (s)                                              *string.lower()*
     Recibe un `string` y devuelve una copia del mismo con todas las letras
     mayúsculas cambiadas a minúsculas. El resto de los caracteres permanece
     sin cambios. La definición de letra mayúscula depende del sistema local.
 
-string.match (s, patrón [, inicio])                             *string.match*
+string.match (s, patrón [, inicio])                           *string.match()*
     Busca la primera `aparición` del |patrón| en el `string`
     `s`. Si encuentra una, entonces `match` retorna la
     [[#captures][`captura`]] del patrón; en caso contrario devuelve `nil`.
@@ -2338,27 +2338,27 @@ string.match (s, patrón [, inicio])                             *string.match*
     especifica dónde comenzar la búsqueda; su valor por defecto es 1 y puede
     ser negativo.
 
-string.rep (s, n)                                                 *string.rep*
+string.rep (s, n)                                               *string.rep()*
     Devuelve un `string` que es la concatenación de `n` copias del `string`
     `s`.
 
-string.reverse (s)                                            *string.reverse*
+string.reverse (s)                                          *string.reverse()*
     Devuelve un `string` que es el original `s` invertido.
 
-string.sub (s, i [, j])                                           *string.sub*
+string.sub (s, i [, j])                                         *string.sub()*
     Retorna el `substring` de `s` que comienza en `i` y continúa hasta `j`;
     `i` y `j` pueden ser negativos. Si `j` está ausente entonces se asume
     que vale /-1/ (equivalente a la longitud del `string`). En particular,
     la llamada `string.sub(s,1,j)` retorna un prefijo de `s` con longitud
     `j`, y `string.sub(s, -i)` retorna un sufijo de `s` con longitud `i`.
 
-string.upper (s)                                                *string.upper*
+string.upper (s)                                              *string.upper()*
     Recibe un `string` y devuelve una copia del mismo con todas las letras
     minúsculas cambiadas a mayúsculas. El resto de los caracteres permanece
     sin cambios. La definición de letra minúscula depende del sistema local.
 
 ==============================================================================
-*** 5.4.1 -- Patrones
+PATRONES                                                        *lua_patterns*
 
 Clases de caracteres~
 
@@ -2473,7 +2473,7 @@ Un patrón no puede contener caracteres cero. Úsese `%z` en su lugar.
 <<5.5>>
 
 ==============================================================================
-** 5.5 -- Manejo de tablas
+MANEJO DE TABLAS                                            *lua_module_table*
 
 Esta biblioteca proporciona funciones genéricas para manejo de tablas.
 Todas estas funciones están definidas dentro de la tabla `table`.
@@ -2483,26 +2483,26 @@ mismas representan `arrays` o listas (o sea, están indexadas
 numéricamente). Para estas funciones, cuando hablamos de la "longitud"
 de una tabla queremos decir el resultado del operador longitud (`#`).
 
-table.concat (tabla [, separador [, i [, j]]])                  *table.concat*
+table.concat (tabla [, separador [, i [, j]]])                *table.concat()*
     Dado una table donde todos sus elementos son `strings` o números
     devuelve `tabla[i]..separador..tabla[i+1] ··· separador..tabla[j]`. El
     valor por defecto de `separador` es el `string` vacío, el valor por
     defecto de `i` es 1 y el valor por defecto de `j` es la longitud de la
     tabla. Si `i` es mayor que `j`, la función devuelve un `string` vacío.
 
-table.insert (tabla, [posición,] valor)                         *table.insert*
+table.insert (tabla, [posición,] valor)                       *table.insert()*
     Inserta el elemento `valor` en la `posición` dada en la `tabla`,
     desplazando hacia adelante otros elementos para abrir hueco, si es
     necesario. El valor por defecto de `posición` es `n+1`, donde
     =n = #tabla= es la longitud de la tabla (véase |lua_len|), de
     tal manera que `table.insert(t,x)` inserta `x` al final de la tabla `t`.
 
-table.maxn (tabla)                                                *table.maxn*
+table.maxn (tabla)                                              *table.maxn()*
     Devuelve el mayor índice numérico positivo de una tabla dada o cero si
     la tabla no tiene índices numéricos positivos. (Para hacer su trabajo
     esta función realiza un barrido lineal de la tabla completa.)
 
-table.remove (tabla [, posición])                               *table.remove*
+table.remove (tabla [, posición])                             *table.remove()*
     Elimina de `tabla` el elemento situado en la `posición` dada,
     desplazando hacia atrás otros elementos para cerrar espacio, si es
     necesario. Devuelve el valor del elemento eliminado. El valor por
@@ -2510,7 +2510,7 @@ table.remove (tabla [, posición])                               *table.remove*
     lo que la llamada `table.remove(t)` elimina el último elemento de la
     tabla `t`.
 
-table.sort (tabla [, comparador])                                 *table.sort*
+table.sort (tabla [, comparador])                               *table.sort()*
     Ordena los elementos de la tabla en un orden dado /modificando la propia
     tabla/, desde `table[1]` hasta `table[n]`, donde `n` es la longitud de
     la tabla. Si se proporciona el argumento `comparador` éste debe ser una
@@ -2527,88 +2527,88 @@ table.sort (tabla [, comparador])                                 *table.sort*
     <<5.6>>
 
 ==============================================================================
-** 5.6 -- Funciones matemáticas
+FUNCIONES MATEMÁTICAS                                        *lua_module_math*
 
 Esta biblioteca es una interface a la biblioteca matemática estándar de
 C. Proporciona todas sus funciones dentro de la tabla `math`.
 
-math.abs (x)                                                        *math.abs*
+math.abs (x)                                                      *math.abs()*
     Devuelve el valor absoluto de `x`.
 
-math.acos (x)                                                      *math.acos*
+math.acos (x)                                                    *math.acos()*
     Devuelve el arco coseno de `x` (en radianes).
 
-math.asin (x)                                                      *math.asin*
+math.asin (x)                                                    *math.asin()*
     Devuelve el arco seno de `x` (en radianes).
 
-math.atan (x)                                                      *math.atan*
+math.atan (x)                                                    *math.atan()*
     Devuelve el arco tangente de `x` (en radianes).
 
-math.atan2 (y, x)                                                 *math.atan2*
+math.atan2 (y, x)                                               *math.atan2()*
     Devuelve el arco tangente de `y/x` (en radianes), pero usa los signos de
     ambos argumentos para determinar el cuadrante del resultado. (También
     maneja correctamente el caso en que `x` es cero.)
 
-math.ceil (x)                                                      *math.ceil*
+math.ceil (x)                                                    *math.ceil()*
     Devuelve el menor entero mayor o igual que `x`.
 
-math.cos (x)                                                        *math.cos*
+math.cos (x)                                                      *math.cos()*
     Devuelve el coseno de `x` (se asume que está en radianes).
 
-math.cosh (x)                                                      *math.cosh*
+math.cosh (x)                                                    *math.cosh()*
     Devuelve el coseno hiperbólico de `x`.
 
-math.deg (x)                                                        *math.deg*
+math.deg (x)                                                      *math.deg()*
     Devuelve en grados sexagesimales el valor de `x` (dado en radianes).
 
-math.exp (x)                                                        *math.exp*
+math.exp (x)                                                      *math.exp()*
     Devuelve el valor de `e^{x}`.
 
-math.floor (x)                                                    *math.floor*
+math.floor (x)                                                  *math.floor()*
     Devuelve el mayor entero menor o igual que `x`.
 
-math.fmod (x, y)                                                   *math.fmod*
+math.fmod (x, y)                                                 *math.fmod()*
     Devuelve el resto de la división de `x` por `y`.
 
-math.frexp (x)                                                    *math.frexp*
+math.frexp (x)                                                  *math.frexp()*
     Devuelve `m` y `e` tales que `x = m 2^{e}`, `e` es un entero y el valor
     absoluto de `m` está en el intervalo /[0.5, 1)/ (o cero cuando `x` es
     cero).
 
-math.huge                                                          *math.huge*
+math.huge                                                        *math.huge()*
     El valor `HUGE_VAL`, un valor más grande o igual que otro valor numérico
     cualquiera.
 
-math.ldexp (m, e)                                                 *math.ldexp*
+math.ldexp (m, e)                                               *math.ldexp()*
     Devuelve `m 2^{e}` (`e` debe ser un entero).
 
-math.log (x)                                                        *math.log*
+math.log (x)                                                      *math.log()*
     Devuelve el logaritmo natural de `x`.
 
-math.log10 (x)                                                    *math.log10*
+math.log10 (x)                                                  *math.log10()*
     Devuelve el logaritmo decimal (base 10) de `x`.
 
-math.max (x, ···)                                                   *math.max*
+math.max (x, ···)                                                 *math.max()*
     Devuelve el mayor valor de entre sus argumentos.
 
-math.min (x, ···)                                                   *math.min*
+math.min (x, ···)                                                 *math.min()*
     Devuelve el menor valor de entre sus argumentos.
 
-math.modf (x)                                                      *math.modf*
+math.modf (x)                                                    *math.modf()*
     Devuelve dos números, las partes entera y fraccional de `x` .
 
-math.pi                                                              *math.pi*
+math.pi                                                            *math.pi()*
     El valor de `pi`.
 
-math.pow (x, y)                                                     *math.pow*
+math.pow (x, y)                                                   *math.pow()*
     Devuelve `x^{y}`. (Se puede también usar la expresión `x^y` para
     calcular este valor.)
 
-math.rad (x)                                                        *math.rad*
+math.rad (x)                                                      *math.rad()*
     Devuelve en radianes el valor del ángulo `x` (dado en grados
     sexagesimales).
 
-math.random ([m [, n]])                                          *math.random*
+math.random ([m [, n]])                                        *math.random()*
     Esta función es un interface a `rand`, generador simple de números
     pseudo-aleatorios proporcionado por el ANSI C. (Sin garantías de sus
     propiedades estadísticas.)
@@ -2620,31 +2620,31 @@ math.random ([m [, n]])                                          *math.random*
     `math.random` devuelve un número pseudoaleatorio entero uniforme en el
     rango `[m, n]`.
 
-math.randomseed (x)                                          *math.randomseed*
+math.randomseed (x)                                        *math.randomseed()*
     Establece `x` como "semilla" para el generador de números
     pseudoaleatorios: iguales semillas producen iguales secuencias de
     números.
 
-math.sin (x)                                                        *math.sin*
+math.sin (x)                                                      *math.sin()*
     Devuelve el seno de `x` (se asume que está en radianes).
 
-math.sinh (x)                                                      *math.sinh*
+math.sinh (x)                                                    *math.sinh()*
     Devuelve el seno hiperbólico de `x`.
 
-math.sqrt (x)                                                      *math.sqrt*
+math.sqrt (x)                                                    *math.sqrt()*
     Devuelve la raiz cuadrada de `x`. (Se puede usar también la expresión
     `x^0.5` para calcular este valor.)
 
-math.tan (x)                                                        *math.tan*
+math.tan (x)                                                      *math.tan()*
     Devuelve la tangente de `x` (se asume que está en radianes).
 
-math.tanh (x)                                                      *math.tanh*
+math.tanh (x)                                                    *math.tanh()*
     Devuelve la tangente hiperbólica de `x`.
 
     <<5.7>>
 
 ==============================================================================
-** 5.7 -- Utilidades de entrada/salida
+UTILIDADES DE ENTRADA/SALIDA                                   *lua_module_io*
 
 La biblioteca de entrada/salida (I/O de sus siglas en inglés)
 proporciona dos estilos diferentes de manejo de ficheros. El primero de
@@ -2669,15 +2669,15 @@ devuelven `nil` en caso de fallo (más un mensaje de error como segundo
 resultado y un código de error dependiente del sistema como un tercer
 resultado) y valores diferentes de `nil` si hay éxito.
 
-io.close ([descriptor_de_fichero])                                  *io.close*
+io.close ([descriptor_de_fichero])                                *io.close()*
     Equivalente a `descriptor_de_fichero:close()`. Sin argumento cierra el
     fichero de salida por defecto.
 
-io.flush ()                                                         *io.flush*
+io.flush ()                                                       *io.flush()*
     Equivalente a `descriptor_de_fichero:flush` aplicado al fichero de
     salida por defecto.
 
-io.input ([descriptor_de_fichero | nombre_de_fichero])              *io.input*
+io.input ([descriptor_de_fichero | nombre_de_fichero])            *io.input()*
     Cuando se invoca con un nombre de fichero entonces lo abre (en modo
     texto), y establece su manejador de fichero como fichero de entrada por
     defecto. Cuando se llama con un descriptor de fichero simplemente lo
@@ -2687,7 +2687,7 @@ io.input ([descriptor_de_fichero | nombre_de_fichero])              *io.input*
     En caso de errores esta función activa `error` en lugar de devolver un
     código de error.
 
-io.lines ([nombre_de_fichero])                                      *io.lines*
+io.lines ([nombre_de_fichero])                                    *io.lines()*
     Abre el fichero de nombre dado en modo lectura y devuelve una función
     iteradora que, cada vez que es invocada, devuelve una nueva línea del
     fichero. Por tanto, la construcción
@@ -2703,7 +2703,7 @@ io.lines ([nombre_de_fichero])                                      *io.lines*
     por defecto de entrada. En ese caso no cierra el fichero cuando acaba el
     bucle.
 
-io.open (nombre_de_fichero [, modo])                                 *io.open*
+io.open (nombre_de_fichero [, modo])                               *io.open()*
     Esta función abre un fichero, en el modo especificado en el `string`
     `mode`. Devuelve un descriptor de fichero o, en caso de error, `nil`
     además de un mensaje de error.
@@ -2724,11 +2724,11 @@ io.open (nombre_de_fichero [, modo])                                 *io.open*
     binario. Este `string` es exactamente el que se usa en la función
     estándar de C `fopen`.
 
-io.output ([descriptor_de_fichero | nombre_de_fichero])            *io.output*
+io.output ([descriptor_de_fichero | nombre_de_fichero])          *io.output()*
     Similar a |io.input|, pero operando sobre el fichero
     por defecto de salida.
 
-io.popen (prog [, modo])                                            *io.popen*
+io.popen (prog [, modo])                                          *io.popen()*
     Comienza a ejecutar el programa `prog` en un proceso separado y retorna
     un descriptor de fichero que se puede usar para leer datos que escribe
     `prog` (si `modo` es `"r"`, el valor por defecto) o para escribir datos
@@ -2737,33 +2737,33 @@ io.popen (prog [, modo])                                            *io.popen*
     Esta función depende del sistema operativo y no está disponible en todas
     las plataformas.
 
-io.read (···)                                                        *io.read*
+io.read (···)                                                      *io.read()*
     Equivalente a `io.input():read`.
 
-io.tmpfile ()                                                     *io.tmpfile*
+io.tmpfile ()                                                   *io.tmpfile()*
     Devuelve un descriptor de fichero para un fichero temporal. Éste se abre
     en modo actualización y se elimina automáticamente cuando acaba el
     programa.
 
-io.type (objeto)                                                     *io.type*
+io.type (objeto)                                                   *io.type()*
     Verifica si `objeto` es un descriptor válido de fichero. Devuelve el
     `string` `"file"` si `objeto` es un descriptor de fichero abierto,
     `"closed file"` si `objeto` es un descriptor de fichero cerrado, o `nil`
     si `objeto` no es un descriptor de fichero.
 
-io.write (···)                                                      *io.write*
+io.write (···)                                                    *io.write()*
     Equivalente a `io.output():write`.
 
-descriptor_de_fichero:close ()                   *descriptor_de_fichero:close*
+descriptor_de_fichero:close ()                 *descriptor_de_fichero:close()*
     Cierra el descriptor de fichero `descriptor_de_fichero`. Téngase en
     cuenta que los ficheros son cerrados automáticamente cuando sus
     descriptores se eliminan en un ciclo de liberación de memoria, pero que
     esto toma un tiempo impredecible de ejecución.
 
-descriptor_de_fichero:flush ()                   *descriptor_de_fichero:flush*
+descriptor_de_fichero:flush ()                 *descriptor_de_fichero:flush()*
     Salva cualquier dato escrito en `descriptor_de_fichero`.
 
-descriptor_de_fichero:lines ()                   *descriptor_de_fichero:lines*
+descriptor_de_fichero:lines ()                 *descriptor_de_fichero:lines()*
     Devuelve una función iteradora que, cada vez que es invocada, devuelve
     una nueva línea leída del fichero. Por tanto, la construcción
     >
@@ -2773,7 +2773,7 @@ descriptor_de_fichero:lines ()                   *descriptor_de_fichero:lines*
     |io.lines|, esta función no cierra el fichero cuando
     acaba el bucle.)
 
-file:read (···)                                                    *file:read*
+file:read (···)                                                  *file:read()*
     Lee en el fichero dado por el `descriptor_de_fichero`, de acuerdo el
     formato proporcionado, el cual especifica qué leer. Para cada formato,
     la función devuelve un `string` (o un número) con los caracteres leídos,
@@ -2794,7 +2794,7 @@ file:read (···)                                                    *file:read
       número es cero no lee nada y devuelve un `string` vacío, o `nil` si se
       alcanza el final del fichero.
 
-file:seek ([de_dónde] [, desplazamiento])                          *file:seek*
+file:seek ([de_dónde] [, desplazamiento])                        *file:seek()*
     Establece (o solicita) la posición actual (del puntero de
     lectura/escritura) en el `descriptor_de_fichero`, medida desde el
     principio del fichero, en la posición dada por `desplazamiento` más la
@@ -2818,7 +2818,7 @@ file:seek ([de_dónde] [, desplazamiento])                          *file:seek*
     `descriptor_de_fichero:seek("end")` establece la posición al final del
     fichero y devuelve su tamaño.
 
-file:setvbuf (modo [, tamaño])                                  *file:setvbuf*
+file:setvbuf (modo [, tamaño])                                *file:setvbuf()*
     Establece un modo `buffer` para un fichero de salida. El argumento
     `modo` puede ser uno de estos tres:
 
@@ -2834,7 +2834,7 @@ file:setvbuf (modo [, tamaño])                                  *file:setvbuf*
     Para los dos últimos casos, `tamaño` especifica el tamaño del `buffer`,
     en bytes. El valor por defecto es un tamaño adecuado.
 
-file:write (···)                                                  *file:write*
+file:write (···)                                                *file:write()*
     Escribe el valor de sus argumentos en el fichero dado por su
     `descriptor_de_fichero`. Los argumentos pueden ser `strings` o números.
     Para escribir otros valores úsese |tostring| o
@@ -2843,15 +2843,15 @@ file:write (···)                                                  *file:write
     <<5.8>>
 
 ==============================================================================
-** 5.8 -- Utilidades del sistema operativo
+UTILIDADES DEL SISTEMA OPERATIVO                               *lua_module_os*
 
 Esta biblioteca está implementada a través de la tabla `os`.
 
-os.clock ()                                                         *os.clock*
+os.clock ()                                                       *os.clock()*
     Devuelve una aproximación al total de segundos de CPU usados por el
     programa.
 
-os.date ([formato [, tiempo]])                                       *os.date*
+os.date ([formato [, tiempo]])                                     *os.date()*
     Devuelve un `string` o una tabla conteniendo la fecha y hora, formateada
     de acuerdo con el `string` dado en `formato`.
 
@@ -2876,12 +2876,12 @@ os.date ([formato [, tiempo]])                                       *os.date*
     razonable de la fecha y la hora que depende de la máquina y del sistema
     local (esto es, `os.date()` equivale a `os.date("%c")`).
 
-os.difftime (t2, t1)                                             *os.difftime*
+os.difftime (t2, t1)                                           *os.difftime()*
     Devuelve el número de segundos desde el instante `t1` hasta el `t2`. En
     POSIX, Windows y algunos otros sistemas este valor es exactamente
     `t2`/-/=t1=.
 
-os.execute ([comando])                                            *os.execute*
+os.execute ([comando])                                          *os.execute()*
     Esta función equivale a la función `system` de C. Pasa la orden
     `comando` para que sea ejecutada en el intérprete de comandos del
     sistema operativo. Devuelve un código de estatus, que es dependiente del
@@ -2889,25 +2889,25 @@ os.execute ([comando])                                            *os.execute*
     cero si está disponible un intérprete de comandos y cero si no está
     disponible.
 
-os.exit ([código])                                                   *os.exit*
+os.exit ([código])                                                 *os.exit()*
     Invoca la función `exit` de C, con un `código` entero opcional, para
     terminar el programa anfitrión. El valor por defecto de `código` es el
     valor correspondiente a éxito.
 
-os.getenv (variable)                                               *os.getenv*
+os.getenv (variable)                                             *os.getenv()*
     Devuelve el valor asignado a la variable de entorno `variable`, o `nil`
     si la variable no está definida.
 
-os.remove (nombre_de_fichero)                                      *os.remove*
+os.remove (nombre_de_fichero)                                    *os.remove()*
     Elimina el fichero o directorio dado. Los directorios deben estar vacíos
     para poder ser eliminados. Si la función falla retorna `nil`, más un
     `string` describiendo el error.
 
-os.rename (nombre_viejo, nombre_nuevo)                             *os.rename*
+os.rename (nombre_viejo, nombre_nuevo)                           *os.rename()*
     Renombra un fichero o directorio de `nombre_viejo` a `nombre_nuevo`. Si
     la función falla retorna `nil`, más un `string` describiendo el error.
 
-os.setlocale (local [, categoría])                              *os.setlocale*
+os.setlocale (local [, categoría])                            *os.setlocale()*
     Establece valores en el sistema local del programa. `local` es un
     `string` que especifica un valor local; `categoría` es un `string`
     opcional que describe qué categoría cambiar: `"all"`, `"collate"`,
@@ -2922,7 +2922,7 @@ os.setlocale (local [, categoría])                              *os.setlocale*
     Cuando se invoca con `nil` como primer argumento, esta función retorna
     sólo el nombre del local actual en la categoría dada.
 
-os.time ([tabla])                                                    *os.time*
+os.time ([tabla])                                                  *os.time()*
     Devuelve el tiempo actual cuando se llama sin argumentos, o un tiempo
     representando la fecha y hora especificadas en la tabla dada. Ésta debe
     tener los campos `year`, `month` y `day`, y puede tener los campos
@@ -2936,7 +2936,7 @@ os.time ([tabla])                                                    *os.time*
     `time` puede ser usado sólo como argumento de las funciones `date` y
     `difftime`.
 
-os.tmpname ()                                                     *os.tmpname*
+os.tmpname ()                                                   *os.tmpname()*
     Devuelve un `string` con un nombre de fichero que puede ser usado como
     fichero temporal. El fichero debe ser abierto explícitamente antes de su
     uso y también eliminado explícitamente cuando no se necesite más.
@@ -2944,7 +2944,7 @@ os.tmpname ()                                                     *os.tmpname*
     <<5.9>>
 
 ==============================================================================
-** 5.9 -- La biblioteca de depuración
+LA BIBLIOTECA DE DEPURACIÓN                                        *lua_debug*
 
 Esta biblioteca proporciona a los programas en Lua las funcionalidades
 de la interface de depuración. Se debe usar con cuidado. Las funciones
@@ -2961,7 +2961,7 @@ otra manera seguro.
 Todas las funciones de esta biblioteca se proporcionan en la tabla
 `debug`.
 
-debug.debug ()                                                   *debug.debug*
+debug.debug ()                                                 *debug.debug()*
     Entra en modo interactivo con el usuario, ejecutando cada `string` que
     introduce el usuario. Usando comandos simples y otras utilidades de
     depuración el usuario puede inspeccionar variables globales y locales,
@@ -2973,16 +2973,16 @@ debug.debug ()                                                   *debug.debug*
     léxicamente anidados dentro de ninguna función, y no tienen acceso
     directo a las variables locales.
 
-debug.getfenv (o)                                              *debug.getfenv*
+debug.getfenv (o)                                            *debug.getfenv()*
     Devuelve el entorno del objeto `o`.
 
-debug.gethook ([proceso])                                      *debug.gethook*
+debug.gethook ([proceso])                                    *debug.gethook()*
     Devuelve información sobre el `hook` actual del proceso, en forma de
     tres valores: la función del `hook` actual, la máscara del `hook` actual
     y el contador del `hook` actual (como fue establecida por la función
     |debug.sethook|).
 
-debug.getinfo ([proceso,] func [, qué])                        *debug.getinfo*
+debug.getinfo ([proceso,] func [, qué])                      *debug.getinfo()*
     Devuelve una tabla con información acerca de la función `func`. Se puede
     dar la función directamente, o se puede dar un número en el lugar de
     `func`, lo que significa la función al nivel de ejecución de la llamada
@@ -3004,7 +3004,7 @@ debug.getinfo ([proceso,] func [, qué])                        *debug.getinfo*
     razonable, y `debug.getinfo(print)` retorna una tabla con toda la
     información disponible sobre la función |print|.
 
-debug.getlocal ([proceso,] nivel, local)                      *debug.getlocal*
+debug.getlocal ([proceso,] nivel, local)                    *debug.getlocal()*
     Esta función devuelve el nombre y el valor de una variable local con
     índice `local` de la función al `nivel` dado de la pila. (El primer
     argumento o variable local tiene índice 1, y así sucesivamente, hasta la
@@ -3018,22 +3018,22 @@ debug.getlocal ([proceso,] nivel, local)                      *debug.getlocal*
     representan variables internas (de control de bucles, temporales y
     locales de funciones C).
 
-debug.getmetatable (objeto)                               *debug.getmetatable*
+debug.getmetatable (objeto)                             *debug.getmetatable()*
     Devuelve la metatabla del `objeto` dado o `nil` si éste no tiene
     metatabla.
 
-debug.getregistry ()                                       *debug.getregistry*
+debug.getregistry ()                                     *debug.getregistry()*
     Retorna la tabla de registro (véase https://www.lua.org/manual/5.1/es/manual.html#3.5).
 
-debug.getupvalue (func, up)                                 *debug.getupvalue*
+debug.getupvalue (func, up)                               *debug.getupvalue()*
     Esta función retorna el nombre y el valor del `upvalue` con índice `up`
     de la función `func`. La función retorna `nil` si no hay un `upvalue`
     con el índice dado.
 
-debug.setfenv (objeto, tabla)                                  *debug.setfenv*
+debug.setfenv (objeto, tabla)                                *debug.setfenv()*
     Establece la `tabla` de entorno de un `objeto` dado.
 
-debug.sethook ([proceso,] func_hook, máscara [, contador])     *debug.sethook*
+debug.sethook ([proceso,] func_hook, máscara [, contador])   *debug.sethook()*
     Establece la función `func_hook` como `hook`. El `string` dado en
     `máscara` y el número `contador` describen como se invoca al `hook`. La
     máscara puede tener los siguientes caracteres, con el significado
@@ -3060,7 +3060,7 @@ debug.sethook ([proceso,] func_hook, máscara [, contador])     *debug.sethook*
     evento sea `"tail return"`. En ese caso Lua sólo simula el retorno, y
     una llamada a `getinfo` devolverá datos inválidos.
 
-debug.setlocal ([proceso,] nivel, local, valor)               *debug.setlocal*
+debug.setlocal ([proceso,] nivel, local, valor)             *debug.setlocal()*
     Esta función asigna el `valor` a la variable local con índice `local` de
     la función al `nivel` dado en la pila, retornando el nombre de la
     variable local. La función retorna `nil` si no existe una variable local
@@ -3068,16 +3068,16 @@ debug.setlocal ([proceso,] nivel, local, valor)               *debug.setlocal*
     fuera de rango. (Se puede invocar `getinfo` para verificar si el nivel
     es válido.)
 
-debug.setmetatable (objeto, tabla)                        *debug.setmetatable*
+debug.setmetatable (objeto, tabla)                      *debug.setmetatable()*
     Establece `tabla` (que puede ser `nil`) como la metatabla del `objeto`
     dado.
 
-debug.setupvalue (func, up, valor)                          *debug.setupvalue*
+debug.setupvalue (func, up, valor)                        *debug.setupvalue()*
     Esta función asigna el `valor` al `upvalue` con índice `up` de la
     función `func`, retornando el nombre del `upvalue`. La función retorna
     `nil` si no existe el `upvalue` con el índice dado.
 
-debug.traceback ([proceso,] [mensaje] [, nivel])             *debug.traceback*
+debug.traceback ([proceso,] [mensaje] [, nivel])           *debug.traceback()*
     Devuelve un `string` con el "trazado inverso" de la llamada en la pila.
     Un `mensaje` opcional se añade al principio del "trazado inverso". Un
     número de `nivel` opcional indica en qué nivel se comienza el "trazado
@@ -3085,7 +3085,7 @@ debug.traceback ([proceso,] [mensaje] [, nivel])             *debug.traceback*
     `traceback`).
 
 ==============================================================================
-* 8 -- La sintaxis completa de Lua
+LA SINTAXIS COMPLETA DE LUA                                       *lua_syntax*
 
 Aquí aparece la sintaxis completa de Lua en la notación BNF extendida.
 No describe las prioridades de los operadores.
